@@ -28,7 +28,7 @@
     let present_height = $state(0);
 
     // Errors: Uncaught ResizeObserver loop completed with undelivered notifications.
-    const wrapper_height = $derived(present_height * slowdown);
+    const wrapper_height = $derived(Math.max(1080, present_height) * slowdown);
 
     // Side effect: lag behind
     let present_transform_value = $state(0);

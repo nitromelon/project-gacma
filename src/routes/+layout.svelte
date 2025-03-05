@@ -12,14 +12,12 @@
         LAYOUT_INSIDE_ROOT_SLOTS_KEYWORD,
     } from "$lib/components/layout/layout";
 
-    // Todo: Make width breakpoint for mobile screen
     const { children } = $props();
 
-    // using pure Snippet does not enable reactivity so I wrapped in object
     let inside_root_slots: Snippet[] = $state([]);
     let outside_root_slots: Snippet[] = $state([]);
-
     let root: HTMLDivElement | undefined;
+
     let scroll_properties: SmoothScrollProperties = $state({
         viewport_height: 0,
         viewport_width: 0,
@@ -36,7 +34,6 @@
         scroll_properties.scroll_top = scrollTop;
         scroll_properties.scroll_bottom = scrollTop + scroll_properties.viewport_height;
         scroll_properties.scroll_height = scrollHeight;
-        // console.log(scrollTop / (scrollHeight - scroll_properties.viewport_height));
     }
 
     setContext(SMOOTH_SCROLL_PROPERTIES_KEYWORD, scroll_properties);
@@ -72,8 +69,5 @@
 
         display: flex;
         justify-content: center;
-
-        /* transform: scale(1.1); */
-        transition: transform 1s cubic-bezier(0, 1, 0, 1);
     }
 </style>

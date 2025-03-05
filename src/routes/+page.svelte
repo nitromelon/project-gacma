@@ -4,18 +4,13 @@
         LAYOUT_INSIDE_ROOT_SLOTS_KEYWORD,
     } from "$lib/components/layout/layout";
     import { getContext, onMount, type Snippet } from "svelte";
-    import LengthScroll from "$lib/components/length-scroll/LengthScroll.svelte";
-    import Intro from "$lib/components/pages/home/Intro.svelte";
     import { array_remove_element } from "$lib/remove_element";
-    import Menu from "$lib/components/pages/home/Menu.svelte";
-    import Project from "$lib/components/pages/projects/Project.svelte";
+    import LengthScroll from "$lib/components/length-scroll/LengthScroll.svelte";
 
     const fixed_slots: Snippet[] | undefined = getContext(LAYOUT_INSIDE_ROOT_SLOTS_KEYWORD);
     const fixed_outside_slots: Snippet[] | undefined = getContext(
         LAYOUT_OUTSIDE_ROOT_SLOTS_KEYWORD,
     );
-
-    let intro_scroll_progress = $state(0);
 
     fixed_slots?.push(inside_root_section);
     fixed_outside_slots?.push(outside_root_section);
@@ -33,37 +28,24 @@
 </script>
 
 <svelte:head>
-    <title>Tony's Portfolio</title>
+    <title>Project</title>
 </svelte:head>
 
 {#snippet outside_root_section()}{/snippet}
 
-{#snippet inside_root_section()}
-    <Menu scroll_progress={intro_scroll_progress}></Menu>
+{#snippet inside_root_section()}{/snippet}
+
+{#snippet test()}
+    <p class="test2">Placeholder</p>
 {/snippet}
 
-<div id="home">
-    {#snippet home_section(progress: number)}
-        <Intro {progress}></Intro>
-    {/snippet}
-
-    <!-- 8 -> 16 -->
-    <LengthScroll
-        slot={home_section}
-        slowdown={16}
-        bottom_limit={false}
-        progress_callback={(progress) => (intro_scroll_progress = progress)}
-    ></LengthScroll>
-</div>
-
-<div id="projects">
-    {#snippet projects_section(progress: number)}
-        <Project {progress}></Project>
-    {/snippet}
-
-    <LengthScroll slot={projects_section} slowdown={12} top_limit={false} bottom_limit={false}
-    ></LengthScroll>
-</div>
+<LengthScroll slot={test} slowdown={2} bottom_limit={false}></LengthScroll>
+{#each Array(100)}
+    <p>Hi</p>
+{/each}
 
 <style>
+    .test2 {
+        height: 100vh;
+    }
 </style>
