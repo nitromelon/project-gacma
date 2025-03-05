@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Quicksand&family=Prata&display=swap");
+
+html,
+body {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+/* Debug */
+.debug {
+    outline: 1px solid black;
+    * {
+        outline: 1px solid black;
+    }
+}
+
+/* Rewrite to variable */
+.smooth-scroll-configuration {
+    /* --scroll-transform-transition: transform 0.5s cubic-bezier(0, 0, 0.58, 1); */
+    --scroll-transition-timing-function: cubic-bezier(0.5, 1, 0.5, 1);
+    --scroll-transition-bezier: 1s var(--scroll-transition-timing-function);
+    --scroll-transform-transition: transform var(--scroll-transition-bezier);
+}
+
+.stack-children {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    > * {
+        grid-area: 1 / 1;
+    }
+}
