@@ -6,6 +6,7 @@
     import { getContext, onMount, type Snippet } from "svelte";
     import { array_remove_element } from "$lib/remove_element";
     import LengthScroll from "$lib/components/length-scroll/LengthScroll.svelte";
+    import Intro from "$lib/components/pages/home/intro/Intro.svelte";
 
     const fixed_slots: Snippet[] | undefined = getContext(LAYOUT_INSIDE_ROOT_SLOTS_KEYWORD);
     const fixed_outside_slots: Snippet[] | undefined = getContext(
@@ -28,24 +29,19 @@
 </script>
 
 <svelte:head>
-    <title>Project</title>
+    <title>Gạc Ma</title>
 </svelte:head>
 
 {#snippet outside_root_section()}{/snippet}
 
 {#snippet inside_root_section()}{/snippet}
 
-{#snippet test()}
-    <p class="test2">Placeholder</p>
-{/snippet}
-
-<LengthScroll slot={test} slowdown={2} bottom_limit={false}></LengthScroll>
-{#each Array(100)}
-    <p>Hi</p>
-{/each}
+<Intro></Intro>
+<p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit labore omnis ad assumenda rem
+    harum hic. Explicabo corporis voluptates, tempore iure ad laboriosam omnis eveniet repudiandae,
+    a consequuntur dolorum! Voluptatem.
+</p>
 
 <style>
-    .test2 {
-        height: 100vh;
-    }
 </style>

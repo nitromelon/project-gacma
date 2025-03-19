@@ -21,6 +21,13 @@ body {
     --scroll-transform-transition: transform var(--scroll-transition-bezier);
 }
 
+.color-preset {
+    --red: #881d1b;
+    --tan: #efe4d1;
+    --blue: #4e5975;
+    --yellow: #fada7a;
+}
+
 .stack-children {
     display: grid;
     grid-template-columns: 1fr;
@@ -28,4 +35,31 @@ body {
     > * {
         grid-area: 1 / 1;
     }
+}
+
+@font-face {
+    font-family: "HuxleyMax";
+    src: url("$lib/assets/fonts/1FTV-Huxley-Max-ExtraBlack.otf");
+}
+
+@font-face {
+    font-family: "Paztime";
+    src: url("$lib/assets/fonts/MJ-Paztime.ttf");
+}
+
+@font-face {
+    font-family: "VlRegular";
+    src: url("$lib/assets/fonts/VL TypewriterBasiX-Regular.ttf");
+}
+
+@font-face {
+    font-family: "VlItalic";
+    src: url("$lib/assets/fonts/VL TypewriterBasiX-RegularItalic.ttf");
+}
+
+.font-preset {
+    --huxley-max: "HuxleyMax", san-serif;
+    --paz-time: "Paztime", san-serif;
+    --vl-regular: "VlRegular", san-serif;
+    --vl-italic: "VlItalic", san-serif;
 }

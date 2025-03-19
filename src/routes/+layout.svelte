@@ -42,7 +42,7 @@
 </script>
 
 <div
-    class="root"
+    class="root color-preset font-preset"
     {onscroll}
     bind:this={root}
     bind:clientHeight={scroll_properties.viewport_height}
