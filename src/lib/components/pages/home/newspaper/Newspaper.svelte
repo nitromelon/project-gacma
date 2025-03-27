@@ -4,18 +4,26 @@
         limited_range_max,
         limited_range_min,
     } from "$lib/normalized_limited_range/limited";
-    import { normalized_range } from "$lib/normalized_limited_range/normalized";
-    import { fast_cubic_bezier } from "$lib/cubic_bezier/presets";
+    import { setContext } from "svelte";
+    import { CURRENT_PAGE_KEY, NUMBER_OF_PAGES } from "./papers/config";
+    import Paper1 from "./papers/Paper1.svelte";
+    import Paper2 from "./papers/Paper2.svelte";
+    import PaperBase from "./papers/PaperBase.svelte";
+    import { END_HEADER_RESIZE } from "./papers/timeline";
 
     const { progress }: { progress: number } = $props();
+
+    const paper_progress = $derived(limited_range_min(progress, END_HEADER_RESIZE));
+    const current_page = $derived(NUMBER_OF_PAGES * paper_progress);
+
+    setContext(CURRENT_PAGE_KEY, () => current_page);
 </script>
 
 <!-- 1 length scroll: Boi canh quoc te, xong thu nho thanh bao -->
 
 <section class="newspaper-section stack-children">
-    <div class="box box1">Trang n - 1</div>
-    <div class="box box2">Trang n</div>
-    <div class="box box3">Trang n + 1</div>
+    <PaperBase {progress} Paper={Paper1} this_page={0}></PaperBase>
+    <PaperBase {progress} Paper={Paper2} this_page={1}></PaperBase>
 </section>
 
 <style>
@@ -24,33 +32,7 @@
         contain: strict;
         height: 100vh;
 
-        /* align-items: center; */
+        align-items: center;
         justify-items: center;
-    }
-
-    .box {
-        width: 40%;
-        max-width: 1280px;
-        border: 1px solid black;
-        transition: 1s;
-        color: white;
-    }
-
-    .box1 {
-        transform-origin: bottom left;
-        transform: translateX(-50%) rotate(-10deg) scale(0.85);
-        background: var(--blue);
-    }
-
-    .box2 {
-        z-index: -1;
-        background: var(--red);
-    }
-
-    .box3 {
-        z-index: -2;
-        transform-origin: bottom right;
-        transform: translateX(50%) rotate(10deg) scale(0.85);
-        background: var(--yellow);
     }
 </style>

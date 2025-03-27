@@ -73,7 +73,7 @@
                 style:transform="translateY(calc({-sea_wrapper_initial_top +
                     125 * fast_inverted_sea_progress}px + var(--intro-wrapper-offset-top) / 2))"
             >
-                <div class="fake-quote">
+                <div class="fake-quote" style:opacity={sea_background_progress}>
                     <span>198</span>
                     <div class="number-wrapper stack-children">
                         {#each number_array as number, index}
@@ -139,7 +139,6 @@
             > img {
                 max-width: 1280px;
                 width: 100%;
-                pointer-events: none;
                 z-index: 2;
                 will-change: transform;
                 transition: transform var(--scroll-transition-bezier);
@@ -245,6 +244,9 @@
 
                         display: flex;
 
+                        will-change: opacity;
+                        transition: opacity var(--scroll-transition-bezier);
+
                         > .number-wrapper {
                             > span {
                                 will-change: transform;
@@ -267,6 +269,7 @@
                     mix-blend-mode: difference;
 
                     font-size: 2em;
+                    font-family: var(--vl-regular);
 
                     > .char {
                         display: inline-block;

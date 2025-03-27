@@ -48,7 +48,7 @@
 {/snippet}
 
 <div class="intro-wrapper">
-    <LengthScroll slot={intro} slowdown={4} bottom_limit={false}></LengthScroll>
+    <LengthScroll slot={intro} slowdown={6} bottom_limit={false}></LengthScroll>
 </div>
 
 {#snippet newspaper(progress: number)}
