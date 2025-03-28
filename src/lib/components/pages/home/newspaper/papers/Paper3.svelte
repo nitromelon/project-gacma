@@ -116,7 +116,7 @@
     <h3 class="small-title">Bối cảnh quốc tế: Cơ hội từ sự chuyển dịch quyền lực toàn cầu</h3>
 
     <div class="wrapper">
-        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.75)} content={paper}
+        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.875)} content={paper}
         ></ProgressScroll>
     </div>
 
@@ -281,13 +281,11 @@
     }
 
     .double-line-break {
-        width: calc(100% - 32px);
-        max-width: 1280px;
+        width: 100%;
         height: 4px;
         border: 1px solid var(--red);
         border-left: none;
         border-right: none;
-        margin: auto;
         margin-bottom: 16px;
     }
 

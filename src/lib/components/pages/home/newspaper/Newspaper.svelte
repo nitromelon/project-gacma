@@ -17,8 +17,6 @@
     setContext(CURRENT_PAGE_KEY, () => current_page);
 </script>
 
-<!-- 1 length scroll: Boi canh quoc te, xong thu nho thanh bao -->
-
 <section class="newspaper-section stack-children">
     <PaperBase {progress} Paper={Paper1} this_page={0}></PaperBase>
     <PaperBase {progress} Paper={Paper2} this_page={1}></PaperBase>

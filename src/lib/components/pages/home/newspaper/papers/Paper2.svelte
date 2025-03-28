@@ -36,7 +36,7 @@
     <h3 class="small-title">Bối cảnh quốc tế: Cơ hội từ sự chuyển dịch quyền lực toàn cầu</h3>
 
     <div class="wrapper">
-        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.75)} content={paper2}
+        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.875)} content={paper2}
         ></ProgressScroll>
     </div>
 
