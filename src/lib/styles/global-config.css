@@ -23,10 +23,12 @@ body {
 
 .color-preset {
     --red: #881d1b;
+    --dark-red: #7c1316;
     --tan: #efe4d1;
     --blue: #4e5975;
     --yellow: #fada7a;
     --light-orange: #f2d7b3;
+    --brown: #543214;
 }
 
 .stack-children {

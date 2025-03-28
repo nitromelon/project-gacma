@@ -1,15 +1,13 @@
 <script lang="ts">
-    import {
-        limited_range,
-        limited_range_max,
-        limited_range_min,
-    } from "$lib/normalized_limited_range/limited";
+    import { limited_range_min } from "$lib/normalized_limited_range/limited";
     import { setContext } from "svelte";
     import { CURRENT_PAGE_KEY, NUMBER_OF_PAGES } from "./papers/config";
+    import { END_HEADER_RESIZE } from "./papers/timeline";
+    import PaperBase from "./papers/PaperBase.svelte";
     import Paper1 from "./papers/Paper1.svelte";
     import Paper2 from "./papers/Paper2.svelte";
-    import PaperBase from "./papers/PaperBase.svelte";
-    import { END_HEADER_RESIZE } from "./papers/timeline";
+    import Paper3 from "./papers/Paper3.svelte";
+    import Paper4 from "./papers/Paper4.svelte";
 
     const { progress }: { progress: number } = $props();
 
@@ -24,6 +22,8 @@
 <section class="newspaper-section stack-children">
     <PaperBase {progress} Paper={Paper1} this_page={0}></PaperBase>
     <PaperBase {progress} Paper={Paper2} this_page={1}></PaperBase>
+    <PaperBase {progress} Paper={Paper3} this_page={2}></PaperBase>
+    <PaperBase {progress} Paper={Paper4} this_page={3}></PaperBase>
 </section>
 
 <style>

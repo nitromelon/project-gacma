@@ -24,6 +24,8 @@
         quyền lực toàn cầu
     </h2>
     <div class="line"></div>
+
+    <div class="image-mask"></div>
 </div>
 
 <style>
@@ -60,6 +62,16 @@
             border-left: none;
             border-right: none;
             margin: 64px 0;
+        }
+
+        > .image-mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: var(--image-mask) no-repeat center;
+            pointer-events: none;
         }
     }
 </style>

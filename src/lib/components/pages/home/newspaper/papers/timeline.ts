@@ -1,2 +1,2 @@
-export const BEGIN_HEADER_RESIZE = 0.05;
-export const END_HEADER_RESIZE = 0.1;
+export const BEGIN_HEADER_RESIZE = 0.025;
+export const END_HEADER_RESIZE = 0.0375;

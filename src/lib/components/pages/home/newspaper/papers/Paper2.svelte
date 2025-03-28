@@ -39,6 +39,8 @@
         <ProgressScroll progress={limited_range(local_progress, 0.25, 0.75)} content={paper2}
         ></ProgressScroll>
     </div>
+
+    <div class="image-mask"></div>
 </div>
 
 <style>

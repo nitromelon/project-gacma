@@ -30,7 +30,7 @@
 </script>
 
 <svelte:head>
-    <title>Gạc Ma</title>
+    <title>Gạc Ma: Vòng tròn bất tử</title>
 </svelte:head>
 
 {#snippet outside_root_section()}{/snippet}
@@ -55,7 +55,13 @@
     <Newspaper {progress}></Newspaper>
 {/snippet}
 
-<LengthScroll slot={newspaper} slowdown={12} top_limit={false} bottom_limit={false}></LengthScroll>
+<LengthScroll slot={newspaper} slowdown={24} top_limit={false} bottom_limit={false}></LengthScroll>
+
+<p>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione quo autem dicta nisi nobis,
+    laudantium recusandae? Deleniti eos quia expedita aliquam eaque, quas dignissimos eius earum ex
+    dolore esse voluptate.
+</p>
 
 <style>
     .intro-heading-wrapper {
