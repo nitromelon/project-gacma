@@ -3,6 +3,7 @@
     import { limited_range } from "$lib/normalized_limited_range/limited";
     import Pic1 from "$lib/assets/images/home/newspaper/papers/paper4/1.webp";
     import Pic2 from "$lib/assets/images/home/newspaper/papers/paper4/2.jpg";
+    import "./styles/common.css";
 
     type Props = {
         local_progress: number;
@@ -79,15 +80,6 @@
         contain: strict;
     }
 
-    .double-line-break {
-        width: 100%;
-        height: 4px;
-        border: 1px solid black;
-        border-left: none;
-        border-right: none;
-        margin-bottom: 16px;
-    }
-
     .paper4-heading {
         white-space: nowrap;
         overflow: hidden;
@@ -99,15 +91,6 @@
     }
 
     .separate-div {
-        display: flex;
-        gap: 16px;
-        align-items: center;
-        margin-bottom: 16px;
-
-        > * {
-            flex: 1;
-        }
-
         > .left-side > p {
             font-family: var(--vl-regular);
             font-size: 11px;

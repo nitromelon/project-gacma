@@ -12,14 +12,14 @@
     const header_resize_progress = $derived(
         limited_range(progress, BEGIN_HEADER_RESIZE, END_HEADER_RESIZE),
     );
-
-    const wrapper_width = $derived(normalized_range(header_resize_progress, 100, 45));
 </script>
 
-<div class="wrapper" style:width={wrapper_width === 40 ? "min(45%, 75vh)" : `${wrapper_width}%`}>
+<div class="wrapper paper-base">
     <div class="line"></div>
-    <h1>BỐI CẢNH QUỐC TẾ:</h1>
-    <h2>Cơ hội từ sự chuyển dịch quyền lực toàn cầu</h2>
+    <h1>QUAN HỆ VIỆT NAM - TRUNG QUỐC TRƯỚC 1988:</h1>
+    <h2>
+        Bối cảnh căng thẳng trước trận chiến Gạc Ma (1988)
+    </h2>
     <div class="line"></div>
 
     <div class="image-mask"></div>
@@ -27,28 +27,22 @@
 
 <style>
     .wrapper {
-        position: relative;
-        height: 100%;
-        background-color: var(--light-orange);
-        contain: strict;
-
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
 
-        will-change: width, transform;
-        transition:
-            width var(--scroll-transition-bezier),
-            transform var(--scroll-transition-bezier);
-
         > h1,
         h2 {
-            font-size: 48px;
+            font-size: 36px;
             text-align: center;
             font-family: var(--huxley-max);
             color: var(--red);
+            line-height: 1.25;
             padding: 0 8px;
+        }
+
+        > h2 {
             text-wrap: balance;
         }
 
@@ -60,16 +54,6 @@
             border-left: none;
             border-right: none;
             margin: 64px 0;
-        }
-
-        > .image-mask {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: var(--image-mask) no-repeat center;
-            pointer-events: none;
         }
     }
 </style>

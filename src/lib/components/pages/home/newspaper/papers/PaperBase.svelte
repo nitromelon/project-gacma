@@ -43,7 +43,7 @@
         will-change: opacity, transform, z-index, filter;
         transition:
             opacity var(--scroll-transition-bezier),
-            transform 0.75s var(--scroll-transition-timing-function),
+            transform var(--scroll-transition-bezier),
             filter var(--scroll-transition-bezier);
 
         > :global(.paper-base) {
