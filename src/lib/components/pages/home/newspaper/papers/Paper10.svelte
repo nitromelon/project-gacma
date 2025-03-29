@@ -14,7 +14,17 @@
 </script>
 
 <div class="paper-base">
-    {#snippet paper()}{/snippet}
+    {#snippet paper()}
+        <p class="paragraph-base large-margin-top">
+            Tháng 1/1988, Bắc Kinh đưa tàu chiến đến khu vực đá Chữ Thập và bắt đầu xây dựng công
+            trình kiên cố. Trước tình hình đó, Việt Nam buộc phải điều lực lượng công binh và hải
+            quân ra Trường Sa để bảo vệ chủ quyền. Tháng 2/1988, Hải quân Nhân dân Việt Nam triển
+            khai lực lượng tới một số bãi đá chưa có quân đội đóng giữ, nhằm ngăn chặn sự bành
+            trướng của Trung Quốc (VnExpress, 2021).
+        </p>
+
+        <p>[Biểu đồ]</p>
+    {/snippet}
 
     <h3 class="small-title" {title}>{title}</h3>
 
@@ -44,5 +54,9 @@
         height: calc(100% - 60px);
         width: calc(100% - 32px);
         contain: strict;
+    }
+
+    .large-margin-top {
+        margin: 64px 0;
     }
 </style>

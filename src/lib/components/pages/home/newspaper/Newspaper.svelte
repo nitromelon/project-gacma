@@ -17,7 +17,19 @@
     import Paper11 from "./papers/Paper11.svelte";
 
     const { progress }: { progress: number } = $props();
-
+    const paper_list = [
+        Paper1,
+        Paper2,
+        Paper3,
+        Paper4,
+        Paper5,
+        Paper6,
+        Paper7,
+        Paper8,
+        Paper9,
+        Paper10,
+        Paper11,
+    ];
     const paper_progress = $derived(limited_range_min(progress, END_HEADER_RESIZE));
     const current_page = $derived(NUMBER_OF_PAGES * paper_progress);
 
@@ -25,17 +37,9 @@
 </script>
 
 <section class="newspaper-section stack-children">
-    <PaperBase {progress} Paper={Paper1} this_page={0}></PaperBase>
-    <PaperBase {progress} Paper={Paper2} this_page={1}></PaperBase>
-    <PaperBase {progress} Paper={Paper3} this_page={2}></PaperBase>
-    <PaperBase {progress} Paper={Paper4} this_page={3}></PaperBase>
-    <PaperBase {progress} Paper={Paper5} this_page={4}></PaperBase>
-    <PaperBase {progress} Paper={Paper6} this_page={5}></PaperBase>
-    <PaperBase {progress} Paper={Paper7} this_page={6}></PaperBase>
-    <PaperBase {progress} Paper={Paper8} this_page={7}></PaperBase>
-    <PaperBase {progress} Paper={Paper9} this_page={8}></PaperBase>
-    <PaperBase {progress} Paper={Paper10} this_page={9}></PaperBase>
-    <PaperBase {progress} Paper={Paper11} this_page={10}></PaperBase>
+    {#each paper_list as paper, index}
+        <PaperBase {progress} Paper={paper} this_page={index}></PaperBase>
+    {/each}
 </section>
 
 <style>

@@ -14,6 +14,8 @@
     const { progress, Paper, this_page }: Props = $props();
     const current_page: () => number = getContext(CURRENT_PAGE_KEY);
     const status = $derived(number_to_status(Math.round(current_page()), this_page));
+
+    // Todo: fix me
     const local_progress = $derived(minmax((current_page() - this_page + 0.5) * 2, 0, 1));
 
     function get_transform_from_status(status: PaperStatus): string {
