@@ -17,6 +17,25 @@
     {#snippet paper()}
         <div class="double-line-break"></div>
         <h2 class="paragraph-base">TRUNG QUỐC GIA TĂNG ÁP LỰC TẠI BIỂN ĐÔNG</h2>
+        <p class="paragraph-base extra-margin-top">
+            Trước năm 1974, quần đảo Hoàng Sa thuộc quyền kiểm soát của Việt Nam Cộng hòa. Tuy
+            nhiên, lợi dụng tình hình chính trị bất ổn tại miền Nam, Trung Quốc đã phát động một
+            cuộc tấn công quân sự vào tháng 1/1974, chiếm toàn bộ Hoàng Sa từ tay quân đội Việt Nam
+            Cộng hòa (VŨ VIẾT TUÂN, 2017).
+        </p>
+
+        <p class="paragraph-base extra-margin-top ninety-percent-width">
+            Sau khi kiểm soát Hoàng Sa, Bắc Kinh tiếp tục mở rộng ảnh hưởng xuống Trường Sa. Đến năm
+            1987, Trung Quốc bắt đầu triển khai hàng loạt động thái quân sự nhằm gia tăng hiện diện
+            trong khu vực này, bao gồm việc đưa tàu chiến xuống quần đảo Trường Sa và tiến hành các
+            hoạt động xây dựng trên các thực thể mà họ tuyên bố chủ quyền.
+        </p>
+
+        <p class="paragraph-base extra-margin-top border-right-text">
+            Trung Quốc đã sử dụng chiến thuật “cắt lát” hay còn được gọi là “salami slicing”, từng
+            bước chiếm giữ các bãi đá nhỏ lẻ, tạo tiền đề để mở rộng kiểm soát trên biển (Vũ Hiền,
+            2024).
+        </p>
     {/snippet}
 
     <h3 class="small-title" {title}>{title}</h3>
@@ -49,10 +68,29 @@
         contain: strict;
     }
 
-    .paragraph-base {
+    h2.paragraph-base {
         font-family: var(--vl-italic) !important;
         -webkit-text-stroke: 0 !important;
         font-weight: 600;
         text-align: center !important;
+    }
+
+    .extra-margin-top {
+        margin-top: 32px;
+    }
+
+    .ninety-percent-width {
+        margin: 64px 0;
+        width: 90%;
+    }
+
+    .border-right-text {
+        position: relative;
+        left: 20%;
+        width: calc(80%);
+        padding: 16px;
+        border: 1px solid black;
+        text-align: center !important;
+        text-wrap: balance;
     }
 </style>

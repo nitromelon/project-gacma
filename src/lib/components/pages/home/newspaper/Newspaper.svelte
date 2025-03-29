@@ -13,6 +13,8 @@
     import Paper7 from "./papers/Paper7.svelte";
     import Paper8 from "./papers/Paper8.svelte";
     import Paper9 from "./papers/Paper9.svelte";
+    import Paper10 from "./papers/Paper10.svelte";
+    import Paper11 from "./papers/Paper11.svelte";
 
     const { progress }: { progress: number } = $props();
 
@@ -32,6 +34,8 @@
     <PaperBase {progress} Paper={Paper7} this_page={6}></PaperBase>
     <PaperBase {progress} Paper={Paper8} this_page={7}></PaperBase>
     <PaperBase {progress} Paper={Paper9} this_page={8}></PaperBase>
+    <PaperBase {progress} Paper={Paper10} this_page={9}></PaperBase>
+    <PaperBase {progress} Paper={Paper11} this_page={10}></PaperBase>
 </section>
 
 <style>

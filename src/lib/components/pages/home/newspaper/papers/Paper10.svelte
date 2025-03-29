@@ -1,10 +1,14 @@
 <script lang="ts">
     import ProgressScroll from "$lib/components/progress-scroll/ProgressScroll.svelte";
     import { limited_range } from "$lib/normalized_limited_range/limited";
+    import "./styles/common.css";
 
     type Props = {
         local_progress: number;
     };
+
+    const title =
+        "Quan hệ Việt Nam - Trung Quốc trước 1988: Bối cảnh căng thẳng trước trận chiến Gạc Ma (1988)";
 
     const { local_progress }: Props = $props();
 </script>
@@ -12,10 +16,10 @@
 <div class="paper-base">
     {#snippet paper()}{/snippet}
 
-    <h3 class="small-title">Bối cảnh quốc tế: Cơ hội từ sự chuyển dịch quyền lực toàn cầu</h3>
+    <h3 class="small-title" {title}>{title}</h3>
 
     <div class="wrapper">
-        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.75)} content={paper}
+        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.875)} content={paper}
         ></ProgressScroll>
     </div>
 
