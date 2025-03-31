@@ -106,7 +106,7 @@
 
         > .video-wrapper {
             position: relative;
-            height: 80%;
+            height: 64%;
             aspect-ratio: 16/9;
             border: 1px solid black;
 
