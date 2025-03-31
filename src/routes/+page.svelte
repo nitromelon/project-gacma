@@ -8,7 +8,7 @@
     import LengthScroll from "$lib/components/length-scroll/LengthScroll.svelte";
     import Intro from "$lib/components/pages/home/intro/Intro.svelte";
     import Newspaper from "$lib/components/pages/home/newspaper/Newspaper.svelte";
-    import ThreeIslands from "$lib/components/pages/home/three-islands/ThreeIslands.svelte";
+    import ThreeIslandsIntro from "$lib/components/pages/home/three-islands/ThreeIslandsIntro.svelte";
 
     const fixed_slots: Snippet[] | undefined = getContext(LAYOUT_INSIDE_ROOT_SLOTS_KEYWORD);
     const fixed_outside_slots: Snippet[] | undefined = getContext(
@@ -41,24 +41,31 @@
 <div class="intro-heading-wrapper stack-children">
     <h1>GẠC MA</h1>
     <p>vòng tròn bất tử</p>
-    <div class="background-patch"></div>
 </div>
-
-{#snippet intro(progress: number)}
-    <Intro {progress}></Intro>
-{/snippet}
 
 <div class="intro-wrapper">
-    <LengthScroll slot={intro} slowdown={6} bottom_limit={false}></LengthScroll>
+    <div class="intro-content-wrapper">
+        {#snippet intro(progress: number)}
+            <Intro {progress}></Intro>
+        {/snippet}
+
+        <LengthScroll slot={intro} slowdown={6} bottom_limit={false}></LengthScroll>
+    </div>
+
+    {#snippet newspaper(progress: number)}
+        <Newspaper {progress}></Newspaper>
+    {/snippet}
+
+    <LengthScroll slot={newspaper} slowdown={24} top_limit={false} bottom_limit={false}
+    ></LengthScroll>
 </div>
 
-{#snippet newspaper(progress: number)}
-    <Newspaper {progress}></Newspaper>
-{/snippet}
-
-<LengthScroll slot={newspaper} slowdown={24} top_limit={false} bottom_limit={false}></LengthScroll>
-
-<ThreeIslands></ThreeIslands>
+<div class="three-islands-wrapper">
+    <div class="padding-height"></div>
+    <ThreeIslandsIntro></ThreeIslandsIntro>
+    <div class="padding-height"></div>
+    <p>Test</p>
+</div>
 
 <style>
     .intro-heading-wrapper {
@@ -80,18 +87,22 @@
             -webkit-text-stroke: 1px var(--tan);
             transform: translateY(12px);
         }
-
-        > .background-patch {
-            position: absolute;
-            top: 100%;
-            height: 120px;
-            width: 100%;
-            background-color: var(--tan);
-        }
     }
 
     .intro-wrapper {
-        --intro-wrapper-offset-top: 120px;
-        margin-top: calc(var(--intro-wrapper-offset-top) * -1);
+        background-color: var(--tan);
+
+        > .intro-content-wrapper {
+            --intro-wrapper-offset-top: 120px;
+            margin-top: calc(var(--intro-wrapper-offset-top) * -1);
+        }
+    }
+
+    .three-islands-wrapper {
+        background-color: var(--blue);
+
+        > .padding-height {
+            height: 32px;
+        }
     }
 </style>
