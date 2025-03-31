@@ -16,19 +16,22 @@
 <div class="paper-base">
     {#snippet paper()}
         <div class="double-line-break"></div>
-        <h2 class="paragraph-base">Ý ĐỒ CHIẾN LƯỢC CỦA TRUNG QUỐC TẠI TRƯỜNG SA</h2>
+        <h2 class="paragraph-base">TÌNH HÌNH CĂNG THẲNG TRƯỚC TRẬN GẠC MA</h2>
         <p class="paragraph-base extra-margin-top ninety-percent-width-left">
-            Quần đảo Trường Sa không chỉ có vị trí chiến lược quan trọng về quân sự mà còn là khu
-            vực có trữ lượng dầu khí dồi dào. Biển Đông có thể chứa đến 11 tỷ thùng dầu và 190 nghìn
-            tỷ feet khối khí đốt tự nhiên, khiến khu vực này trở thành điểm nóng tranh chấp giữa
-            nhiều quốc gia (The U.S. Geological Survey, 2010).
+            Bước sang tháng 3/1988, tình hình tại Trường Sa ngày càng căng thẳng khi cả Việt Nam và
+            Trung Quốc đều tìm cách khẳng định quyền kiểm soát trên thực địa. Theo nghiên cứu của
+            Viện Nghiên cứu Biển Đông, đến đầu tháng 3, Trung Quốc đã điều thêm tàu chiến và lực
+            lượng hải quân xuống khu vực, chuẩn bị cho một cuộc đối đầu quân sự nếu cần thiết
+            (thanhnien.vn, 2022).
         </p>
 
         <p class="paragraph-base extra-margin-top ninety-percent-width-right">
-            Bên cạnh đó, Trường Sa nằm trên tuyến hàng hải quan trọng bậc nhất thế giới, nơi lưu
-            thông khoảng 30% tổng lượng hàng hóa toàn cầu. Việc kiểm soát khu vực này giúp Trung
-            Quốc tăng cường ảnh hưởng trên tuyến đường biển chiến lược, đồng thời tạo điều kiện để
-            Bắc Kinh áp đặt yêu sách "đường lưỡi bò" phi pháp tại Biển Đông.
+            Trước nguy cơ mất chủ quyền trên các bãi đá chiến lược, Việt Nam điều tàu HQ-604, HQ-505
+            và HQ-605 chở công binh ra Trường Sa để bảo vệ các thực thể mà nước ta đang kiểm soát.
+            Tuy nhiên, đối diện với lực lượng hải quân mạnh hơn từ phía Trung Quốc, Việt Nam rơi vào
+            tình thế bị đe dọa nghiêm trọng. Điều này dẫn đến trận hải chiến bi tráng tại Gạc Ma vào
+            ngày 14/3/1988, khi 64 chiến sĩ hải quân Việt Nam hy sinh trong cuộc chiến bảo vệ chủ
+            quyền biển đảo (Mỹ Hòa, 2025).
         </p>
     {/snippet}
 
@@ -74,13 +77,13 @@
     }
 
     .ninety-percent-width-left {
-        position: relative;
         width: 90%;
-        left: 10%;
     }
 
     .ninety-percent-width-right {
+        position: relative;
         margin: 64px 0;
         width: 90%;
+        left: 10%;
     }
 </style>

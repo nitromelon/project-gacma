@@ -15,6 +15,7 @@
     import Paper9 from "./papers/Paper9.svelte";
     import Paper10 from "./papers/Paper10.svelte";
     import Paper11 from "./papers/Paper11.svelte";
+    import Paper12 from "./papers/Paper12.svelte";
     import { fast_cubic_bezier } from "$lib/cubic_bezier/presets";
     import { normalized_range } from "$lib/normalized_limited_range/normalized";
     import YtbFrame from "$lib/components/iframe-youtube/YtbFrame.svelte";
@@ -32,6 +33,7 @@
         Paper9,
         Paper10,
         Paper11,
+        Paper12,
     ];
 
     const VIDEO_TITLE = "[Gạc Ma: Vòng tròn bất tử]: Tình hình căng thẳng trước trận Gạc Ma";
