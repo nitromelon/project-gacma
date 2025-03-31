@@ -8,6 +8,7 @@
     import LengthScroll from "$lib/components/length-scroll/LengthScroll.svelte";
     import Intro from "$lib/components/pages/home/intro/Intro.svelte";
     import Newspaper from "$lib/components/pages/home/newspaper/Newspaper.svelte";
+    import ThreeIslands from "$lib/components/pages/home/three-islands/ThreeIslands.svelte";
 
     const fixed_slots: Snippet[] | undefined = getContext(LAYOUT_INSIDE_ROOT_SLOTS_KEYWORD);
     const fixed_outside_slots: Snippet[] | undefined = getContext(
@@ -57,11 +58,7 @@
 
 <LengthScroll slot={newspaper} slowdown={24} top_limit={false} bottom_limit={false}></LengthScroll>
 
-<p>
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione quo autem dicta nisi nobis,
-    laudantium recusandae? Deleniti eos quia expedita aliquam eaque, quas dignissimos eius earum ex
-    dolore esse voluptate.
-</p>
+<ThreeIslands></ThreeIslands>
 
 <style>
     .intro-heading-wrapper {

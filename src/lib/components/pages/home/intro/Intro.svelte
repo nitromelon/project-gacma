@@ -84,7 +84,11 @@
                 </div>
             </div>
 
-            <p class="quote">
+            <p
+                class="quote"
+                style:opacity={year_transition_progress > 0 ? 1 : 0}
+                style:transform="translateY({year_transition_progress > 0 ? 0 : 32}px)"
+            >
                 {#each quote as char, index}
                     {@const effect = current_quote_char >= index ? 0 : 1}
                     <span
@@ -99,6 +103,14 @@
                         <span></span>
                     {/if}
                 {/each}
+            </p>
+
+            <p
+                class="quote quote-title"
+                style:opacity={year_transition_progress > 0 ? 0 : 1}
+                style:transform="translateY({year_transition_progress > 0 ? -32 : 0}px)"
+            >
+                Bối cảnh
             </p>
         </div>
         <div
@@ -271,6 +283,11 @@
                     font-size: 2em;
                     font-family: var(--vl-regular);
 
+                    will-change: transform, opacity;
+                    transition:
+                        opacity var(--scroll-transition-bezier),
+                        transform var(--scroll-transition-bezier);
+
                     > .char {
                         display: inline-block;
                         will-change: transform, opacity;
@@ -278,6 +295,11 @@
                             transform 10s cubic-bezier(0, 1, 0, 1),
                             opacity 0.3s var(--scroll-transition-timing-function);
                     }
+                }
+
+                > .quote-title {
+                    font-size: 144px;
+                    font-family: var(--huxley-max);
                 }
             }
         }

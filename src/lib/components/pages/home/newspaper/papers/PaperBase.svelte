@@ -16,7 +16,7 @@
     const status = $derived(number_to_status(Math.round(current_page()), this_page));
 
     // Todo: fix me
-    const local_progress = $derived(minmax((current_page() - this_page + 0.5) * 2, 0, 1));
+    const local_progress = $derived(minmax(current_page() - this_page + 0.5, 0, 1));
 
     function get_transform_from_status(status: PaperStatus): string {
         return `translateX(${status * 25}%) rotate(${status * 5}deg) scale(${1 - Math.abs(status) * 0.125})`;

@@ -2,6 +2,7 @@
     import ProgressScroll from "$lib/components/progress-scroll/ProgressScroll.svelte";
     import { limited_range } from "$lib/normalized_limited_range/limited";
     import "./styles/common.css";
+    import Pic1 from "$lib/assets/images/home/newspaper/papers/paper10/1.svg";
 
     type Props = {
         local_progress: number;
@@ -23,7 +24,9 @@
             trướng của Trung Quốc (VnExpress, 2021).
         </p>
 
-        <p>[Biểu đồ]</p>
+        <div class="image-wrapper">
+            <img src={Pic1} alt="" />
+        </div>
     {/snippet}
 
     <h3 class="small-title" {title}>{title}</h3>
@@ -58,5 +61,12 @@
 
     .large-margin-top {
         margin: 64px 0;
+    }
+
+    .image-wrapper {
+        height: fit-content;
+        width: 100%;
+        box-sizing: content-box;
+        padding-bottom: 64px;
     }
 </style>
