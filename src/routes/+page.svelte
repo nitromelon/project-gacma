@@ -9,6 +9,7 @@
     import Intro from "$lib/components/pages/home/intro/Intro.svelte";
     import Newspaper from "$lib/components/pages/home/newspaper/Newspaper.svelte";
     import ThreeIslandsIntro from "$lib/components/pages/home/three-islands/ThreeIslandsIntro.svelte";
+    import EconomicPotential from "$lib/components/pages/home/three-islands/EconomicPotential.svelte";
 
     const fixed_slots: Snippet[] | undefined = getContext(LAYOUT_INSIDE_ROOT_SLOTS_KEYWORD);
     const fixed_outside_slots: Snippet[] | undefined = getContext(
@@ -64,8 +65,21 @@
     <div class="padding-height"></div>
     <ThreeIslandsIntro></ThreeIslandsIntro>
     <div class="padding-height"></div>
-    <p>Test</p>
+
+    {#snippet three_islands_2nd_content(progress: number)}
+        <EconomicPotential {progress}></EconomicPotential>
+    {/snippet}
+
+    <LengthScroll slot={three_islands_2nd_content} slowdown={3} top_limit={false}></LengthScroll>
+
+    <p>Vai trò chiến lược trong an ninh quốc phòng</p>
+    <p>Những thách thức hiện nay</p>
 </div>
+
+<p>Tương quan lực lượng</p>
+<p>Diễn biến</p>
+<p>Kết quả</p>
+<p>Ý nghĩa</p>
 
 <style>
     .intro-heading-wrapper {

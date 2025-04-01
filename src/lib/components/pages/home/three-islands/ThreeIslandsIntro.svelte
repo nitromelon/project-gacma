@@ -4,9 +4,11 @@
     const title = "[Gạc Ma: Vòng tròn bất tử]: Tổng quan về quần đảo Trường Sa";
 </script>
 
+<h2 class="intro-header">II. Ba Đảo</h2>
+
 <section>
     <div class="wrapper top-wrapper">
-        <p>BA ĐẢO</p>
+        <p>Phần 1</p>
         <p>TỔNG QUAN VỀ QUẦN ĐẢO TRƯỜNG SA</p>
     </div>
     <div class="wrapper center-wrapper">
@@ -23,6 +25,13 @@
 </section>
 
 <style>
+    .intro-header {
+        text-align: center;
+        font-size: 144px;
+        font-family: var(--huxley-max);
+        color: var(--tan);
+    }
+
     section {
         position: relative;
         height: 100vh;
