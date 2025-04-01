@@ -70,7 +70,7 @@
         <EconomicPotential {progress}></EconomicPotential>
     {/snippet}
 
-    <LengthScroll slot={three_islands_2nd_content} slowdown={3} top_limit={false}></LengthScroll>
+    <LengthScroll slot={three_islands_2nd_content} slowdown={5} top_limit={false}></LengthScroll>
 
     <p>Vai trò chiến lược trong an ninh quốc phòng</p>
     <p>Những thách thức hiện nay</p>
