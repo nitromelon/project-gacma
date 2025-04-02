@@ -6,6 +6,7 @@
     import { getContext, onMount, type Snippet } from "svelte";
     import { array_remove_element } from "$lib/remove_element";
     import ThreeIslandsPic1 from "$lib/assets/images/home/threeislands/3.png";
+    import ComparisonPic10 from "$lib/assets/images/home/comparison/10.png";
     import LengthScroll from "$lib/components/length-scroll/LengthScroll.svelte";
     import Intro from "$lib/components/pages/home/intro/Intro.svelte";
     import Newspaper from "$lib/components/pages/home/newspaper/Newspaper.svelte";
@@ -14,6 +15,8 @@
     import ThreeIslandsPart3 from "$lib/components/pages/home/three-islands/Part3.svelte";
     import ThreeIslandsPart4 from "$lib/components/pages/home/three-islands/Part4.svelte";
     import YtbFrame from "$lib/components/iframe-youtube/YtbFrame.svelte";
+    import ComparisonTable from "$lib/components/pages/home/comparison/Table.svelte";
+    import Quote from "$lib/components/pages/home/comparison/Quote.svelte";
 
     const fixed_slots: Snippet[] | undefined = getContext(LAYOUT_INSIDE_ROOT_SLOTS_KEYWORD);
     const fixed_outside_slots: Snippet[] | undefined = getContext(
@@ -54,7 +57,7 @@
             <Intro {progress}></Intro>
         {/snippet}
 
-        <LengthScroll slot={intro} slowdown={6} bottom_limit={false}></LengthScroll>
+        <LengthScroll slot={intro} slowdown={4} bottom_limit={false}></LengthScroll>
     </div>
 
     {#snippet newspaper(progress: number)}
@@ -90,17 +93,55 @@
 
     <div class="image-wrapper">
         <div class="iframe-wrapper">
-            <YtbFrame title="Test" id="MnWBbmNS-tQ"></YtbFrame>
             <p>Video | [Gạc Ma: Vòng tròn bất tử]: Vị trí chiến lược ba bãi đá</p>
+            <YtbFrame
+                title="[Gạc Ma: Vòng tròn bất tử]: Vị trí chiến lược ba bãi đá"
+                id="MnWBbmNS-tQ"
+            ></YtbFrame>
         </div>
     </div>
 </div>
 
 <div class="comparison-wrapper">
-    <p>Tương quan lực lượng</p>
+    <div class="padding-left-right">
+        <h3 class="heading-title padding-left-right">III. Tương quan lực lượng</h3>
+
+        <ComparisonTable></ComparisonTable>
+
+        <div class="image-wrapper">
+            <img
+                src={ComparisonPic10}
+                alt="Đánh giá tương quan lực lượng"
+                title="Đánh giá tương quan lực lượng"
+            />
+        </div>
+    </div>
+
+    {#snippet quote(progress: number)}
+        <Quote {progress}></Quote>
+    {/snippet}
+
+    <LengthScroll slot={quote} slowdown={2} top_limit={false} bottom_limit={false}></LengthScroll>
+
+    <div class="padding-left-right">
+        <div class="image-wrapper">
+            <div class="iframe-wrapper">
+                <p>
+                    Video | [Gạc Ma: Vòng tròn bất tử]: Chia sẻ của cựu binh Lê Hữu Thảo về Tương
+                    Quan Lực Lượng của trận Gạc Ma
+                </p>
+                <YtbFrame
+                    title="[Gạc Ma: Vòng tròn bất tử]: Chia sẻ của cựu binh Lê Hữu Thảo về Tương Quan Lực Lượng của trận Gạc Ma"
+                    id="dgSSWmBfgcw"
+                ></YtbFrame>
+            </div>
+        </div>
+    </div>
+
     <p>Diễn biến</p>
     <p>Kết quả</p>
     <p>Ý nghĩa</p>
+    <p>Credit</p>
 </div>
 
 <style>
@@ -134,6 +175,34 @@
         }
     }
 
+    .image-wrapper {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        > img {
+            height: 64%;
+            width: 100%;
+            object-fit: contain;
+        }
+
+        > .iframe-wrapper {
+            position: relative;
+            height: 64%;
+            aspect-ratio: 16/9;
+            border: 1px solid black;
+
+            > p {
+                position: absolute;
+                top: -22px;
+                font-size: 11px;
+                font-family: var(--vl-regular);
+                font-weight: 600;
+            }
+        }
+    }
+
     .three-islands-wrapper {
         background-color: var(--blue);
 
@@ -141,39 +210,25 @@
             height: 32px;
         }
 
-        > .image-wrapper {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            > img {
-                height: 64%;
-                width: 100%;
-                object-fit: contain;
-            }
-        }
-
-        > .image-wrapper {
-            > .iframe-wrapper {
-                position: relative;
-                height: 64%;
-                aspect-ratio: 16/9;
-                border: 1px solid black;
-
-                > p {
-                    position: absolute;
-                    top: -22px;
-                    font-size: 11px;
-                    font-family: var(--vl-regular);
-                    color: var(--tan);
-                    font-weight: 600;
-                }
-            }
+        .iframe-wrapper > p {
+            color: var(--tan);
         }
     }
 
     .comparison-wrapper {
-        background-color: var(--tan);
+        background-color: var(--light-orange);
+
+        > .padding-left-right {
+            padding: 64px;
+        }
+
+        .heading-title {
+            text-align: center;
+            text-wrap: balance;
+            margin-bottom: 64px;
+            font-family: var(--huxley-max);
+            color: var(--red);
+            font-size: 72px;
+        }
     }
 </style>

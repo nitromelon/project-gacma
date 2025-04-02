@@ -7,7 +7,10 @@
 </script>
 
 <section>
-    <h2 class="heading-title">NHỮNG THÁCH THỨC HIỆN NAY</h2>
+    <h2 class="heading-title">
+        NHỮNG THÁCH THỨC <br />
+        HIỆN NAY
+    </h2>
     <div class="paragraph-wrapper">
         <div class="wrapper" style:transform="translateY({-100 * first_progress}%)">
             <p>
