@@ -5,11 +5,15 @@
     } from "$lib/components/layout/layout";
     import { getContext, onMount, type Snippet } from "svelte";
     import { array_remove_element } from "$lib/remove_element";
+    import ThreeIslandsPic1 from "$lib/assets/images/home/threeislands/3.png";
     import LengthScroll from "$lib/components/length-scroll/LengthScroll.svelte";
     import Intro from "$lib/components/pages/home/intro/Intro.svelte";
     import Newspaper from "$lib/components/pages/home/newspaper/Newspaper.svelte";
     import ThreeIslandsIntro from "$lib/components/pages/home/three-islands/ThreeIslandsIntro.svelte";
     import EconomicPotential from "$lib/components/pages/home/three-islands/EconomicPotential.svelte";
+    import ThreeIslandsPart3 from "$lib/components/pages/home/three-islands/Part3.svelte";
+    import ThreeIslandsPart4 from "$lib/components/pages/home/three-islands/Part4.svelte";
+    import YtbFrame from "$lib/components/iframe-youtube/YtbFrame.svelte";
 
     const fixed_slots: Snippet[] | undefined = getContext(LAYOUT_INSIDE_ROOT_SLOTS_KEYWORD);
     const fixed_outside_slots: Snippet[] | undefined = getContext(
@@ -72,14 +76,32 @@
 
     <LengthScroll slot={three_islands_2nd_content} slowdown={5} top_limit={false}></LengthScroll>
 
-    <p>Vai trò chiến lược trong an ninh quốc phòng</p>
-    <p>Những thách thức hiện nay</p>
+    <ThreeIslandsPart3></ThreeIslandsPart3>
+
+    {#snippet three_islands_4th_content(progress: number)}
+        <ThreeIslandsPart4 {progress}></ThreeIslandsPart4>
+    {/snippet}
+
+    <LengthScroll slot={three_islands_4th_content} slowdown={3} bottom_limit={false}></LengthScroll>
+
+    <div class="image-wrapper">
+        <img src={ThreeIslandsPic1} alt="" />
+    </div>
+
+    <div class="image-wrapper">
+        <div class="iframe-wrapper">
+            <YtbFrame title="Test" id="MnWBbmNS-tQ"></YtbFrame>
+            <p>Video | [Gạc Ma: Vòng tròn bất tử]: Vị trí chiến lược ba bãi đá</p>
+        </div>
+    </div>
 </div>
 
-<p>Tương quan lực lượng</p>
-<p>Diễn biến</p>
-<p>Kết quả</p>
-<p>Ý nghĩa</p>
+<div class="comparison-wrapper">
+    <p>Tương quan lực lượng</p>
+    <p>Diễn biến</p>
+    <p>Kết quả</p>
+    <p>Ý nghĩa</p>
+</div>
 
 <style>
     .intro-heading-wrapper {
@@ -118,5 +140,40 @@
         > .padding-height {
             height: 32px;
         }
+
+        > .image-wrapper {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            > img {
+                height: 64%;
+                width: 100%;
+                object-fit: contain;
+            }
+        }
+
+        > .image-wrapper {
+            > .iframe-wrapper {
+                position: relative;
+                height: 64%;
+                aspect-ratio: 16/9;
+                border: 1px solid black;
+
+                > p {
+                    position: absolute;
+                    top: -22px;
+                    font-size: 11px;
+                    font-family: var(--vl-regular);
+                    color: var(--tan);
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    .comparison-wrapper {
+        background-color: var(--tan);
     }
 </style>
