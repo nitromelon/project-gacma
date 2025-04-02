@@ -17,9 +17,7 @@
 <div class="wrapper paper-base">
     <div class="line"></div>
     <h1>QUAN HỆ VIỆT NAM - TRUNG QUỐC TRƯỚC 1988:</h1>
-    <h2>
-        Bối cảnh căng thẳng trước trận chiến Gạc Ma (1988)
-    </h2>
+    <h2>Bối cảnh căng thẳng trước trận chiến Gạc Ma (1988)</h2>
     <div class="line"></div>
 
     <div class="image-mask"></div>
