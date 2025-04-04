@@ -64,10 +64,10 @@
 </script>
 
 <section class="stack-children" bind:clientWidth={section_width} bind:clientHeight={section_height}>
-    <video autoplay muted loop class="part1-video">
+    <!-- Not actually used but preload for next section -->
+    <video muted class="part1-video" preload="auto" aria-hidden="true">
         <source src={Vid1} type="video/mp4" />
     </video>
-    <div class="video-mask"></div>
 
     <div class="progress-image-wrapper stack-children">
         <div class="svg-wrapper" style:transform="translate({-66 * svg_progress}%)">
@@ -234,12 +234,7 @@
 
     .part1-video {
         width: 100%;
-        opacity: 0;
-    }
-
-    .video-mask {
-        height: 100%;
-        backdrop-filter: blur(10px);
+        visibility: hidden;
     }
 
     .progress-image-wrapper {
