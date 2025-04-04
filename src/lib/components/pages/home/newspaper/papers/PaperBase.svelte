@@ -37,8 +37,8 @@
 <style>
     .wrapper {
         position: relative;
-        width: calc(100% - 16px);
-        height: calc(100% - 16px);
+        width: calc(100% - 64px);
+        height: calc(100% - 64px);
         contain: strict;
         justify-items: center;
         transform-origin: bottom center;
