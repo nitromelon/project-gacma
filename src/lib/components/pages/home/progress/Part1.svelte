@@ -56,7 +56,6 @@
         const height = y - 80;
 
         if (svg_line_progress < element) {
-            // todo, change y - 12 / 2
             return `transform: translate(${x}px, ${64 + height * 0.25}px); height: ${height * 0.75}px; opacity: 0; width: ${width}px`;
         }
 

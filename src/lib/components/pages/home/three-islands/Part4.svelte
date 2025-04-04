@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { limited_range_max, limited_range_min } from "$lib/normalized_limited_range/limited";
+    import { limited_range } from "$lib/normalized_limited_range/limited";
 
     const { progress }: { progress: number } = $props();
-    const first_progress = $derived(limited_range_max(progress, 0.5));
-    const second_progress = $derived(limited_range_min(progress, 0.5));
+    const first_progress = $derived(limited_range(progress, 0.2, 0.5));
+    const second_progress = $derived(limited_range(progress, 0.5, 0.8));
 </script>
 
 <section>
