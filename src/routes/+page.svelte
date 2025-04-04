@@ -18,6 +18,7 @@
     import ComparisonTable from "$lib/components/pages/home/comparison/Table.svelte";
     import Quote from "$lib/components/pages/home/comparison/Quote.svelte";
     import ProgressPart1 from "$lib/components/pages/home/progress/Part1.svelte";
+    import ProgressPart2 from "$lib/components/pages/home/progress/Part2.svelte";
 
     const fixed_slots: Snippet[] | undefined = getContext(LAYOUT_INSIDE_ROOT_SLOTS_KEYWORD);
     const fixed_outside_slots: Snippet[] | undefined = getContext(
@@ -140,17 +141,20 @@
     </div>
 </div>
 
-<div class="progress-wrapper stack-children">
-    <!-- <BoatImage></BoatImage> -->
+<div class="progress-wrapper">
     {#snippet progress_page(progress: number)}
         <ProgressPart1 {progress}></ProgressPart1>
     {/snippet}
 
-    <LengthScroll slot={progress_page} slowdown={6} top_limit={true} bottom_limit={false}
-    ></LengthScroll>
+    <LengthScroll slot={progress_page} slowdown={5} bottom_limit={false}></LengthScroll>
+
+    {#snippet progress_page2(progress: number)}
+        <ProgressPart2 {progress}></ProgressPart2>
+    {/snippet}
+
+    <LengthScroll slot={progress_page2} slowdown={5} top_limit={false}></LengthScroll>
 </div>
 
-<p>Diễn biến</p>
 <p>Kết quả</p>
 <p>Ý nghĩa</p>
 <p>Credit</p>

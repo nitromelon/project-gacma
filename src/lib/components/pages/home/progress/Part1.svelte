@@ -13,7 +13,7 @@
     const CIRCLE_LINE_POSITIONS = [69, 640, 1547, 2024, 3060];
 
     const { progress }: { progress: number } = $props();
-    const svg_progress = $derived(limited_range(progress, 0.1, 1));
+    const svg_progress = $derived(limited_range(progress, 0.1, 0.9));
 
     let section_width = $state(0);
     let section_height = $state(0);
@@ -64,10 +64,7 @@
 </script>
 
 <section class="stack-children" bind:clientWidth={section_width} bind:clientHeight={section_height}>
-    <!-- Not actually used but preload for next section -->
-    <video muted class="part1-video" preload="auto" aria-hidden="true">
-        <source src={Vid1} type="video/mp4" />
-    </video>
+    <div class="placeholder"></div>
 
     <div class="progress-image-wrapper stack-children">
         <div class="svg-wrapper" style:transform="translate({-66 * svg_progress}%)">
@@ -232,9 +229,10 @@
         contain: strict;
     }
 
-    .part1-video {
+    .placeholder {
         width: 100%;
-        visibility: hidden;
+        aspect-ratio: 16 / 9;
+        content-visibility: hidden;
     }
 
     .progress-image-wrapper {
