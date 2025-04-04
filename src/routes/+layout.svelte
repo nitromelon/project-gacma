@@ -27,6 +27,7 @@
         scroll_up: false,
     });
 
+    // Todo: get frame -> smooth the scroll top
     function onscroll() {
         if (root === undefined) return;
         const { scrollTop, scrollHeight } = root;

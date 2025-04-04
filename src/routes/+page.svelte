@@ -17,6 +17,7 @@
     import YtbFrame from "$lib/components/iframe-youtube/YtbFrame.svelte";
     import ComparisonTable from "$lib/components/pages/home/comparison/Table.svelte";
     import Quote from "$lib/components/pages/home/comparison/Quote.svelte";
+    import ProgressPart1 from "$lib/components/pages/home/progress/Part1.svelte";
 
     const fixed_slots: Snippet[] | undefined = getContext(LAYOUT_INSIDE_ROOT_SLOTS_KEYWORD);
     const fixed_outside_slots: Snippet[] | undefined = getContext(
@@ -137,12 +138,22 @@
             </div>
         </div>
     </div>
-
-    <p>Diễn biến</p>
-    <p>Kết quả</p>
-    <p>Ý nghĩa</p>
-    <p>Credit</p>
 </div>
+
+<div class="progress-wrapper stack-children">
+    <!-- <BoatImage></BoatImage> -->
+    {#snippet progress_page(progress: number)}
+        <ProgressPart1 {progress}></ProgressPart1>
+    {/snippet}
+
+    <LengthScroll slot={progress_page} slowdown={6} top_limit={true} bottom_limit={false}
+    ></LengthScroll>
+</div>
+
+<p>Diễn biến</p>
+<p>Kết quả</p>
+<p>Ý nghĩa</p>
+<p>Credit</p>
 
 <style>
     .intro-heading-wrapper {
@@ -215,12 +226,12 @@
         }
     }
 
+    .padding-left-right {
+        padding: 64px;
+    }
+
     .comparison-wrapper {
         background-color: var(--light-orange);
-
-        > .padding-left-right {
-            padding: 64px;
-        }
 
         .heading-title {
             text-align: center;
@@ -230,5 +241,9 @@
             color: var(--red);
             font-size: 72px;
         }
+    }
+
+    .progress-wrapper {
+        background-color: var(--tan);
     }
 </style>

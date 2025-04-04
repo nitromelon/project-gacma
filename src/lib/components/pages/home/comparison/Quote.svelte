@@ -83,9 +83,11 @@
         }
     }
 
-    .quote:hover + .image-wrapper {
-        > * {
-            opacity: 0;
+    @media (hover: hover) {
+        .quote:hover + .image-wrapper {
+            > * {
+                opacity: 0;
+            }
         }
     }
 </style>
