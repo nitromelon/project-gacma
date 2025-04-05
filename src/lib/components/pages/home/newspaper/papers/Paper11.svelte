@@ -30,12 +30,15 @@
             Quốc tăng cường ảnh hưởng trên tuyến đường biển chiến lược, đồng thời tạo điều kiện để
             Bắc Kinh áp đặt yêu sách "đường lưỡi bò" phi pháp tại Biển Đông.
         </p>
+
+        <div class="sub-padding"></div>
+
     {/snippet}
 
     <h3 class="small-title" {title}>{title}</h3>
 
     <div class="wrapper">
-        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.875)} content={paper}
+        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.75)} content={paper}
         ></ProgressScroll>
     </div>
 

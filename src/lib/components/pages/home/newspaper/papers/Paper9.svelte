@@ -36,12 +36,14 @@
             bước chiếm giữ các bãi đá nhỏ lẻ, tạo tiền đề để mở rộng kiểm soát trên biển (Vũ Hiền,
             2024).
         </p>
+
+        <div class="sub-padding"></div>
     {/snippet}
 
     <h3 class="small-title" {title}>{title}</h3>
 
     <div class="wrapper">
-        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.875)} content={paper}
+        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.75)} content={paper}
         ></ProgressScroll>
     </div>
 

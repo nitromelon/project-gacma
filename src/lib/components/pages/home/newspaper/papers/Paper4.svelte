@@ -48,12 +48,14 @@
                 <p>{pic2_description}</p>
             </div>
         </div>
+
+        <div class="sub-padding"></div>
     {/snippet}
 
     <h3 class="small-title">Bối cảnh quốc tế: Cơ hội từ sự chuyển dịch quyền lực toàn cầu</h3>
 
     <div class="wrapper">
-        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.875)} content={paper}
+        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.75)} content={paper}
         ></ProgressScroll>
     </div>
 

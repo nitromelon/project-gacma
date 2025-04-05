@@ -11,11 +11,12 @@
         LAYOUT_OUTSIDE_ROOT_SLOTS_KEYWORD,
         LAYOUT_INSIDE_ROOT_SLOTS_KEYWORD,
     } from "$lib/components/layout/layout";
+    import { SvelteSet } from "svelte/reactivity";
 
     const { children } = $props();
 
-    let inside_root_slots: Snippet[] = $state([]);
-    let outside_root_slots: Snippet[] = $state([]);
+    let inside_root_slots: SvelteSet<Snippet> = new SvelteSet();
+    let outside_root_slots: SvelteSet<Snippet> = new SvelteSet();
     let root: HTMLDivElement | undefined;
 
     let scroll_properties: SmoothScrollProperties = $state({

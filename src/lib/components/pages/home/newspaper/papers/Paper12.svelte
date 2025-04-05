@@ -33,12 +33,14 @@
             ngày 14/3/1988, khi 64 chiến sĩ hải quân Việt Nam hy sinh trong cuộc chiến bảo vệ chủ
             quyền biển đảo (Mỹ Hòa, 2025).
         </p>
+
+        <div class="sub-padding"></div>
     {/snippet}
 
     <h3 class="small-title" {title}>{title}</h3>
 
     <div class="wrapper">
-        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.875)} content={paper}
+        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.75)} content={paper}
         ></ProgressScroll>
     </div>
 

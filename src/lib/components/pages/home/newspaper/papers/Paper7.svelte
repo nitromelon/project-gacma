@@ -41,12 +41,14 @@
             mạnh các hoạt động gây sức ép trên biển, đặc biệt là tại quần đảo Trường Sa, nơi Việt
             Nam đang kiểm soát nhiều đảo và bãi đá quan trọng.
         </p>
+
+        <div class="sub-padding"></div>
     {/snippet}
 
     <h3 class="small-title" {title}>{title}</h3>
 
     <div class="wrapper">
-        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.875)} content={paper}
+        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.75)} content={paper}
         ></ProgressScroll>
     </div>
 

@@ -4,9 +4,8 @@
         LAYOUT_INSIDE_ROOT_SLOTS_KEYWORD,
     } from "$lib/components/layout/layout";
     import { getContext, onMount, type Snippet } from "svelte";
-    import { array_remove_element } from "$lib/remove_element";
     import ThreeIslandsPic1 from "$lib/assets/images/home/threeislands/3.png";
-    import ComparisonPic10 from "$lib/assets/images/home/comparison/10.png";
+    import ComparisonPic10 from "$lib/assets/images/home/comparison/10.svg";
     import LengthScroll from "$lib/components/length-scroll/LengthScroll.svelte";
     import Intro from "$lib/components/pages/home/intro/Intro.svelte";
     import Newspaper from "$lib/components/pages/home/newspaper/Newspaper.svelte";
@@ -20,14 +19,17 @@
     import ProgressPart1 from "$lib/components/pages/home/progress/Part1.svelte";
     import ProgressPart2 from "$lib/components/pages/home/progress/Part2.svelte";
     import Meaning from "$lib/components/pages/home/meaning/Meaning.svelte";
+    import type { SvelteSet } from "svelte/reactivity";
 
-    const fixed_slots: Snippet[] | undefined = getContext(LAYOUT_INSIDE_ROOT_SLOTS_KEYWORD);
-    const fixed_outside_slots: Snippet[] | undefined = getContext(
+    const fixed_slots: SvelteSet<Snippet> | undefined = getContext(
+        LAYOUT_INSIDE_ROOT_SLOTS_KEYWORD,
+    );
+    const fixed_outside_slots: SvelteSet<Snippet> | undefined = getContext(
         LAYOUT_OUTSIDE_ROOT_SLOTS_KEYWORD,
     );
 
-    fixed_slots?.push(inside_root_section);
-    fixed_outside_slots?.push(outside_root_section);
+    fixed_slots?.add(inside_root_section);
+    fixed_outside_slots?.add(outside_root_section);
 
     onMount(() => {
         if (fixed_slots === undefined || fixed_outside_slots === undefined) {
@@ -35,8 +37,8 @@
         }
 
         return () => {
-            array_remove_element(fixed_slots, inside_root_section);
-            array_remove_element(fixed_outside_slots, outside_root_section);
+            fixed_slots.delete(inside_root_section);
+            fixed_outside_slots.delete(outside_root_section);
         };
     });
 </script>

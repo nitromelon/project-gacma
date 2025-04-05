@@ -1,19 +1,3 @@
-<script lang="ts">
-    import { limited_range } from "$lib/normalized_limited_range/limited";
-    import { normalized_range } from "$lib/normalized_limited_range/normalized";
-    import { BEGIN_HEADER_RESIZE, END_HEADER_RESIZE } from "./timeline";
-
-    type Props = {
-        progress: number;
-    };
-
-    const { progress }: Props = $props();
-
-    const header_resize_progress = $derived(
-        limited_range(progress, BEGIN_HEADER_RESIZE, END_HEADER_RESIZE),
-    );
-</script>
-
 <div class="wrapper paper-base">
     <div class="line"></div>
     <h1>QUAN HỆ VIỆT NAM - TRUNG QUỐC TRƯỚC 1988:</h1>

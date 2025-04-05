@@ -111,12 +111,14 @@
                 <p class="small paragraph-base">{pic2_description}</p>
             </div>
         </div>
+
+        <div class="sub-padding"></div>
     {/snippet}
 
     <h3 class="small-title">Bối cảnh quốc tế: Cơ hội từ sự chuyển dịch quyền lực toàn cầu</h3>
 
     <div class="wrapper">
-        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.875)} content={paper}
+        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.75)} content={paper}
         ></ProgressScroll>
     </div>
 
@@ -310,6 +312,23 @@
             font-size: 11px;
             text-align: center;
             margin: 4px 0;
+        }
+    }
+
+    .chart-columns {
+        .sub-column {
+            will-change: opacity;
+            transition: opacity 0.5s cubic-bezier(0, 1, 0, 1);
+        }
+    }
+
+    .chart-columns:hover {
+        .sub-column:not(:hover) {
+            opacity: 0.25;
+        }
+
+        .sub-column:hover {
+            opacity: 1;
         }
     }
 </style>

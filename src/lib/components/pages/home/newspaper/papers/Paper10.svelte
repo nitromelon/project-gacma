@@ -27,12 +27,14 @@
         <div class="image-wrapper">
             <img src={Pic1} alt="" />
         </div>
+
+        <div class="sub-padding"></div>
     {/snippet}
 
     <h3 class="small-title" {title}>{title}</h3>
 
     <div class="wrapper">
-        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.875)} content={paper}
+        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.75)} content={paper}
         ></ProgressScroll>
     </div>
 

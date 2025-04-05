@@ -52,7 +52,6 @@
             position: relative;
             width: min(45%, 75vh);
             height: 100%;
-            contain: strict;
             background-color: var(--light-orange);
 
             > :global(.image-mask) {
@@ -71,6 +70,10 @@
                 -webkit-text-stroke: 0.25px black;
                 line-height: 1.25;
                 text-align: justify;
+            }
+
+            :global(.sub-padding) {
+                height: 25vh;
             }
         }
     }

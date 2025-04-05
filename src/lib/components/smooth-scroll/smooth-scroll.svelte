@@ -5,12 +5,13 @@
         type SmoothScrollProperties,
     } from "$lib/components/smooth-scroll/smooth-scroll";
     import { getContext } from "svelte";
+    import type { SvelteSet } from "svelte/reactivity";
 
     const smooth_scroll_properties: SmoothScrollProperties | undefined = getContext(
         SMOOTH_SCROLL_PROPERTIES_KEYWORD,
     );
 
-    const { slot, fixed_slots }: { slot: Snippet; fixed_slots: Snippet[] } = $props();
+    const { slot, fixed_slots }: { slot: Snippet; fixed_slots: SvelteSet<Snippet> } = $props();
     let content_height = $state(0);
 </script>
 

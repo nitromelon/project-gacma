@@ -59,12 +59,14 @@
         </div>
 
         <h1 class="big-text">TIỀN ĐỀ DẪN ĐẾN TRẬN HẢI CHIẾN GẠC MA (14/03/1988)</h1>
+
+        <div class="sub-padding"></div>
     {/snippet}
 
     <h3 class="small-title">Bối cảnh quốc tế: Cơ hội từ sự chuyển dịch quyền lực toàn cầu</h3>
 
     <div class="wrapper">
-        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.875)} content={paper}
+        <ProgressScroll progress={limited_range(local_progress, 0.25, 0.75)} content={paper}
         ></ProgressScroll>
     </div>
 
