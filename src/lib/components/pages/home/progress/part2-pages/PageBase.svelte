@@ -51,7 +51,7 @@
             class="background-text-section-wrapper"
             style:transform="translateY({background_text_translate_value}px)"
         >
-            <p class="sub-text">Tại {place}</p>
+            <p class="sub-text">{place}</p>
             <p class="sub-text">{date}</p>
             <p class="large-text">{times_to_string(times)}</p>
         </div>

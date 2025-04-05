@@ -8,22 +8,31 @@
     import PageBase from "./part2-pages/PageBase.svelte";
     import Pic4 from "$lib/assets/images/home/progress/4.jpg";
     import Pic5 from "$lib/assets/images/home/progress/5.jpg";
+    import Pic6 from "$lib/assets/images/home/progress/6.png";
+    import Pic7 from "$lib/assets/images/home/progress/7.png";
+    import Pic8 from "$lib/assets/images/home/progress/8.png";
+    import { normalized_range } from "$lib/normalized_limited_range/normalized";
 
     const { progress }: { progress: number } = $props();
 
     const IMAGE4_TEXT = "Thuyền trưởng Vũ Huy Lễ và thủy thủ tàu HQ-505";
     const IMAGE5_TEXT = "Tàu HQ-505";
-    const END_HEADER_INTRO = 0.075;
-    const END_FIRST_PART = 0.37;
-    const END_SECOND_PART = 0.55;
-    const END_THIRD_PART = 0.74;
+    const END_HEADER_INTRO = 0.0625;
+    const END_FIRST_PART = 0.3125;
+    const END_SECOND_PART = 0.46875;
+    const END_THIRD_PART = 0.625;
+    const END_FORTH_PART = 0.78125;
 
     const first_part_progress = $derived(limited_range(progress, END_HEADER_INTRO, END_FIRST_PART));
     const second_part_progress = $derived(limited_range(progress, END_FIRST_PART, END_SECOND_PART));
     const third_part_progress = $derived(limited_range(progress, END_SECOND_PART, END_THIRD_PART));
-    const forth_part_progress = $derived(limited_range_min(progress, END_THIRD_PART));
+    const forth_part_progress = $derived(limited_range(progress, END_THIRD_PART, END_FORTH_PART));
+    const three_vids_appeared = $derived(limited_range_min(progress, END_FORTH_PART));
 
     const header_title_opacity = $derived(1 - limited_range_max(first_part_progress, 0.25));
+
+    const final_part_transition = $derived(limited_range_max(three_vids_appeared, 0.025));
+    const final_part_transform = $derived(normalized_range(final_part_transition, 32, 0));
 </script>
 
 <section class="stack-children">
@@ -125,7 +134,7 @@
 
     <PageBase
         progress={second_part_progress}
-        place="Gạc Ma"
+        place="Tại Gạc Ma"
         date="Rạng sáng 14/03/1988"
         content={part2}
         times={[120, 390]}
@@ -133,7 +142,7 @@
 
     <PageBase
         progress={third_part_progress}
-        place="Cô Lin"
+        place="Tại Cô Lin"
         date="Rạng sáng 14/03/1988"
         content={part3}
         times={[420, 420]}
@@ -141,11 +150,37 @@
 
     <PageBase
         progress={forth_part_progress}
-        place="Len Đao"
+        place="Tại Len Đao"
         date="Sáng 14/03/1988"
         content={part4}
         times={[435, 480]}
     ></PageBase>
+
+    <div
+        class="video-section-wrapper"
+        style:z-index={forth_part_progress === 1 ? 1 : -1}
+        style:opacity={final_part_transition}
+        style:transform="translateY({final_part_transform}px)"
+    >
+        <div class="img-wrapper image-wrapper1">
+            <h4>Video 1</h4>
+            <img src={Pic6} alt="" />
+            <h5>Cựu binh Lê Văn Đông</h5>
+            <p>(Cựu chiến sĩ Gạc Ma)</p>
+        </div>
+        <div class="img-wrapper image-wrapper2">
+            <h4>Video 1</h4>
+            <img src={Pic7} alt="" />
+            <h5>Cựu binh Nguyễn Văn Thống</h5>
+            <p>(Cựu chiến sĩ Gạc Ma)</p>
+        </div>
+        <div class="img-wrapper image-wrapper3">
+            <h4>Video 3</h4>
+            <img src={Pic8} alt="" />
+            <h5>Đại tá Vũ Huy Lễ</h5>
+            <p>(Nguyên thuyền trưởng tàu HQ-505)</p>
+        </div>
+    </div>
 </section>
 
 <style>
@@ -215,5 +250,73 @@
     .paragraph {
         line-height: 1.25;
         text-align: justify;
+    }
+
+    .video-section-wrapper {
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 64px repeat(3, 1fr) 64px;
+        grid-template-rows: 64px 1fr 64px;
+        will-change: z-index, opacity, transform;
+        transition:
+            opacity 0.5s var(--scroll-transition-timing-function),
+            transform var(--scroll-transition-bezier);
+
+        align-items: center;
+
+        > .image-wrapper1 {
+            grid-area: 2/2;
+        }
+
+        > .image-wrapper2 {
+            grid-area: 2/3;
+        }
+
+        > .image-wrapper3 {
+            grid-area: 2/4;
+        }
+
+        > .img-wrapper {
+            cursor: pointer;
+            will-change: transform;
+            transition: transform 1s cubic-bezier(0, 1, 0, 1);
+
+            > img {
+                transform: scale(0.8);
+            }
+
+            > h4,
+            > h5,
+            > p {
+                text-align: center;
+                font-family: var(--vl-regular);
+                color: var(--tan);
+                text-wrap: balance;
+            }
+
+            > h4,
+            > h5 {
+                font-weight: 600;
+            }
+
+            > h4 {
+                font-size: 36px;
+            }
+
+            > h5 {
+                margin-bottom: 4px;
+            }
+        }
+
+        @media (hover: hover) {
+            .img-wrapper:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        .img-wrapper:active {
+            transform: scale(1);
+        }
     }
 </style>

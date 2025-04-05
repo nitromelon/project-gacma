@@ -152,7 +152,7 @@
         <ProgressPart2 {progress}></ProgressPart2>
     {/snippet}
 
-    <LengthScroll slot={progress_page2} slowdown={8} top_limit={false}></LengthScroll>
+    <LengthScroll slot={progress_page2} slowdown={9} top_limit={false}></LengthScroll>
 </div>
 
 <p>Kết quả</p>
