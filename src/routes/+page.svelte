@@ -194,6 +194,16 @@
             <YtbFrame title="[Gạc Ma - Vòng tròn bất tử]: Ý nghĩa" id="K0ek_NIMOZw"></YtbFrame>
         </div>
     </div>
+    <div class="tiny-paragraph-wrapper">
+        <p>
+            Giữ gìn biển đảo hôm nay không chỉ là nối tiếp ý chí cha anh, mà còn là lời hứa với
+            tương lai rằng:
+        </p>
+        <p>
+            "Có một ngày mai....sóng biển vẫn tiếp tục vỗ vào bờ một màu trong xanh của hòa bình và
+            tự do."
+        </p>
+    </div>
 </div>
 <p>Credit</p>
 
@@ -317,7 +327,7 @@
     }
 
     .meaning-wrapper {
-        background-color: var(--tan);
+        background-color: var(--light-orange);
         > h1 {
             color: var(--red);
             margin-bottom: 32px;

@@ -62,7 +62,6 @@
             > p {
                 line-height: 1.25;
                 text-align: justify;
-                font-size: 18px;
             }
         }
 

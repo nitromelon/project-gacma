@@ -231,7 +231,6 @@
                     text-align: justify;
                     line-height: 1.25;
                     margin-bottom: 32px;
-                    font-size: 18px;
                 }
             }
         }
