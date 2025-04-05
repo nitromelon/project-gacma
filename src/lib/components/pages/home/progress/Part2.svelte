@@ -42,8 +42,7 @@
     <div class="mask"></div>
 
     <h3 class="header-title" style:opacity={header_title_opacity}>
-        Diễn biến trong <br />
-        trận Gạc Ma
+        2. Bão biển
     </h3>
 
     {#snippet part1()}
@@ -163,19 +162,16 @@
         style:transform="translateY({final_part_transform}px)"
     >
         <div class="img-wrapper image-wrapper1">
-            <h4>Video 1</h4>
             <img src={Pic6} alt="" />
             <h5>Cựu binh Lê Văn Đông</h5>
             <p>(Cựu chiến sĩ Gạc Ma)</p>
         </div>
         <div class="img-wrapper image-wrapper2">
-            <h4>Video 1</h4>
             <img src={Pic7} alt="" />
             <h5>Cựu binh Nguyễn Văn Thống</h5>
             <p>(Cựu chiến sĩ Gạc Ma)</p>
         </div>
         <div class="img-wrapper image-wrapper3">
-            <h4>Video 3</h4>
             <img src={Pic8} alt="" />
             <h5>Đại tá Vũ Huy Lễ</h5>
             <p>(Nguyên thuyền trưởng tàu HQ-505)</p>
@@ -226,7 +222,7 @@
         align-self: flex-start;
         justify-self: flex-start;
         transform: translate(64px, 64px);
-        font-size: 48px;
+        font-size: 72px;
         font-family: var(--huxley-max);
         color: var(--tan);
 
@@ -286,7 +282,6 @@
                 transform: scale(0.8);
             }
 
-            > h4,
             > h5,
             > p {
                 text-align: center;
@@ -295,13 +290,8 @@
                 text-wrap: balance;
             }
 
-            > h4,
             > h5 {
                 font-weight: 600;
-            }
-
-            > h4 {
-                font-size: 36px;
             }
 
             > h5 {

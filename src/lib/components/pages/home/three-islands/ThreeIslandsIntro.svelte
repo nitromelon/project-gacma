@@ -4,7 +4,7 @@
     const title = "[Gạc Ma: Vòng tròn bất tử]: Tổng quan về quần đảo Trường Sa";
 </script>
 
-<h2 class="intro-header">II. Ba Đảo</h2>
+<h2 class="intro-header">II. Nơi đầu sóng</h2>
 
 <section>
     <div class="wrapper top-wrapper">

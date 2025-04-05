@@ -19,6 +19,7 @@
     import Quote from "$lib/components/pages/home/comparison/Quote.svelte";
     import ProgressPart1 from "$lib/components/pages/home/progress/Part1.svelte";
     import ProgressPart2 from "$lib/components/pages/home/progress/Part2.svelte";
+    import Meaning from "$lib/components/pages/home/meaning/Meaning.svelte";
 
     const fixed_slots: Snippet[] | undefined = getContext(LAYOUT_INSIDE_ROOT_SLOTS_KEYWORD);
     const fixed_outside_slots: Snippet[] | undefined = getContext(
@@ -106,7 +107,13 @@
 
 <div class="comparison-wrapper">
     <div class="padding-left-right">
-        <h3 class="heading-title padding-left-right">III. Tương quan lực lượng</h3>
+        <h3 class="heading-title">III. Thế trận không cân sức</h3>
+
+        <p class="below-heading-title">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus temporibus
+            blanditiis cum, dignissimos eos eligendi similique officia voluptate? Voluptatum quo
+            animi, voluptas modi dolorum neque tempore vitae atque delectus laudantium.
+        </p>
 
         <ComparisonTable></ComparisonTable>
 
@@ -155,8 +162,8 @@
     <LengthScroll slot={progress_page2} slowdown={9} top_limit={false}></LengthScroll>
 </div>
 
-<div class="static-wrapper result-wrapper">
-    <h1>V. Kết quả</h1>
+<div class="static-wrapper result-wrapper padding-left-right">
+    <h1>V. Sau cơn bão</h1>
     <div class="image-wrapper">
         <div class="iframe-wrapper">
             <p>Video | [Gạc Ma - Vòng tròn bất tử]: Kết quả</p>
@@ -180,21 +187,34 @@
 </div>
 
 <div class="static-wrapper meaning-wrapper">
-    <h1>VI. Ý nghĩa</h1>
-    <div class="tiny-paragraph-wrapper">
-        <p>
-            Biển đảo thiêng liêng quê hương, nơi biết bao thế hệ cha anh đã ngã xuống đổi lấy hòa
-            bình cho Tổ Quốc. Ở nơi đó, có những người lính hải quân coi việc xa nhà làm lẽ thường,
-            lấy hiểm nguy làm trách nhiệm, lặng lẽ giữa trùng khơi để đất liền bình yên.
-        </p>
-    </div>
-    <div class="image-wrapper">
-        <div class="iframe-wrapper">
-            <p>Video | [Gạc Ma - Vòng tròn bất tử]: Ý nghĩa</p>
-            <YtbFrame title="[Gạc Ma - Vòng tròn bất tử]: Ý nghĩa" id="K0ek_NIMOZw"></YtbFrame>
+    <div class="padding-left-right">
+        <h1 class="override-heading">
+            VI. Khắc tên vào biển <br />
+            giữ trọn chủ quyển
+        </h1>
+        <div class="tiny-paragraph-wrapper">
+            <p>
+                Biển đảo thiêng liêng quê hương, nơi biết bao thế hệ cha anh đã ngã xuống đổi lấy
+                hòa bình cho Tổ Quốc. Ở nơi đó, có những người lính hải quân coi việc xa nhà làm lẽ
+                thường, lấy hiểm nguy làm trách nhiệm, lặng lẽ giữa trùng khơi để đất liền bình yên.
+            </p>
+        </div>
+        <div class="image-wrapper">
+            <div class="iframe-wrapper">
+                <p>Video | [Gạc Ma - Vòng tròn bất tử]: Ý nghĩa</p>
+                <YtbFrame title="[Gạc Ma - Vòng tròn bất tử]: Ý nghĩa" id="K0ek_NIMOZw"></YtbFrame>
+            </div>
         </div>
     </div>
-    <div class="tiny-paragraph-wrapper">
+
+    {#snippet slideshow(progress: number)}
+        <Meaning {progress}></Meaning>
+    {/snippet}
+
+    <LengthScroll slot={slideshow} slowdown={4} top_limit={false} bottom_limit={false}
+    ></LengthScroll>
+
+    <div class="tiny-paragraph-wrapper padding-left-right">
         <p>
             Giữ gìn biển đảo hôm nay không chỉ là nối tiếp ý chí cha anh, mà còn là lời hứa với
             tương lai rằng:
@@ -288,10 +308,16 @@
         .heading-title {
             text-align: center;
             text-wrap: balance;
-            margin-bottom: 64px;
             font-family: var(--huxley-max);
             color: var(--red);
             font-size: 72px;
+        }
+
+        .below-heading-title {
+            margin: 64px 0;
+            text-align: center;
+            font-size: 36px;
+            font-family: var(--huxley-max);
         }
     }
 
@@ -305,16 +331,14 @@
         margin: auto;
         max-width: 720px;
 
-        > p {
+        p {
             margin-bottom: 16px;
             text-align: justify;
         }
     }
 
     .static-wrapper {
-        padding: 64px;
-
-        > h1 {
+        h1 {
             font-size: 144px;
             font-family: var(--huxley-max);
             text-align: center;
@@ -328,9 +352,13 @@
 
     .meaning-wrapper {
         background-color: var(--light-orange);
-        > h1 {
+        h1 {
             color: var(--red);
             margin-bottom: 32px;
+        }
+
+        .override-heading {
+            font-size: 72px;
         }
     }
 </style>

@@ -165,10 +165,7 @@
             </svg>
 
             <div class="overlay-wrapper stack-children">
-                <h3 class="header-title" style:opacity={svg_progress > 0 ? 0 : 1}>
-                    Diễn biến trước <br />
-                    trận Gạc Ma
-                </h3>
+                <h3 class="header-title" style:opacity={svg_progress > 0 ? 0 : 1}>1. Biển động</h3>
 
                 <div class="line" style={line_styles[0]}>
                     <h4>1986</h4>
@@ -290,7 +287,7 @@
 
                 > .header-title {
                     transform: translate(64px, 64px);
-                    font-size: 48px;
+                    font-size: 72px;
                     font-family: var(--huxley-max);
                     color: var(--dark-red2);
 
