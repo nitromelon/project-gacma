@@ -155,8 +155,46 @@
     <LengthScroll slot={progress_page2} slowdown={9} top_limit={false}></LengthScroll>
 </div>
 
-<p>Kết quả</p>
-<p>Ý nghĩa</p>
+<div class="static-wrapper result-wrapper">
+    <h1>V. Kết quả</h1>
+    <div class="image-wrapper">
+        <div class="iframe-wrapper">
+            <p>Video | [Gạc Ma - Vòng tròn bất tử]: Kết quả</p>
+            <YtbFrame title="[Gạc Ma - Vòng tròn bất tử]: Kết quả" id="nfRnrvfwWcM"></YtbFrame>
+        </div>
+    </div>
+    <div class="tiny-paragraph-wrapper">
+        <p>
+            Chiến tranh đã lùi xa, đất nước nở hoa độc lập, nhưng những ký ức về những liệt sĩ vẫn
+            in sâu trong tâm trí những người ở lại. Đó là những người thân, những người đồng đội,
+            những người tới giờ vẫn còn nhớ như in những câu chuyện của người lính giữ đảo ngày ấy,
+            vì “tiếng gọi thiêng liêng của Tổ Quốc”, các anh không do dự mà dứt khoát ra đi thực
+            hiện nhiệm vụ cao cả, dù biết có thể sẽ nằm mãi nơi biển xa...
+        </p>
+        <p>
+            Để rồi dư âm lòng yêu nước của những con người cao cả ấy vang mãi tới thế hệ hôm nay và
+            mai sau, trở thành niềm tự hào, sự biết ơn, kính trọng chân thành. Từ đó, lòng yêu nước
+            cứ thế được tiếp bước...
+        </p>
+    </div>
+</div>
+
+<div class="static-wrapper meaning-wrapper">
+    <h1>VI. Ý nghĩa</h1>
+    <div class="tiny-paragraph-wrapper">
+        <p>
+            Biển đảo thiêng liêng quê hương, nơi biết bao thế hệ cha anh đã ngã xuống đổi lấy hòa
+            bình cho Tổ Quốc. Ở nơi đó, có những người lính hải quân coi việc xa nhà làm lẽ thường,
+            lấy hiểm nguy làm trách nhiệm, lặng lẽ giữa trùng khơi để đất liền bình yên.
+        </p>
+    </div>
+    <div class="image-wrapper">
+        <div class="iframe-wrapper">
+            <p>Video | [Gạc Ma - Vòng tròn bất tử]: Ý nghĩa</p>
+            <YtbFrame title="[Gạc Ma - Vòng tròn bất tử]: Ý nghĩa" id="K0ek_NIMOZw"></YtbFrame>
+        </div>
+    </div>
+</div>
 <p>Credit</p>
 
 <style>
@@ -249,5 +287,40 @@
 
     .progress-wrapper {
         background-color: var(--tan);
+    }
+
+    .tiny-paragraph-wrapper {
+        font-family: var(--vl-regular);
+        line-height: 1.25;
+        margin: auto;
+        max-width: 720px;
+
+        > p {
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+    }
+
+    .static-wrapper {
+        padding: 64px;
+
+        > h1 {
+            font-size: 144px;
+            font-family: var(--huxley-max);
+            text-align: center;
+        }
+    }
+
+    .result-wrapper {
+        background-color: var(--blue);
+        color: var(--tan);
+    }
+
+    .meaning-wrapper {
+        background-color: var(--tan);
+        > h1 {
+            color: var(--red);
+            margin-bottom: 32px;
+        }
     }
 </style>
