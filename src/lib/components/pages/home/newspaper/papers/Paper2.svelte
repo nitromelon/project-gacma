@@ -185,15 +185,12 @@
     .overlap {
         position: fixed;
         padding: 24px;
-        align-content: center;
         pointer-events: none;
         background-color: rgba(239, 228, 209, 0.75);
         border: 1px solid #543214;
         backdrop-filter: blur(2px);
         will-change: transform, opacity;
-        transition:
-            transform 1s cubic-bezier(0, 1, 0, 1),
-            opacity 0.5s cubic-bezier(0, 1, 0, 1);
+        transition: opacity 0.5s cubic-bezier(0, 1, 0, 1);
 
         > .chinh-sach-wrapper {
             display: flex;
@@ -209,7 +206,7 @@
 
             > p {
                 font-family: "VlRegular", san-serif;
-                font-weight: 600;
+                -webkit-text-stroke: 0.25px;
                 line-height: 1.25;
                 text-align: justify;
             }

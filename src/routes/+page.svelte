@@ -74,7 +74,6 @@
 </div>
 
 <div class="three-islands-wrapper">
-    <div class="padding-height"></div>
     <ThreeIslandsIntro></ThreeIslandsIntro>
     <div class="padding-height"></div>
 
@@ -110,12 +109,6 @@
 <div class="comparison-wrapper">
     <div class="padding-left-right">
         <h3 class="heading-title">III. Thế trận không cân sức</h3>
-
-        <p class="below-heading-title">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus temporibus
-            blanditiis cum, dignissimos eos eligendi similique officia voluptate? Voluptatum quo
-            animi, voluptas modi dolorum neque tempore vitae atque delectus laudantium.
-        </p>
 
         <ComparisonTable></ComparisonTable>
 
@@ -165,11 +158,34 @@
 </div>
 
 <div class="static-wrapper result-wrapper padding-left-right">
-    <h1>V. Sau cơn bão</h1>
+    <h1 class="extra-padding-under-header">V. Sau cơn bão</h1>
+    <div class="tiny-paragraph-wrapper">
+        <p>
+            Sau trận chiến khốc liệt, Trung Quốc đã thành công chiếm giữ trái phép đảo Gạc Ma, nhưng
+            bằng ý chí chiến đấu kiên cường cùng xương máu của mình, các chiến sĩ hải quân Việt Nam
+            đã giữ được Cô Lin và Len Đao.
+        </p>
+        <p>
+            Theo thống kê từ phía Trung Quốc, trong trận giao tranh không cân sức ấy, những người
+            lính Việt Nam đã phải hứng chịu hơn 500 quả đạn pháo, cùng với các loại đạn khác. Vì là
+            tàu vận tải không được trang bị pháo, hải quân Việt Nam chỉ có thể đáp trả bằng hỏa lực
+            của AK47 và B41.
+        </p>
+        <p>
+            Phía Trung Quốc báo cáo có 6 lính Trung Quốc tử vong và 18 lính bị thương sau trận
+            chiến, cùng với 3 tàu bị hư hỏng nhẹ. Còn về phía Việt Nam, tổn thất là lớn hơn rất
+            nhiều. Hai chiếc tàu HQ604 và HQ605 đã mãi mãi nằm lại nơi biển khơi, còn tàu HQ505, tuy
+            bị hư hỏng nặng, nhưng đã được điều khiển phóng lên bãi Cô Lin, trở thành cột mốc chủ
+            quyền. Và thương xót hơn, 3 chiến sĩ đã hy sinh, 11 người khác bị thương và 70 người mất
+            tích. Sau này, Trung Quốc đã trao trả cho Việt Nam 9 người bị bắt giữ, còn 61 người lính
+            mất tích được xem như đã hy sinh. 64 chiến sĩ đã nằm lại mãi nơi biển cả mênh mông, để
+            lại cho Tổ quốc, cho gia đình một kí ức xót xa, một nỗi niềm thương tiếc khôn nguôi.
+        </p>
+    </div>
     <div class="image-wrapper">
         <div class="iframe-wrapper">
-            <p>Video | [Gạc Ma - Vòng tròn bất tử]: Kết quả</p>
-            <YtbFrame title="[Gạc Ma - Vòng tròn bất tử]: Kết quả" id="nfRnrvfwWcM"></YtbFrame>
+            <p>Video | [Gạc Ma - Vòng tròn bất tử]: Sau cơn bão</p>
+            <YtbFrame title="[Gạc Ma - Vòng tròn bất tử]: Sau cơn bão" id="nfRnrvfwWcM"></YtbFrame>
         </div>
     </div>
     <div class="tiny-paragraph-wrapper">
@@ -190,7 +206,7 @@
 
 <div class="static-wrapper meaning-wrapper">
     <div class="padding-left-right">
-        <h1 class="override-heading">
+        <h1 class="override-heading extra-padding-under-header">
             VI. Khắc tên vào biển <br />
             giữ trọn chủ quyển
         </h1>
@@ -203,8 +219,11 @@
         </div>
         <div class="image-wrapper">
             <div class="iframe-wrapper">
-                <p>Video | [Gạc Ma - Vòng tròn bất tử]: Ý nghĩa</p>
-                <YtbFrame title="[Gạc Ma - Vòng tròn bất tử]: Ý nghĩa" id="K0ek_NIMOZw"></YtbFrame>
+                <p>Video | [Gạc Ma - Vòng tròn bất tử]: Khắc tên vào biển - Giữ trọn chủ quyển</p>
+                <YtbFrame
+                    title="[Gạc Ma - Vòng tròn bất tử]: Khắc tên vào biển - Giữ trọn chủ quyển"
+                    id="K0ek_NIMOZw"
+                ></YtbFrame>
             </div>
         </div>
     </div>
@@ -216,17 +235,18 @@
     <LengthScroll slot={slideshow} slowdown={4} top_limit={false} bottom_limit={false}
     ></LengthScroll>
 
-    <div class="tiny-paragraph-wrapper padding-left-right">
+    <div class="tiny-paragraph-wrapper padding-left-right final-part-wrapper-patch">
         <p>
             Giữ gìn biển đảo hôm nay không chỉ là nối tiếp ý chí cha anh, mà còn là lời hứa với
             tương lai rằng:
         </p>
-        <p>
+        <p class="final-part-quote">
             "Có một ngày mai....sóng biển vẫn tiếp tục vỗ vào bờ một màu trong xanh của hòa bình và
             tự do."
         </p>
     </div>
 </div>
+
 <p>Credit</p>
 
 <style>
@@ -314,13 +334,6 @@
             color: var(--red);
             font-size: 72px;
         }
-
-        .below-heading-title {
-            margin: 64px 0;
-            text-align: center;
-            font-size: 36px;
-            font-family: var(--huxley-max);
-        }
     }
 
     .progress-wrapper {
@@ -356,11 +369,30 @@
         background-color: var(--light-orange);
         h1 {
             color: var(--red);
-            margin-bottom: 32px;
         }
 
         .override-heading {
             font-size: 72px;
         }
+    }
+
+    .final-part-wrapper-patch {
+        height: 100vh;
+        align-content: center;
+
+        > p {
+            -webkit-text-stroke: 0.25px;
+            font-size: 24px;
+        }
+
+        > .final-part-quote {
+            -webkit-text-stroke: 0.5px;
+            font-family: var(--vl-italic);
+            color: var(--blue);
+        }
+    }
+
+    .extra-padding-under-header {
+        margin-bottom: 32px;
     }
 </style>

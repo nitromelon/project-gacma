@@ -3,10 +3,53 @@
     import { limited_range } from "$lib/normalized_limited_range/limited";
     import Pic1 from "$lib/assets/images/home/newspaper/papers/paper3/1.webp";
     import Pic2 from "$lib/assets/images/home/newspaper/papers/paper3/2.webp";
+    import type { SvelteSet } from "svelte/reactivity";
+    import { getContext, onMount, type Snippet } from "svelte";
+    import { LAYOUT_OUTSIDE_ROOT_SLOTS_KEYWORD } from "$lib/components/layout/layout";
 
     type Props = {
         local_progress: number;
     };
+
+    const fixed_outside_slots: SvelteSet<Snippet> | undefined = getContext(
+        LAYOUT_OUTSIDE_ROOT_SLOTS_KEYWORD,
+    );
+
+    const OIL = "Dầu mỏ";
+    const FOOD = "Lương thực";
+    const AID = "Viện trợ quân sự";
+    const COLS_VALUE_ARRAY = [
+        {
+            item: OIL,
+            year: "1985",
+            quantity: 2,
+        },
+        {
+            item: OIL,
+            year: "1989",
+            quantity: 1,
+        },
+        {
+            item: FOOD,
+            year: "1985",
+            quantity: 1.2,
+        },
+        {
+            item: FOOD,
+            year: "1989",
+            quantity: 0.5,
+        },
+        {
+            item: AID,
+            year: "1985",
+            quantity: 1.5,
+        },
+        {
+            item: AID,
+            year: "1989",
+            quantity: 0.6,
+        },
+    ];
 
     const pic1_description =
         "Hai em bé lem luốc nhìn ra ngoài cửa sổ ở một khu khai thác mỏ than đá và sản xuất thép ở vùng Siberia trong thời kỳ kinh tế khó khăn trên diện rộng ở Liên Xô.";
@@ -15,7 +58,43 @@
 
     const { local_progress }: Props = $props();
     const nonzero_progress = $derived(local_progress > 0 ? 1 : 0);
+    const position = $state({ x: 0, y: 0 });
+
+    let current_index: number = $state(0);
+    let chart_opacity = $state(0);
+
+    onMount(() => {
+        if (fixed_outside_slots === undefined) return;
+        fixed_outside_slots.add(chart);
+
+        return () => {
+            fixed_outside_slots.delete(chart);
+        };
+    });
+
+    function chart_hover(event: MouseEvent, index: number) {
+        position.x = event.clientX;
+        position.y = event.clientY;
+        chart_opacity = 1;
+        current_index = index;
+    }
+
+    function chart_out() {
+        chart_opacity = 0;
+    }
 </script>
+
+{#snippet chart()}
+    <div
+        class="chart-hover"
+        style:opacity={chart_opacity}
+        style:transform="translate(calc(-50% + {position.x}px),calc(-100% + {position.y - 12}px))
+        scale({chart_opacity === 0 ? 0.9 : 1})"
+    >
+        <h4>{COLS_VALUE_ARRAY[current_index].item}</h4>
+        <p>{COLS_VALUE_ARRAY[current_index].year}: {COLS_VALUE_ARRAY[current_index].quantity}</p>
+    </div>
+{/snippet}
 
 <div class="paper-base">
     {#snippet paper()}
@@ -37,7 +116,9 @@
                     <p>0.0</p>
                 </div>
 
-                <div class="chart-columns">
+                <!-- svelte-ignore a11y_mouse_events_have_key_events -->
+                <!-- svelte-ignore a11y_no_static_element_interactions -->
+                <div class="chart-columns" onmouseout={chart_out}>
                     <div class="lines">
                         {#each Array(5)}
                             <div class="line"></div>
@@ -45,37 +126,37 @@
                     </div>
 
                     <div class="column">
-                        <div class="sub-column">
+                        <div class="sub-column" onmousemove={(e) => chart_hover(e, 0)}>
                             <div class="value" style:height="{100 * nonzero_progress}%"></div>
                         </div>
-                        <div class="sub-column">
+                        <div class="sub-column" onmousemove={(e) => chart_hover(e, 1)}>
                             <div class="value" style:height="{50 * nonzero_progress}%"></div>
                         </div>
                     </div>
                     <div class="column">
-                        <div class="sub-column">
+                        <div class="sub-column" onmousemove={(e) => chart_hover(e, 2)}>
                             <div class="value" style:height="{60 * nonzero_progress}%"></div>
                         </div>
-                        <div class="sub-column">
+                        <div class="sub-column" onmousemove={(e) => chart_hover(e, 3)}>
                             <div class="value" style:height="{25 * nonzero_progress}%"></div>
                         </div>
                     </div>
                     <div class="column">
-                        <div class="sub-column">
+                        <div class="sub-column" onmousemove={(e) => chart_hover(e, 4)}>
                             <div class="value" style:height="{75 * nonzero_progress}%"></div>
                         </div>
-                        <div class="sub-column">
+                        <div class="sub-column" onmousemove={(e) => chart_hover(e, 5)}>
                             <div class="value" style:height="{30 * nonzero_progress}%"></div>
                         </div>
                     </div>
                 </div>
                 <div class="name-columns">
-                    <p>Dầu mỏ</p>
-                    <p>Lương thực</p>
-                    <p>Viện trợ quân sự</p>
+                    <p>{OIL}</p>
+                    <p>{FOOD}</p>
+                    <p>{AID}</p>
                     <div class="tooltip">
                         <div class="box red"></div>
-                        <p class="para1">: 1996</p>
+                        <p class="para1">: 1985</p>
                         <div class="box brown"></div>
                         <p>: 1989</p>
                     </div>
@@ -83,15 +164,15 @@
             </div>
 
             <div class="right-info">
-                <h3>Dầu mỏ</h3>
+                <h3>{OIL}:</h3>
                 <p>1985: 2.0 triệu tấn/năm</p>
                 <p>1989: 1.0 triệu tấn/năm (giảm 50%)</p>
                 <br />
-                <h3>Lương thực:</h3>
+                <h3>{FOOD}:</h3>
                 <p>1985: 1.2 triệu tấn</p>
                 <p>1989: 0.5 triệu tấn (giảm 58%)</p>
                 <br />
-                <h3>Viện trợ quân sự:</h3>
+                <h3>{AID}:</h3>
                 <p>1985: 1,5 tỷ USD</p>
                 <p>1989: 0,6 tỷ USD (giảm 60%)</p>
             </div>
@@ -249,7 +330,7 @@
                 > .tooltip {
                     position: absolute;
                     width: 100%;
-                    transform: translateY(32px);
+                    transform: translateY(36px);
                     display: flex;
                     justify-content: center;
 
@@ -329,6 +410,27 @@
 
         .sub-column:hover {
             opacity: 1;
+        }
+    }
+
+    .chart-hover {
+        position: fixed;
+        padding: 12px;
+        pointer-events: none;
+        background-color: black;
+        border-radius: 6px;
+        color: #efe4d1;
+        font-size: 11px;
+        font-family: "VlRegular", san-serif;
+        will-change: transform, opacity;
+        transition: opacity 0.5s cubic-bezier(0, 1, 0, 1);
+
+        > h4 {
+            margin-bottom: 4px;
+        }
+
+        > * {
+            text-align: center;
         }
     }
 </style>

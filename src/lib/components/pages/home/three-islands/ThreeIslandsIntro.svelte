@@ -30,6 +30,8 @@
         font-size: 144px;
         font-family: var(--huxley-max);
         color: var(--tan);
+        padding-bottom: 16px;
+        padding-top: 64px;
     }
 
     section {

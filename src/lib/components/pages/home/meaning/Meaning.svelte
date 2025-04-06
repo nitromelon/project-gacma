@@ -45,7 +45,7 @@
         Pic20,
     ];
 
-    const PICS_PER_CYCLE = 4;
+    const PICS_PER_CYCLE = 5;
     const angle = (2 * Math.PI) / PICS_PER_CYCLE;
 </script>
 
@@ -76,6 +76,7 @@
             overflow: hidden;
             backface-visibility: hidden;
             transition: var(--scroll-transition-bezier);
+            image-rendering: optimizeSpeed;
         }
     }
 </style>

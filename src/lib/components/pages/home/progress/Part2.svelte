@@ -41,9 +41,7 @@
     </video>
     <div class="mask"></div>
 
-    <h3 class="header-title" style:opacity={header_title_opacity}>
-        2. Bão biển
-    </h3>
+    <h3 class="header-title" style:opacity={header_title_opacity}>2. Bão biển</h3>
 
     {#snippet part1()}
         <h4 class="heading">Chiều 13/03/1988.</h4>
@@ -161,6 +159,7 @@
         style:opacity={final_part_transition}
         style:transform="translateY({final_part_transform}px)"
     >
+        <h3 class="video-header-title">3. Phỏng vấn các cựu chiến binh</h3>
         <div class="img-wrapper image-wrapper1">
             <img src={Pic6} alt="" />
             <h5>Cựu binh Lê Văn Đông</h5>
@@ -253,29 +252,28 @@
         width: 100%;
         display: grid;
         grid-template-columns: 64px repeat(3, 1fr) 64px;
-        grid-template-rows: 64px 1fr 64px;
+        grid-template-rows: 64px auto 1fr 64px;
         will-change: z-index, opacity, transform;
         transition:
             opacity 0.5s var(--scroll-transition-timing-function),
             transform var(--scroll-transition-bezier);
 
-        align-items: center;
-
         > .image-wrapper1 {
-            grid-area: 2/2;
+            grid-area: 3/2;
         }
 
         > .image-wrapper2 {
-            grid-area: 2/3;
+            grid-area: 3/3;
         }
 
         > .image-wrapper3 {
-            grid-area: 2/4;
+            grid-area: 3/4;
         }
 
         > .img-wrapper {
             cursor: pointer;
             will-change: transform;
+            align-content: center;
             transition: transform 1s cubic-bezier(0, 1, 0, 1);
 
             > img {
@@ -307,6 +305,18 @@
 
         .img-wrapper:active {
             transform: scale(1);
+        }
+
+        > .video-header-title {
+            grid-row: 2;
+            grid-column: 2 / span 3;
+            font-size: 72px;
+            font-family: var(--huxley-max);
+            color: var(--tan);
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 </style>

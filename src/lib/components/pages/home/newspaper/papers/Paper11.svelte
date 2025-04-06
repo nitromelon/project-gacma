@@ -32,7 +32,6 @@
         </p>
 
         <div class="sub-padding"></div>
-
     {/snippet}
 
     <h3 class="small-title" {title}>{title}</h3>
