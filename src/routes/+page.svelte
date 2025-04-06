@@ -49,7 +49,20 @@
 
 {#snippet outside_root_section()}{/snippet}
 
-{#snippet inside_root_section()}{/snippet}
+{#snippet inside_root_section()}
+    <nav class="menu">
+        <div class="menu-wrapper">
+            <p class="menu-header">Danh sách</p>
+            <a href="#songngam">I. Sóng ngầm</a>
+            <a href="#noidausong">II. Nơi đầu sóng</a>
+            <a href="#ttkcs">III. Thế trận không cân sức</a>
+            <a href="#dienbien">IV. Diễn biến</a>
+            <a href="#sauconbao">V. Sau cơn bão</a>
+            <a href="#ktvb">VI. Khắc tên vào biển giữ trọn chủ quyền</a>
+            <a href="#thuchienboi">VII. Thực hiện bởi</a>
+        </div>
+    </nav>
+{/snippet}
 
 <div class="intro-heading-wrapper stack-children">
     <h1>GẠC MA</h1>
@@ -108,7 +121,7 @@
 
 <div class="comparison-wrapper">
     <div class="padding-left-right">
-        <h3 class="heading-title">III. Thế trận không cân sức</h3>
+        <h3 class="heading-title" id="ttkcs">III. Thế trận không cân sức</h3>
 
         <ComparisonTable></ComparisonTable>
 
@@ -158,7 +171,7 @@
 </div>
 
 <div class="static-wrapper result-wrapper padding-left-right">
-    <h1 class="extra-padding-under-header">V. Sau cơn bão</h1>
+    <h1 class="extra-padding-under-header" id="sauconbao">V. Sau cơn bão</h1>
     <div class="tiny-paragraph-wrapper">
         <p>
             Sau trận chiến khốc liệt, Trung Quốc đã thành công chiếm giữ trái phép đảo Gạc Ma, nhưng
@@ -206,7 +219,7 @@
 
 <div class="static-wrapper meaning-wrapper">
     <div class="padding-left-right">
-        <h1 class="override-heading extra-padding-under-header">
+        <h1 class="override-heading extra-padding-under-header" id="ktvb">
             VI. Khắc tên vào biển <br />
             giữ trọn chủ quyển
         </h1>
@@ -247,7 +260,72 @@
     </div>
 </div>
 
-<p>Credit</p>
+<div class="credit-wrapper padding-left-right">
+    <h1 class="override-heading extra-padding-under-header" id="thuchienboi">VII. Thực hiện bởi</h1>
+    <div class="tiny-paragraph-wrapper">
+        <p>
+            Thực hiện (Production team): Đào Bảo Trâm, Nguyễn Đình Duy Anh, Lê Hà Tú Anh, Lê Trần
+            Phương Trà
+        </p>
+        <p>Thiết kế website (Website layout designer): Đào Bảo Trâm, Nguyễn Đình Duy Anh</p>
+        <p>Phụ trách truyền thông (Social media): Lê Hà Tú Anh, Lê Trần Phương Trà</p>
+        <br />
+        <p class="credit-header">Âm nhạc (Music)</p>
+        <p>
+            Bay qua biển Đông (Bản đánh đàn organ) <br />
+            Sáng tác: Lê Việt Khánh
+        </p>
+        <p>
+            Tự nguyện <br />
+            Sáng tác: Trương Quốc Khánh
+            <br />
+            Thể hiện: Hồ Quỳnh Hương
+        </p>
+        <p>
+            Những trái tim Việt Nam <br />
+            Sáng tác: Phương Uyên
+            <br />
+            Thể hiện: 100 văn nghệ sĩ
+        </p>
+        <p>
+            Nơi đảo xa (bản instrumental)
+            <br />
+            Sáng tác: Thế Song
+        </p>
+        <br />
+
+        <p class="credit-header">Xin chân thành cảm ơn (Special thanks)</p>
+
+        <p>
+            - Bà Mai Thị Đào - Em gái liệt sĩ Mai Văn Tuyến (Ms. Mai Thi Dao - Fallen soldier Mai
+            Van Tuyen’s sister)
+        </p>
+
+        <p>
+            - Ông Phạm Hữu Xuyết - Em trai liệt sĩ Phạm Hữu Doan (Mr. Pham Huu Xuyet - Fallen
+            soldier Pham Huu Doan’s brother)
+        </p>
+
+        <p>- Anh Phùng Văn Khải - Người kết nối (Mr. Phung Van Khai - intermediary)</p>
+
+        <p>
+            - Chị Lại Thị Huệ - Hướng dẫn viên Bảo tàng Hải quân, Hải Phòng (Ms. Lai Thi Hue - Naval
+            Museum's tour guide, Hai Phong)
+        </p>
+
+        <p>
+            - Các nhân vật phỏng vấn tại Bảo tàng Lịch sử quân sự, Hà Nội (Interview characters at
+            the Military History Museum, Hanoi)
+        </p>
+
+        <div class="link-wrapper">
+            <a href="https://www.instagram.com/gacma_14.03.1988">Instagram</a>
+            <a href="https://www.threads.net/@gacma_14.03.1988">Threads</a>
+        </div>
+
+        <p>@nitromelon - Hỗ trợ thiết kế website</p>
+    </div>
+</div>
 
 <style>
     .intro-heading-wrapper {
@@ -394,5 +472,83 @@
 
     .extra-padding-under-header {
         margin-bottom: 32px;
+    }
+
+    .credit-wrapper {
+        background-color: var(--blue);
+        color: var(--tan);
+
+        > h1 {
+            font-size: 72px;
+            font-family: var(--huxley-max);
+            text-align: center;
+            color: var(--light-orange);
+        }
+
+        .credit-header {
+            font-size: 24px;
+            color: var(--light-orange);
+        }
+    }
+
+    nav.menu {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        contain: strict;
+        pointer-events: none;
+        color: white;
+        mix-blend-mode: difference;
+
+        > * {
+            pointer-events: all;
+        }
+
+        .menu-wrapper {
+            justify-self: flex-end;
+            height: fit-content;
+            width: fit-content;
+            max-width: 264px;
+            font-family: var(--vl-regular);
+            padding: 32px;
+
+            .menu-header {
+                font-size: 24px;
+                cursor: pointer;
+                font-weight: 600;
+            }
+
+            a {
+                margin-bottom: 8px;
+                opacity: 0;
+                display: block;
+            }
+
+            p {
+                opacity: 1;
+                margin-bottom: 16px;
+                text-align: end;
+            }
+        }
+
+        .menu-wrapper:hover {
+            p {
+                text-align: left;
+            }
+            a {
+                opacity: 1;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .link-wrapper {
+        margin-bottom: 16px;
+        > a {
+            text-decoration: underline;
+        }
     }
 </style>

@@ -4,7 +4,7 @@
     const pic1_description = "Đảm bảo an ninh quốc phòng biển, đảo (Tạp chí cộng sản, 2018)";
 </script>
 
-<h2 class="heading-title">NƠI TIỀN TIÊU TỔ QUỐC</h2>
+<h2 class="heading-title">PHẦN 3: NƠI TIỀN TIÊU TỔ QUỐC</h2>
 
 <section>
     <div class="paragraph-wrapper">

@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
     import YtbFrame from "$lib/components/iframe-youtube/YtbFrame.svelte";
 
     const title = "[Gạc Ma: Vòng tròn bất tử]: Tổng quan về quần đảo Trường Sa";
 </script>
 
-<h2 class="intro-header">II. Nơi đầu sóng</h2>
+<h2 class="intro-header" id="noidausong">II. Nơi đầu sóng</h2>
 
 <section>
     <div class="wrapper top-wrapper">

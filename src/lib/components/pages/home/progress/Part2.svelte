@@ -12,6 +12,10 @@
     import Pic7 from "$lib/assets/images/home/progress/7.png";
     import Pic8 from "$lib/assets/images/home/progress/8.png";
     import { normalized_range } from "$lib/normalized_limited_range/normalized";
+    import { LAYOUT_OUTSIDE_ROOT_SLOTS_KEYWORD } from "$lib/components/layout/layout";
+    import { getContext, onMount, type Snippet } from "svelte";
+    import type { SvelteSet } from "svelte/reactivity";
+    import YtbFrame from "$lib/components/iframe-youtube/YtbFrame.svelte";
 
     const { progress }: { progress: number } = $props();
 
@@ -33,7 +37,51 @@
 
     const final_part_transition = $derived(limited_range_max(three_vids_appeared, 0.025));
     const final_part_transform = $derived(normalized_range(final_part_transition, 32, 0));
+
+    const fixed_outside_slots: SvelteSet<Snippet> | undefined = getContext(
+        LAYOUT_OUTSIDE_ROOT_SLOTS_KEYWORD,
+    );
+
+    // svelte-ignore non_reactive_update
+    let video_frame_wrapper: HTMLDivElement | undefined;
+    let current_youtube_id: string | null = $state(null);
+
+    onMount(() => {
+        if (fixed_outside_slots === undefined) return;
+        fixed_outside_slots.add(section_on_hover);
+
+        return () => {
+            fixed_outside_slots.delete(section_on_hover);
+        };
+    });
+
+    function video_wrapper_onclick(e: MouseEvent) {
+        if (video_frame_wrapper === undefined) {
+            current_youtube_id = null;
+        }
+
+        if (e.target === video_frame_wrapper) {
+            current_youtube_id = null;
+        }
+    }
 </script>
+
+{#snippet section_on_hover()}
+    {#if current_youtube_id !== null}
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
+        <!-- svelte-ignore a11y_no_static_element_interactions -->
+        <div
+            class="video-frame-wrapper"
+            onclick={video_wrapper_onclick}
+            bind:this={video_frame_wrapper}
+        >
+            <div class="video-content">
+                <YtbFrame title="" id={current_youtube_id} autoplay={true}></YtbFrame>
+                <p class="end">Ấn bên ngoài khu vực video để đóng video</p>
+            </div>
+        </div>
+    {/if}
+{/snippet}
 
 <section class="stack-children">
     <video muted autoplay loop class="part1-video" preload="auto">
@@ -153,6 +201,8 @@
         times={[435, 480]}
     ></PageBase>
 
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div
         class="video-section-wrapper"
         style:z-index={forth_part_progress === 1 ? 1 : -1}
@@ -160,17 +210,33 @@
         style:transform="translateY({final_part_transform}px)"
     >
         <h3 class="video-header-title">3. Phỏng vấn các cựu chiến binh</h3>
-        <div class="img-wrapper image-wrapper1">
+
+        <div
+            class="img-wrapper image-wrapper1"
+            onclick={() => {
+                current_youtube_id = "UNNRGKUnru8";
+            }}
+        >
             <img src={Pic6} alt="" />
             <h5>Cựu binh Lê Văn Đông</h5>
             <p>(Cựu chiến sĩ Gạc Ma)</p>
         </div>
-        <div class="img-wrapper image-wrapper2">
+        <div
+            class="img-wrapper image-wrapper2"
+            onclick={() => {
+                current_youtube_id = "14LAszAefYc";
+            }}
+        >
             <img src={Pic7} alt="" />
             <h5>Cựu binh Nguyễn Văn Thống</h5>
             <p>(Cựu chiến sĩ Gạc Ma)</p>
         </div>
-        <div class="img-wrapper image-wrapper3">
+        <div
+            class="img-wrapper image-wrapper3"
+            onclick={() => {
+                current_youtube_id = "z2QxJn00hCE";
+            }}
+        >
             <img src={Pic8} alt="" />
             <h5>Đại tá Vũ Huy Lễ</h5>
             <p>(Nguyên thuyền trưởng tàu HQ-505)</p>
@@ -317,6 +383,32 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+    }
+
+    .video-frame-wrapper {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(50px);
+
+        > .video-content {
+            position: relative;
+            height: 64%;
+            aspect-ratio: 16/9;
+            background-color: rgba(0, 0, 0, 0.7);
+
+            > .end {
+                position: absolute;
+                font-family: "VlRegular", san-serif;
+                color: #efe4d1;
+                bottom: -36px;
+                text-align: center;
+                width: 100%;
+            }
         }
     }
 </style>

@@ -8,7 +8,9 @@
 
 <section>
     <h2 class="heading-title">
-        NHỮNG THÁCH THỨC <br />
+        PHẦN 4 <br />
+        NHỮNG THÁCH THỨC
+        <br />
         HIỆN NAY
     </h2>
     <div class="paragraph-wrapper">

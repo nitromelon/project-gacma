@@ -73,7 +73,7 @@
                 style:width="{section_width}px"
                 style:transform="translate({100 * svg_progress}%)"
             >
-                <h2>IV. DIỄN BIẾN</h2>
+                <h2 id="dienbien">IV. DIỄN BIẾN</h2>
             </div>
 
             <svg viewBox="0 0 4218 791" bind:clientWidth={svg_width}>

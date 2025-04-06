@@ -12,7 +12,7 @@
             " ",
         );
 
-    const FIRST_INTRO_HEADER_TEXT = "TIỀM NĂNG";
+    const FIRST_INTRO_HEADER_TEXT = "PHẦN 2: TIỀM NĂNG";
     const SECOND_INTRO_HEADER_TEXT = "KINH TẾ CỦA";
     const THIRD_INTRO_HEADER_TEXT = "BA ĐẢO";
 
@@ -132,14 +132,15 @@
             height: 100%;
             width: 100%;
             padding: 64px;
-            font-size: 156px;
+            font-size: 72px;
             > .layout {
                 height: 100%;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 font-family: var(--vl-regular);
-                color: hsl(223, 20%, 42%);
+                color: hsl(223, 20%, 52%);
+                gap: 32px;
 
                 > .second {
                     align-self: center;
@@ -163,8 +164,6 @@
                 padding: 0 64px;
                 font-size: 2em;
                 max-width: 1280px;
-                /* color: white;
-            mix-blend-mode: difference; */
                 color: var(--tan);
 
                 > span {
