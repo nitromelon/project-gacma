@@ -1,9 +1,11 @@
 <script lang="ts">
+    import language_perference, { display_text } from "$lib/components/language/config";
     import { LAYOUT_OUTSIDE_ROOT_SLOTS_KEYWORD } from "$lib/components/layout/layout";
     import ProgressScroll from "$lib/components/progress-scroll/ProgressScroll.svelte";
     import { limited_range } from "$lib/normalized_limited_range/limited";
     import { getContext, onMount, type Snippet } from "svelte";
     import type { SvelteSet } from "svelte/reactivity";
+    import "./styles/common.css";
 
     type Props = {
         local_progress: number;
@@ -50,24 +52,42 @@
     >
         <div class="chinh-sach-wrapper">
             <h4>1985</h4>
-            <p>Mikhail Gorbachev lên nắm quyền, khởi xướng chính sách Perestroika và Glasnost.</p>
+            <p>
+                {display_text(
+                    $language_perference,
+                    "Mikhail Gorbachev lên nắm quyền, khởi xướng chính sách Perestroika và Glasnost.",
+                    "Mikhail Gorbachev came to power, initiating the policies of Perestroika and Glasnost.",
+                )}
+            </p>
         </div>
         <div class="chinh-sach-wrapper">
             <h4>1986</h4>
-            <p>Liên Xô bắt đầu cắt giảm viện trợ kinh tế cho các nước xã hội chủ nghĩa.</p>
+            <p>
+                {display_text(
+                    $language_perference,
+                    "Liên Xô bắt đầu cắt giảm viện trợ kinh tế cho các nước xã hội chủ nghĩa.",
+                    "The Soviet Union began reducing economic aid to socialist countries.",
+                )}
+            </p>
         </div>
         <div class="chinh-sach-wrapper csw-padding-left">
             <h4>1988</h4>
             <p>
-                Liên Xô tuyên bố rút quân khỏi Afghanistan, đánh dấu sự suy yếu trong chiến lược đối
-                ngoại.
+                {display_text(
+                    $language_perference,
+                    "Liên Xô tuyên bố rút quân khỏi Afghanistan, đánh dấu sự suy yếu trong chiến lược đối ngoại.",
+                    "The Soviet Union announced its withdrawal from Afghanistan, marking a decline in its foreign policy strategy.",
+                )}
             </p>
         </div>
         <div class="chinh-sach-wrapper csw-padding-left">
             <h4>1989</h4>
             <p>
-                Viện trợ quân sự và kinh tế cho Việt Nam giảm mạnh, ảnh hưởng nghiêm trọng đến quốc
-                phòng và nền kinh tế.
+                {display_text(
+                    $language_perference,
+                    "Viện trợ quân sự và kinh tế cho Việt Nam giảm mạnh, ảnh hưởng nghiêm trọng đến quốc phòng và nền kinh tế.",
+                    "Military and economic aid to Vietnam was drastically reduced, severely impacting national defense and the economy.",
+                )}
             </p>
         </div>
     </div>
@@ -76,15 +96,26 @@
 <div class="paper-base">
     {#snippet paper2()}
         <h2 class="title {opacity_class}">
-            SỰ SUY YẾU CỦA LIÊN XÔ <br />
-            VÀ ẢNH HƯỞNG ĐẾN VIỆT NAM
+            {display_text(
+                $language_perference,
+                "SỰ SUY YẾU CỦA LIÊN XÔ",
+                "THE DECLINE OF THE SOVIET UNION",
+            )}
+            <br />
+            {display_text(
+                $language_perference,
+                "VÀ ẢNH HƯỞNG ĐẾN VIỆT NAM",
+                "AND ITS IMPACT ON VIETNAM",
+            )}
         </h2>
 
         <p class="para1">
             <span class={opacity_class}>
-                Bước vào giai đoạn cuối thập niên 1980, Liên Xô rơi vào khủng hoảng nghiêm trọng về
-                kinh tế và chính trị. Dưới sự lãnh đạo của nhà lãnh đạo thứ 8 của Liên Xô Mikhail
-                Gorbachev,
+                {display_text(
+                    $language_perference,
+                    "Bước vào giai đoạn cuối thập niên 1980, Liên Xô rơi vào khủng hoảng nghiêm trọng về kinh tế và chính trị. Dưới sự lãnh đạo của nhà lãnh đạo thứ 8 của Liên Xô Mikhail Gorbachev,",
+                    "Entering the late 1980s, the Soviet Union was in the midst of a severe economic and political crisis. Under the leadership of the Soviet Union’s 8th leader, Mikhail Gorbachev,",
+                )}
             </span>
             <!-- svelte-ignore a11y_no_static_element_interactions -->
             <!-- svelte-ignore a11y_mouse_events_have_key_events -->
@@ -93,31 +124,41 @@
                 onmouseout={chinh_sach_mouse_out}
                 class="chinh-sach"
             >
-                chính sách Perestroika "Cải tổ" và Glasnost "Công khai hóa"
+                {display_text(
+                    $language_perference,
+                    'chính sách Perestroika "Cải tổ" và Glasnost "Công khai hóa"',
+                    'the policies of Perestroika "Restructuring" and Glasnost "Openness"',
+                )}
             </span>
             <span class={opacity_class}>
-                được triển khai với hy vọng cải cách nền kinh tế và hệ thống chính trị của Liên Xô.
-                Tuy nhiên, những cải cách này lại vô tình làm suy yếu khả năng kiểm soát của chính
-                quyền trung ương, khiến nền kinh tế kiệt quệ và ảnh hưởng của Liên Xô đối với các
-                nước đồng minh dần suy giảm.
+                {display_text(
+                    $language_perference,
+                    "được triển khai với hy vọng cải cách nền kinh tế và hệ thống chính trị của Liên Xô. Tuy nhiên, những cải cách này lại vô tình làm suy yếu khả năng kiểm soát của chính quyền trung ương, khiến nền kinh tế kiệt quệ và ảnh hưởng của Liên Xô đối với các nước đồng minh dần suy giảm.",
+                    "were implemented with the hope of reforming the Soviet Union’s economic and political systems. However, these reforms inadvertently weakened the central government's control, leading to economic exhaustion and diminishing the Soviet Union's influence over its allies.",
+                )}
             </span>
         </p>
 
         <p class="para2 {opacity_class}">
-            Theo các tài liệu lịch sử, viện trợ quân sự và kinh tế của Liên Xô dành cho Việt Nam
-            giảm mạnh trong giai đoạn này. Cụ thể, Liên Xô đã cắt giảm đáng kể nguồn cung cấp dầu
-            mỏ, lương thực và hỗ trợ tài chính cho Việt Nam, gây khó khăn lớn trong duy trì hoạt
-            động quân sự và phát triển kinh tế (CIA, 1988).
+            {display_text(
+                $language_perference,
+                "Theo các tài liệu lịch sử, viện trợ quân sự và kinh tế của Liên Xô dành cho Việt Nam giảm mạnh trong giai đoạn này. Cụ thể, Liên Xô đã cắt giảm đáng kể nguồn cung cấp dầu mỏ, lương thực và hỗ trợ tài chính cho Việt Nam, gây khó khăn lớn trong duy trì hoạt động quân sự và phát triển kinh tế (CIA, 1988).",
+                "According to historical documents, Soviet military and economic aid to Vietnam significantly decreased during this period. Specifically, the Soviet Union drastically cut supplies of oil, food, and financial support to Vietnam, creating substantial difficulties in maintaining military operations and economic development (CIA, 1988).",
+            )}
         </p>
 
         <div class="sub-padding"></div>
     {/snippet}
 
     <h3 class="small-title {opacity_class}">
-        Bối cảnh quốc tế: Cơ hội từ sự chuyển dịch quyền lực toàn cầu
+        {display_text(
+            $language_perference,
+            "Bối cảnh quốc tế: Cơ hội từ sự chuyển dịch quyền lực toàn cầu",
+            "International context: opportunities from the global power shift",
+        )}
     </h3>
 
-    <div class="wrapper">
+    <div class="news-wrapper">
         <ProgressScroll progress={limited_range(local_progress, 0.25, 0.75)} content={paper2}
         ></ProgressScroll>
     </div>
@@ -131,25 +172,6 @@
             will-change: opacity;
             transition: opacity 0.5s cubic-bezier(0.5, 1, 0.5, 1);
         }
-    }
-
-    .small-title {
-        font-family: var(--huxley-max);
-        font-size: 12px;
-        margin: 16px;
-        margin-bottom: 0;
-        color: var(--red);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .wrapper {
-        position: relative;
-        margin: 16px;
-        height: calc(100% - 60px);
-        width: calc(100% - 32px);
-        contain: strict;
     }
 
     .title {

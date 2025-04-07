@@ -1,7 +1,23 @@
+<script lang="ts">
+    import language_perference, { display_text } from "$lib/components/language/config";
+</script>
+
 <div class="wrapper paper-base">
     <div class="line"></div>
-    <h1>QUAN HỆ VIỆT NAM - TRUNG QUỐC TRƯỚC 1988:</h1>
-    <h2>Bối cảnh căng thẳng trước trận chiến Gạc Ma (1988)</h2>
+    <h1>
+        {display_text(
+            $language_perference,
+            "QUAN HỆ VIỆT NAM - TRUNG QUỐC TRƯỚC 1988:",
+            "VIETNAM - CHINA RELATIONS BEFORE 1988:",
+        )}
+    </h1>
+    <h2>
+        {display_text(
+            $language_perference,
+            "Bối cảnh căng thẳng trước trận chiến Gạc Ma (1988)",
+            "Tensions leading up to the battle of Gạc Ma (1988)",
+        )}
+    </h2>
     <div class="line"></div>
 
     <div class="image-mask"></div>

@@ -1,11 +1,15 @@
 <script lang="ts">
     import Pic11 from "$lib/assets/images/home/comparison/11.png";
+    import language_perference, { display_text } from "$lib/components/language/config";
 
     const { progress }: { progress: number } = $props();
-    const quote =
-        '"Trong thời điểm khó khăn của đất nước, lực lượng hải quân mỏng, tàu thuyền chủ yếu do Trung Quốc viện trợ hoặc là chiến lợi phẩm từ thời Việt Nam Cộng hòa đã quá cũ lực lượng đi ra đảo dù đã chuẩn bị nhưng tàu bị hỏng máy không thể đi được."'.split(
-            " ",
-        );
+    const quote = $derived(
+        display_text(
+            $language_perference,
+            '"Trong thời điểm khó khăn của đất nước, lực lượng hải quân mỏng, tàu thuyền chủ yếu do Trung Quốc viện trợ hoặc là chiến lợi phẩm từ thời Việt Nam Cộng hòa đã quá cũ. Lực lượng đi ra đảo dù đã chuẩn bị nhưng tàu bị hỏng máy không thể đi được."',
+            '"In a period of national hardship, our naval forces were severely limited. The fleet primarily consisted of vessels provided by China or older, outdated war prizes from the former Republic of Vietnam. Despite preparations, the vessels were prone to mechanical failures, rendering them incapable of deployment."',
+        ).split(" "),
+    );
 
     const current_index = $derived(progress * quote.length);
 </script>
@@ -25,7 +29,13 @@
     </p>
 
     <div class="image-wrapper">
-        <p>-Chuẩn Đô đốc Lê Kế Lâm-</p>
+        <p>
+            -{display_text(
+                $language_perference,
+                `Chuẩn Đô đốc Lê Kế Lâm`,
+                `Rear Admiral Le Ke Lam`,
+            )}-
+        </p>
         <img class="bottom-right-image" src={Pic11} alt="" />
     </div>
 </section>

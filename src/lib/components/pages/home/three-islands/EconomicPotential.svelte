@@ -5,16 +5,27 @@
         limited_range_min,
     } from "$lib/normalized_limited_range/limited";
     import Pic1 from "$lib/assets/images/home/threeislands/1.png";
+    import Pic1_EN from "$lib/assets/images/home/threeislands/en/1.svg";
+    import language_perference, { display_text } from "$lib/components/language/config";
 
     const { progress }: { progress: number } = $props();
-    const INTRO_TEXT_QUOTE =
-        '"Quần đảo Trường Sa nói chung và ba đảo Gạc Ma - Cô Lin - Len Đao nói riêng không chỉ có ý nghĩa về mặt an ninh quốc phòng mà còn mang lại giá trị kinh tế lớn."'.split(
-            " ",
-        );
+    const INTRO_TEXT_QUOTE = $derived(
+        display_text(
+            $language_perference,
+            '"Quần đảo Trường Sa nói chung và ba đảo Gạc Ma - Cô Lin - Len Đao nói riêng không chỉ có ý nghĩa về mặt an ninh quốc phòng mà còn mang lại giá trị kinh tế lớn."',
+            '"The Spratly Islands in general, and the three islands of Gac Ma, Co Lin, and Len Dao in particular, are not only significant in terms of national defense but also hold great economic value."',
+        ).split(" "),
+    );
 
-    const FIRST_INTRO_HEADER_TEXT = "PHẦN 2: TIỀM NĂNG";
-    const SECOND_INTRO_HEADER_TEXT = "KINH TẾ CỦA";
-    const THIRD_INTRO_HEADER_TEXT = "BA ĐẢO";
+    const FIRST_INTRO_HEADER_TEXT = $derived(
+        display_text($language_perference, "PHẦN 2: TIỀM NĂNG", "PART 2: MARITIME"),
+    );
+    const SECOND_INTRO_HEADER_TEXT = $derived(
+        display_text($language_perference, "KINH TẾ CỦA", "ECONOMIC POTENTIAL OF"),
+    );
+    const THIRD_INTRO_HEADER_TEXT = $derived(
+        display_text($language_perference, "BA ĐẢO", "THE THREE ISLANDS"),
+    );
 
     const END_QUOTE_DISPLAY = 0.27;
     const END_MOVING_FROM_QUOTE = 0.7;
@@ -90,26 +101,43 @@
         reversed_moving_from_quote_progress}%)"
 >
     <div class="left">
-        <img src={Pic1} alt="" />
-        <p>Nguồn: (Trần et al., 2015), (TTXVN, 2017)</p>
+        <img src={display_text($language_perference, Pic1, Pic1_EN)} alt="" />
+        <p>
+            {display_text($language_perference, "Nguồn", "Source")}: (Trần et al., 2015), (TTXVN,
+            2017)
+        </p>
     </div>
     <div class="right">
         <div class="wrapper">
-            <h3>Nguồn lợi thủy sản</h3>
+            <h3>{display_text($language_perference, `Nguồn lợi thủy sản`, `Marine resources`)}</h3>
             <p>
-                Khu vực quanh ba đảo có nguồn hải sản phong phú, là ngư trường quan trọng của ngư
-                dân Việt Nam. Việc bảo vệ chủ quyền cũng đồng nghĩa với việc bảo vệ quyền khai thác
-                hợp pháp của ngư dân.
+                {display_text(
+                    $language_perference,
+                    `Khu vực quanh ba đảo có nguồn hải sản phong phú, là ngư trường quan trọng của ngư dân Việt Nam. Việc bảo vệ chủ quyền cũng đồng nghĩa với việc bảo vệ quyền khai thác hợp pháp của ngư dân.`,
+                    `The area around these islands is rich in seafood, serving as an important fishing ground for Vietnamese fishermen. Protecting sovereignty also means safeguarding the legal fishing rights of the fishermen.`,
+                )}
             </p>
-            <h3>Dầu khí và tài nguyên biển</h3>
+            <h3>
+                {display_text(
+                    $language_perference,
+                    `Dầu khí và tài nguyên biển`,
+                    `Oil and marine resources`,
+                )}
+            </h3>
             <p>
-                Biển Đông được đánh giá là khu vực có trữ lượng dầu khí lớn, là nguồn tài nguyên
-                quan trọng phục vụ phát triển kinh tế Việt Nam.
+                {display_text(
+                    $language_perference,
+                    `Biển Đông được đánh giá là khu vực có trữ lượng dầu khí lớn, là nguồn tài nguyên quan trọng phục vụ phát triển kinh tế Việt Nam.`,
+                    `The East Vietnam Sea is considered to have large oil and gas reserves, which are vital resources for Vietnam’s economic development.`,
+                )}
             </p>
-            <h3>Hỗ trợ hàng hải</h3>
+            <h3>{display_text($language_perference, `Hỗ trợ hàng hải`, `Maritime support`)}</h3>
             <p>
-                Các đảo này có thể được phát triển thành các trạm hậu cần nghề cá, cung cấp nhiên
-                liệu, nước ngọt và dịch vụ sửa chữa cho tàu thuyền hoạt động trong khu vực.
+                {display_text(
+                    $language_perference,
+                    `Các đảo này có thể được phát triển thành các trạm hậu cần nghề cá, cung cấp nhiên liệu, nước ngọt và dịch vụ sửa chữa cho tàu thuyền hoạt động trong khu vực.`,
+                    `These islands can be developed into fishery logistics stations, providing fuel, freshwater, and repair services for vessels operating in the area.`,
+                )}
             </p>
         </div>
     </div>

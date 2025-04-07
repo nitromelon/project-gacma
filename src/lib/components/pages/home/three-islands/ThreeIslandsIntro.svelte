@@ -1,26 +1,43 @@
 <script lang="ts">
     import YtbFrame from "$lib/components/iframe-youtube/YtbFrame.svelte";
+    import language_perference, { display_text } from "$lib/components/language/config";
 
-    const title = "[Gạc Ma: Vòng tròn bất tử]: Tổng quan về quần đảo Trường Sa";
+    const title = $derived(
+        display_text(
+            $language_perference,
+            "[Gạc Ma: Vòng tròn bất tử]: Tổng quan về quần đảo Trường Sa",
+            "[Gac Ma: Immortal Circle]: Overview of the Spratly Islands",
+        ),
+    );
+
+    const video_url = $derived(display_text($language_perference, "zmeXYMxpd-8", "Vl8wWqx703M"));
 </script>
 
-<h2 class="intro-header" id="noidausong">II. Nơi đầu sóng</h2>
+<h2 class="intro-header" id="noidausong">
+    II. {display_text($language_perference, "Nơi đầu sóng", "The forefront")}
+</h2>
 
 <section>
     <div class="wrapper top-wrapper">
-        <p>Phần 1</p>
-        <p>TỔNG QUAN VỀ QUẦN ĐẢO TRƯỜNG SA</p>
+        <p>{display_text($language_perference, `Phần`, `Part`)} 1</p>
+        <p>
+            {display_text(
+                $language_perference,
+                `TỔNG QUAN VỀ QUẦN ĐẢO TRƯỜNG SA`,
+                `OVERVIEW OF THE SPARTLY ISLANDS`,
+            )}
+        </p>
     </div>
     <div class="wrapper center-wrapper">
         <div class="video-wrapper">
             <p>Video | {title}</p>
-            <YtbFrame {title} id="zmeXYMxpd-8"></YtbFrame>
+            <YtbFrame {title} id={video_url}></YtbFrame>
         </div>
     </div>
     <div class="wrapper bottom-wrapper">
-        <p>GẠC MA</p>
-        <p>CÔ LIN</p>
-        <p>LEN ĐAO</p>
+        <p>{display_text($language_perference, `GẠC MA`, `GAC MA`)}</p>
+        <p>{display_text($language_perference, `CÔ LIN`, `CO LIN`)}</p>
+        <p>{display_text($language_perference, `LEN ĐAO`, `LEN DAO`)}</p>
     </div>
 </section>
 

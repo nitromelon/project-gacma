@@ -4,13 +4,27 @@
     import Pic1 from "$lib/assets/images/home/newspaper/papers/paper4/1.webp";
     import Pic2 from "$lib/assets/images/home/newspaper/papers/paper4/2.jpg";
     import "./styles/common.css";
+    import language_perference, { display_text } from "$lib/components/language/config";
+    import "./styles/common.css";
 
     type Props = {
         local_progress: number;
     };
 
-    const pic1_description = "Nước Mỹ thời chiến tranh lạnh.";
-    const pic2_description = "Hợp tác quan hệ Mỹ - Trung";
+    const pic1_description = $derived(
+        display_text(
+            $language_perference,
+            "Nước Mỹ thời chiến tranh lạnh.",
+            "The United States during the Cold War.",
+        ),
+    );
+    const pic2_description = $derived(
+        display_text(
+            $language_perference,
+            "Hợp tác quan hệ Mỹ - Trung",
+            "Cooperative Relations between the United States and China",
+        ),
+    );
     const { local_progress }: Props = $props();
 </script>
 
@@ -19,8 +33,17 @@
         <div class="double-line-break"></div>
 
         <h2 class="paper4-heading">
-            QUAN HỆ MỸ - TRUNG VÀ SỰ ĐIỀU CHỈNH <br />
-            CHÍNH SÁCH CỦA MỸ TẠI CHÂU Á
+            {display_text(
+                $language_perference,
+                "QUAN HỆ MỸ - TRUNG VÀ SỰ ĐIỀU CHỈNH",
+                "U.S. - CHINA RELATIONS AND THE",
+            )}
+            <br />
+            {display_text(
+                $language_perference,
+                "CHÍNH SÁCH CỦA MỸ TẠI CHÂU Á",
+                "ADJUSTMENT OF U.S. POLICY IN ASIA",
+            )}
         </h2>
 
         <div class="separate-div">
@@ -29,19 +52,21 @@
                 <p>{pic1_description}</p>
             </div>
             <p class="paragraph-base">
-                Bên cạnh sự suy yếu của Liên Xô, sự thay đổi trong quan hệ Mỹ - Trung cũng là một
-                yếu tố quan trọng tạo điều kiện để Trung Quốc đẩy mạnh tham vọng tại Biển Đông.
+                {display_text(
+                    $language_perference,
+                    "Bên cạnh sự suy yếu của Liên Xô, sự thay đổi trong quan hệ Mỹ - Trung cũng là một yếu tố quan trọng tạo điều kiện để Trung Quốc đẩy mạnh tham vọng tại Biển Đông.",
+                    "Alongside the decline of the Soviet Union, changes in U.S.- China relations also played a crucial role in enabling China to advance its ambitions in the East Vietnam Sea.",
+                )}
             </p>
         </div>
 
         <div class="separate-div">
             <p class="paragraph-base">
-                Sau khi bình thường hóa quan hệ vào năm 1979, Mỹ và Trung Quốc nhanh chóng trở thành
-                đối tác chiến lược trong bối cảnh Chiến tranh Lạnh. Đối với Washington, Bắc Kinh là
-                một đối trọng quan trọng nhằm kiềm chế ảnh hưởng của Liên Xô tại châu Á. Mỹ đã tăng
-                cường hợp tác quân sự với Trung Quốc, bao gồm cả việc chia sẻ thông tin tình báo và
-                hỗ trợ công nghệ quốc phòng, nhằm củng cố vai trò của Trung Quốc như một đối trọng
-                trước Liên Xô (Hamilton et al., 1999).
+                {display_text(
+                    $language_perference,
+                    "Sau khi bình thường hóa quan hệ vào năm 1979, Mỹ và Trung Quốc nhanh chóng trở thành đối tác chiến lược trong bối cảnh Chiến tranh Lạnh. Đối với Washington, Bắc Kinh là một đối trọng quan trọng nhằm kiềm chế ảnh hưởng của Liên Xô tại châu Á. Mỹ đã tăng cường hợp tác quân sự với Trung Quốc, bao gồm cả việc chia sẻ thông tin tình báo và hỗ trợ công nghệ quốc phòng, nhằm củng cố vai trò của Trung Quốc như một đối trọng trước Liên Xô (Hamilton et al., 1999).",
+                    "After normalizing relations in 1979, the United States and China quickly became strategic partners within the context of the Cold War. For Washington, Beijing was an important player to curb Soviet influence in Asia. The U.S. strengthened military cooperation with China, including intelligence sharing and technological support in defense, aiming to bolster China’s role as a counterweight against the Soviet Union (Hamilton et al., 1999).",
+                )}
             </p>
             <div class="left-side">
                 <img src={Pic2} alt={pic2_description} title={pic2_description} />
@@ -52,9 +77,15 @@
         <div class="sub-padding"></div>
     {/snippet}
 
-    <h3 class="small-title">Bối cảnh quốc tế: Cơ hội từ sự chuyển dịch quyền lực toàn cầu</h3>
+    <h3 class="small-title">
+        {display_text(
+            $language_perference,
+            "Bối cảnh quốc tế: Cơ hội từ sự chuyển dịch quyền lực toàn cầu",
+            "International context: opportunities from the global power shift",
+        )}
+    </h3>
 
-    <div class="wrapper">
+    <div class="news-wrapper">
         <ProgressScroll progress={limited_range(local_progress, 0.25, 0.75)} content={paper}
         ></ProgressScroll>
     </div>
@@ -63,25 +94,6 @@
 </div>
 
 <style>
-    .small-title {
-        font-family: var(--huxley-max);
-        font-size: 12px;
-        margin: 16px;
-        margin-bottom: 0;
-        color: var(--red);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .wrapper {
-        position: relative;
-        margin: 16px;
-        height: calc(100% - 60px);
-        width: calc(100% - 32px);
-        contain: strict;
-    }
-
     .paper4-heading {
         white-space: nowrap;
         overflow: hidden;

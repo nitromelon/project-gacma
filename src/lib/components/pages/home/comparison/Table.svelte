@@ -1,4 +1,5 @@
 <script lang="ts">
+    // vn
     import Pic1 from "$lib/assets/images/home/comparison/1.svg";
     import Pic2 from "$lib/assets/images/home/comparison/2.svg";
     import Pic3 from "$lib/assets/images/home/comparison/3.svg";
@@ -8,9 +9,25 @@
     import Pic7 from "$lib/assets/images/home/comparison/7.svg";
     import Pic8 from "$lib/assets/images/home/comparison/8.svg";
     import Pic9 from "$lib/assets/images/home/comparison/9.svg";
+
+    // en
+    import Pic1_EN from "$lib/assets/images/home/comparison/en/1.svg";
+    import Pic2_EN from "$lib/assets/images/home/comparison/en/2.svg";
+    import Pic3_EN from "$lib/assets/images/home/comparison/en/3.svg";
+    import Pic4_EN from "$lib/assets/images/home/comparison/en/4.svg";
+    import Pic5_EN from "$lib/assets/images/home/comparison/en/5.svg";
+    import Pic6_EN from "$lib/assets/images/home/comparison/en/6.svg";
+    import Pic7_EN from "$lib/assets/images/home/comparison/en/7.svg";
+    import Pic8_EN from "$lib/assets/images/home/comparison/en/8.svg";
+    import Pic9_EN from "$lib/assets/images/home/comparison/en/9.svg";
+
     import { LAYOUT_OUTSIDE_ROOT_SLOTS_KEYWORD } from "$lib/components/layout/layout";
     import { getContext, onMount, type Snippet } from "svelte";
     import type { SvelteSet } from "svelte/reactivity";
+    import language_perference, {
+        display_text,
+        LayoutLanguage,
+    } from "$lib/components/language/config";
 
     const HOVERED_INFO = [
         // 0 tau van tai 1
@@ -31,7 +48,7 @@
             "- Kích thước: dài 70m, rộng 10m",
             "- Lượng giãn nước: 800 tấn",
             "- Tốc độ tối đa: 18 hải lí/giờ (33 km/h)",
-            "- Giáp bảo vệ: không có",
+            "- Giáp bảo vệ: Giáp thép nhẹ",
             "- Vai trò: Vận tải quân nhu, bộ binh",
             "- Trang bị vũ khí: súng bộ binh",
         ],
@@ -70,6 +87,75 @@
         ["Pháo phòng không 37mm", "tầm bắn 3000m"],
     ];
 
+    const HOVERED_INFO_EN = [
+        // 0 tau van tai 1
+        [
+            "- Type of ship: Polnocny-class amphibious transport ship",
+            "- (HQ-604, HQ-605, HQ-505)",
+            "- Dimensions: 70m long, 10m wide",
+            "- Displacement: 800 tons",
+            "- Maximum speed: 18 knots (33 km/h)",
+            "- Armor protection: No armor",
+            "- Role: Transporting supplies, infantry",
+            "- Armament: Small-caliber infantry guns",
+        ],
+
+        // 1 tau van tai 2
+        [
+            "- Type of ship: Polnocny-class amphibious transport ship",
+            "- Dimensions: 70m long, 10m wide",
+            "- Displacement: 800 tons",
+            "- Maximum speed: 18 knots (33 km/h)",
+            "- Armor protection: Light steel armor",
+            "- Role: Transporting supplies, infantry",
+            "- Armament: infantry guns",
+        ],
+
+        // 2 tau ho ve
+        [
+            "- Type of ship: Type 053 H1 missile frigate",
+            "- (502, 531, 556)",
+            "- Dimensions: 103m long, 10m wide",
+            "- Displacement: 1,700 tons",
+            "- Maximum speed: 26 knots (48 km/h)",
+            "- Armor protection: Light steel armor",
+            "- Role: Attack warships, sea control",
+            "- Armament: 100mm guns, rocket artillery, anti-ship missiles",
+        ],
+
+        // 3 ak
+        ["AK-47 (7,62mm)", "range 400m"],
+
+        // 4 b40
+        ["B40, effective", "range 100m"],
+
+        // 5 ten lua chong ham
+        ["SY-1", "(based on P-15 Termit),", "range 40km"],
+
+        // 6 phao phan luc
+        ["122mm rocket", "system, range", "20km"],
+
+        // 7 sung 12.7mm
+        ["DShK 12.7mm,", "range 2000m"],
+
+        // 8 phao 100mm
+        ["100mm gun,", "range 17km"],
+
+        // 9 phao 100mm
+        ["37mm anti-", "aircraft gun", "range 3000m"],
+    ];
+
+    let info_choice = $derived.by(() => {
+        switch ($language_perference.language) {
+            case LayoutLanguage.Vietnamese:
+                return HOVERED_INFO;
+            case LayoutLanguage.English:
+                return HOVERED_INFO_EN;
+            default:
+                return HOVERED_INFO_EN;
+        }
+    });
+
     const fixed_outside_slots: SvelteSet<Snippet> | undefined = getContext(
         LAYOUT_OUTSIDE_ROOT_SLOTS_KEYWORD,
     );
@@ -105,7 +191,7 @@
         scale({current_index === null ? 0.9 : 1})"
     >
         {#if current_index !== null}
-            {#each HOVERED_INFO[current_index] as info_list}
+            {#each info_choice[current_index] as info_list}
                 <p>{info_list}</p>
             {/each}
         {/if}
@@ -117,18 +203,18 @@
     <thead>
         <tr>
             <th></th>
-            <th class="th th1">Việt Nam</th>
-            <th class="th th2">Trung Quốc</th>
+            <th class="th th1">{display_text($language_perference, `Việt Nam`, `Viet Nam`)}</th>
+            <th class="th th2">{display_text($language_perference, `Trung Quốc`, `China`)}</th>
         </tr>
     </thead>
     <tbody>
         <tr></tr>
         <tr>
-            <td class="tvh tvh1">TÀU CHIẾN</td>
+            <td class="tvh tvh1">{display_text($language_perference, `TÀU CHIẾN`, `SHIPS`)}</td>
             <td>
                 <div class="cell-wrapper vn-warship-wrapper">
                     <img
-                        src={Pic1}
+                        src={display_text($language_perference, Pic1, Pic1_EN)}
                         alt=""
                         onmousemove={(e) => mouse_hover(e, 0)}
                         onmouseout={mouse_out}
@@ -138,13 +224,13 @@
             <td>
                 <div class="cell-wrapper cn-warship-wrapper">
                     <img
-                        src={Pic1}
+                        src={display_text($language_perference, Pic1, Pic1_EN)}
                         alt=""
                         onmousemove={(e) => mouse_hover(e, 1)}
                         onmouseout={mouse_out}
                     />
                     <img
-                        src={Pic2}
+                        src={display_text($language_perference, Pic2, Pic2_EN)}
                         alt=""
                         onmousemove={(e) => mouse_hover(e, 2)}
                         onmouseout={mouse_out}
@@ -154,23 +240,23 @@
         </tr>
         <tr></tr>
         <tr>
-            <td class="tvh tvh2">HỎA LỰC</td>
+            <td class="tvh tvh2">{display_text($language_perference, `HỎA LỰC`, `FIREPOWER`)}</td>
             <td>
                 <div class="cell-wrapper vn-firearm-wrapper">
                     <img
-                        src={Pic3}
+                        src={display_text($language_perference, Pic3, Pic3_EN)}
                         alt=""
                         onmousemove={(e) => mouse_hover(e, 3)}
                         onmouseout={mouse_out}
                     />
                     <img
-                        src={Pic4}
+                        src={display_text($language_perference, Pic4, Pic4_EN)}
                         alt=""
                         onmousemove={(e) => mouse_hover(e, 4)}
                         onmouseout={mouse_out}
                     />
                     <img
-                        src={Pic5}
+                        src={display_text($language_perference, Pic5, Pic5_EN)}
                         alt=""
                         onmousemove={(e) => mouse_hover(e, 7)}
                         onmouseout={mouse_out}
@@ -180,37 +266,37 @@
             <td>
                 <div class="cell-wrapper cn-firearm-wrapper">
                     <img
-                        src={Pic3}
+                        src={display_text($language_perference, Pic3, Pic3_EN)}
                         alt=""
                         onmousemove={(e) => mouse_hover(e, 3)}
                         onmouseout={mouse_out}
                     />
                     <img
-                        src={Pic6}
+                        src={display_text($language_perference, Pic6, Pic6_EN)}
                         alt=""
                         onmousemove={(e) => mouse_hover(e, 5)}
                         onmouseout={mouse_out}
                     />
                     <img
-                        src={Pic7}
+                        src={display_text($language_perference, Pic7, Pic7_EN)}
                         alt=""
                         onmousemove={(e) => mouse_hover(e, 6)}
                         onmouseout={mouse_out}
                     />
                     <img
-                        src={Pic5}
+                        src={display_text($language_perference, Pic5, Pic5_EN)}
                         alt=""
                         onmousemove={(e) => mouse_hover(e, 7)}
                         onmouseout={mouse_out}
                     />
                     <img
-                        src={Pic8}
+                        src={display_text($language_perference, Pic8, Pic8_EN)}
                         alt=""
                         onmousemove={(e) => mouse_hover(e, 8)}
                         onmouseout={mouse_out}
                     />
                     <img
-                        src={Pic9}
+                        src={display_text($language_perference, Pic9, Pic9_EN)}
                         alt=""
                         onmousemove={(e) => mouse_hover(e, 9)}
                         onmouseout={mouse_out}

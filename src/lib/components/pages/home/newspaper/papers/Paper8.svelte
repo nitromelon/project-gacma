@@ -4,25 +4,57 @@
     import "./styles/common.css";
     import Pic1 from "$lib/assets/images/home/newspaper/papers/paper8/1.png";
     import Pic2 from "$lib/assets/images/home/newspaper/papers/paper8/2.png";
+    import language_perference, { display_text } from "$lib/components/language/config";
 
     type Props = {
         local_progress: number;
     };
 
-    const title =
-        "Quan hệ Việt Nam - Trung Quốc trước 1988: Bối cảnh căng thẳng trước trận chiến Gạc Ma (1988)";
+    const title = $derived(
+        display_text(
+            $language_perference,
+            "Quan hệ Việt Nam - Trung Quốc trước 1988: Bối cảnh căng thẳng trước trận chiến Gạc Ma (1988)",
+            "Vietnam - China relations before 1988: Tensions leading up to the battle of Gạc Ma (1988)",
+        ),
+    );
 
-    const pic1_description = "Cựu binh: PHẠM QUANG LUYỆN";
-    const pic1_description2 = "sĩ quan sư đoàn 356";
-    const pic2_description = "Trung Tướng: NGUYỄN QUỐC THƯỚC";
-    const pic2_description2 = "nguyên Tư lệnh quân khu 4";
+    const pic1_description = $derived(
+        display_text(
+            $language_perference,
+            "Cựu binh: PHẠM QUANG LUYỆN",
+            "Veteran PHẠM QUANG LUYỆN",
+        ),
+    );
+
+    const pic1_description2 = $derived(
+        display_text($language_perference, "Sĩ quan sư đoàn 356", "Officer, 356th Division"),
+    );
+
+    const pic2_description = $derived(
+        display_text(
+            $language_perference,
+            "Trung Tướng: NGUYỄN QUỐC THƯỚC",
+            "Lieutenant General NGUYỄN QUỐC THƯỚC",
+        ),
+    );
+
+    const pic2_description2 = $derived(
+        display_text(
+            $language_perference,
+            "Nguyên Tư lệnh quân khu 4",
+            "Former Commander of Military Region 4",
+        ),
+    );
+
     const { local_progress }: Props = $props();
 </script>
 
 <div class="paper-base">
     {#snippet paper()}
         <div class="double-line-break red-line"></div>
-        <h2 class="heading">HỒI ỨC NGƯỜI CHIẾN SĨ</h2>
+        <h2 class="heading">
+            {display_text($language_perference, "HỒI ỨC NGƯỜI CHIẾN SĨ", "MEMOIRS OF A SOLDIER")}
+        </h2>
 
         <div class="separate-div">
             <div class="base">
@@ -35,8 +67,11 @@
                 <p class="paragraph-base small-text">{pic1_description2}</p>
             </div>
             <p class="paragraph-base">
-                "Những năm tháng gian khổ với đạn pháo bắn phá liên tục suốt ngày đêm, những bữa cơm
-                trắng với muối, tấm áo ấm thay phiên nhau mặc khi canh gác."
+                {display_text(
+                    $language_perference,
+                    '"Những năm tháng gian khổ với đạn pháo bắn phá liên tục suốt ngày đêm, những bữa cơm trắng với muối, tấm áo ấm thay phiên nhau mặc khi canh gác..."',
+                    '"These were years of immense hardship, with relentless artillery fire day and night. Meals consisted of plain rice with salt, and warm clothing was shared in shifts during guard duty..."',
+                )}
             </p>
         </div>
 
@@ -44,8 +79,11 @@
 
         <div class="separate-div">
             <p class="paragraph-base">
-                "Việc gọi cuộc chiến do Trung Quốc gây ra là 'xung đột biên giới' là ngụy biện, lừa
-                dối, vì đó thực chất là cuộc chiến tranh xâm lược."
+                {display_text(
+                    $language_perference,
+                    `"Việc gọi cuộc chiến do Trung Quốc gây ra là 'xung đột biên giới' là ngụy biện, lừa dối, vì đó thực chất là cuộc chiến tranh xâm lược."`,
+                    `"Referring to the war initiated by China as a 'border conflict' is a deceptive and misleading euphemism. In reality, it was a war of aggression."`,
+                )}
             </p>
             <div class="base">
                 <img
@@ -63,7 +101,7 @@
 
     <h3 class="small-title" {title}>{title}</h3>
 
-    <div class="wrapper">
+    <div class="news-wrapper">
         <ProgressScroll progress={limited_range(local_progress, 0.25, 0.75)} content={paper}
         ></ProgressScroll>
     </div>
@@ -72,25 +110,6 @@
 </div>
 
 <style>
-    .small-title {
-        font-family: var(--huxley-max);
-        font-size: 12px;
-        margin: 16px;
-        margin-bottom: 0;
-        color: var(--red);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .wrapper {
-        position: relative;
-        margin: 16px;
-        height: calc(100% - 60px);
-        width: calc(100% - 32px);
-        contain: strict;
-    }
-
     .red-line {
         border-color: var(--red);
     }

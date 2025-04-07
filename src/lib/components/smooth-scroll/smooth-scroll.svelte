@@ -50,7 +50,12 @@
             top: 0px;
             height: fit-content;
             width: 100%;
-            transition: var(--scroll-transform-transition);
+        }
+
+        @media (hover: hover) {
+            > .content {
+                transition: var(--scroll-transform-transition);
+            }
         }
     }
 </style>

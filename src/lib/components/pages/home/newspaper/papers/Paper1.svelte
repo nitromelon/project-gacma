@@ -1,4 +1,5 @@
 <script lang="ts">
+    import language_perference, { display_text } from "$lib/components/language/config";
     import { limited_range } from "$lib/normalized_limited_range/limited";
     import { normalized_range } from "$lib/normalized_limited_range/normalized";
     import { BEGIN_HEADER_RESIZE, END_HEADER_RESIZE } from "./timeline";
@@ -18,8 +19,14 @@
 
 <div class="wrapper" style:width={wrapper_width === 40 ? "min(45%, 75vh)" : `${wrapper_width}%`}>
     <div class="line"></div>
-    <h1>BỐI CẢNH QUỐC TẾ:</h1>
-    <h2>Cơ hội từ sự chuyển dịch quyền lực toàn cầu</h2>
+    <h1>{display_text($language_perference, "BỐI CẢNH QUỐC TẾ:", "INTERNATIONAL CONTEXT")}</h1>
+    <h2>
+        {display_text(
+            $language_perference,
+            "Cơ hội từ sự chuyển dịch quyền lực toàn cầu",
+            "Opportunities from the global power shift",
+        )}
+    </h2>
     <div class="line"></div>
 
     <div class="image-mask"></div>

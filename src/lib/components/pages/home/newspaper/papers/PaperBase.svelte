@@ -50,7 +50,8 @@
 
         > :global(.paper-base) {
             position: relative;
-            width: min(45%, 75vh);
+            width: max(33%, 75vh);
+            min-width: 426px;
             height: 100%;
             background-color: var(--light-orange);
 
@@ -74,6 +75,17 @@
 
             :global(.sub-padding) {
                 height: 25vh;
+            }
+
+            :global(.small-title) {
+                font-family: var(--huxley-max);
+                font-size: 12px;
+                margin: 16px;
+                margin-bottom: 0;
+                color: var(--red);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
     }

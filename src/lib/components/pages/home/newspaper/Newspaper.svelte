@@ -19,6 +19,7 @@
     import { fast_cubic_bezier } from "$lib/cubic_bezier/presets";
     import { normalized_range } from "$lib/normalized_limited_range/normalized";
     import YtbFrame from "$lib/components/iframe-youtube/YtbFrame.svelte";
+    import language_perference, { display_text } from "$lib/components/language/config";
 
     const { progress }: { progress: number } = $props();
     const paper_list = [
@@ -36,7 +37,16 @@
         Paper12,
     ];
 
-    const VIDEO_TITLE = "[Gạc Ma: Vòng tròn bất tử]: Tình hình căng thẳng trước trận Gạc Ma";
+    const VIDEO_TITLE = $derived(
+        display_text(
+            $language_perference,
+            `[Gạc Ma: Vòng tròn bất tử]: Tình hình căng thẳng trước trận Gạc Ma`,
+            `[Gạc Ma: Immortal Circle]: High tension before the battle of Gạc Ma`,
+        ),
+    );
+
+    const VIDEO_ID = $derived(display_text($language_perference, "r_t5t7G1YpE", "87EfKJfIY0U"));
+
     const END_PAPER = 0.975;
     const END_VIDEO_WRAPPER_UP = 0.9875;
 
@@ -75,7 +85,7 @@
 >
     <div class="video-wrapper">
         <p class="title">Video | {VIDEO_TITLE}</p>
-        <YtbFrame title={VIDEO_TITLE} id={"r_t5t7G1YpE"}></YtbFrame>
+        <YtbFrame title={VIDEO_TITLE} id={VIDEO_ID}></YtbFrame>
     </div>
 </section>
 

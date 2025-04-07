@@ -92,6 +92,11 @@
 
         /* hack to get gpu rendering */
         perspective: 0;
-        transition: var(--scroll-transform-transition);
+    }
+
+    @media (hover: hover) {
+        .present {
+            transition: var(--scroll-transform-transition);
+        }
     }
 </style>

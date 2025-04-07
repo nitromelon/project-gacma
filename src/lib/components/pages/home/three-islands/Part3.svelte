@@ -1,25 +1,40 @@
 <script lang="ts">
     import Pic1 from "$lib/assets/images/home/threeislands/2.jpg";
+    import language_perference, { display_text } from "$lib/components/language/config";
 
-    const pic1_description = "Đảm bảo an ninh quốc phòng biển, đảo (Tạp chí cộng sản, 2018)";
+    const pic1_description = $derived(
+        display_text(
+            $language_perference,
+            `Đảm bảo an ninh quốc phòng biển, đảo (Tạp chí cộng sản, 2018)`,
+            `Safeguarding maritime national defense and island security (Tạp chí cộng sản, 2018)`,
+        ),
+    );
 </script>
 
-<h2 class="heading-title">PHẦN 3: NƠI TIỀN TIÊU TỔ QUỐC</h2>
+<h2 class="heading-title">
+    {display_text(
+        $language_perference,
+        `PHẦN 3: NƠI TIỀN TIÊU TỔ QUỐC`,
+        `PART 3: STRATEGIC ROLE IN NATIONAL DEFENSE AND SECURITY`,
+    )}
+</h2>
 
 <section>
     <div class="paragraph-wrapper">
         <p>
-            Về mặt quân sự, ba đảo này giữ vai trò quan trọng trong việc bảo vệ tuyến phòng thủ biển
-            đảo của Việt Nam. Với vị trí chiến lược của mình, Cô Lin và Len Đao là các cứ điểm giúp
-            duy trì sự hiện diện của Việt Nam tại khu vực phía tây Trường Sa. Nếu để mất hai đảo
-            này, nguy cơ mở rộng chiếm đóng từ nước ngoài sẽ trở nên nghiêm trọng hơn.
+            {display_text(
+                $language_perference,
+                `Về mặt quân sự, ba đảo này giữ vai trò quan trọng trong việc bảo vệ tuyến phòng thủ biển đảo của Việt Nam. Với vị trí chiến lược của mình, Cô Lin và Len Đao là các cứ điểm giúp duy trì sự hiện diện của Việt Nam tại khu vực phía tây Trường Sa. Nếu để mất hai đảo này, nguy cơ mở rộng chiếm đóng từ nước ngoài sẽ trở nên nghiêm trọng hơn.`,
+                `From a military standpoint, these three islands are essential for defending Vietnam’s maritime and island defense line. With their strategic positions, Co Lin and Len Dao act as strongholds to maintain Vietnam’s presence in the Western Spratly region. If these two islands are lost, the risk of expanded occupation by foreign forces would become more serious.`,
+            )}
         </p>
 
         <p>
-            Ngoài ra, việc duy trì sự kiểm soát tại hai đảo còn giúp Việt Nam có cơ sở để giám sát
-            các hoạt động hàng hải và bảo vệ tuyến giao thương quan trọng đi qua Biển Đông. Việt Nam
-            cũng tăng cường các biện pháp phòng thủ tại các đảo này để ngăn chặn những hành động gây
-            mất ổn định từ bên ngoài.
+            {display_text(
+                $language_perference,
+                `Ngoài ra, việc duy trì sự kiểm soát tại hai đảo còn giúp Việt Nam có cơ sở để giám sát các hoạt động hàng hải và bảo vệ tuyến giao thương quan trọng đi qua Biển Đông. Việt Nam cũng tăng cường các biện pháp phòng thủ tại các đảo này để ngăn chặn những hành động gây mất ổn định từ bên ngoài.`,
+                `Furthermore, maintaining control over these islands provides Vietnam with a base to monitor maritime activities and protect critical trade routes passing through the East Vietnam Sea. Vietnam is also enhancing defensive measures on these islands to prevent destabilizing actions from external forces.`,
+            )}
         </p>
     </div>
     <div class="image-wrapper">

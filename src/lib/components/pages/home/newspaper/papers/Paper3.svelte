@@ -6,6 +6,8 @@
     import type { SvelteSet } from "svelte/reactivity";
     import { getContext, onMount, type Snippet } from "svelte";
     import { LAYOUT_OUTSIDE_ROOT_SLOTS_KEYWORD } from "$lib/components/layout/layout";
+    import language_perference, { display_text } from "$lib/components/language/config";
+    import "./styles/common.css";
 
     type Props = {
         local_progress: number;
@@ -15,10 +17,10 @@
         LAYOUT_OUTSIDE_ROOT_SLOTS_KEYWORD,
     );
 
-    const OIL = "Dầu mỏ";
-    const FOOD = "Lương thực";
-    const AID = "Viện trợ quân sự";
-    const COLS_VALUE_ARRAY = [
+    const OIL = $derived(display_text($language_perference, "Dầu mỏ", "Oil"));
+    const FOOD = $derived(display_text($language_perference, "Lương thực", "Food"));
+    const AID = $derived(display_text($language_perference, "Viện trợ quân sự", "Military aid"));
+    const COLS_VALUE_ARRAY = $derived([
         {
             item: OIL,
             year: "1985",
@@ -49,12 +51,27 @@
             year: "1989",
             quantity: 0.6,
         },
-    ];
+    ]);
 
-    const pic1_description =
-        "Hai em bé lem luốc nhìn ra ngoài cửa sổ ở một khu khai thác mỏ than đá và sản xuất thép ở vùng Siberia trong thời kỳ kinh tế khó khăn trên diện rộng ở Liên Xô.";
-    const pic2_description =
-        "Công dân Nga xếp hàng để mua thực phẩm khan hiếm, vào tháng 11/1991, chỉ một tháng trước khi siêu cường Liên Xô sụp đổ.";
+    const million_ton = $derived(display_text($language_perference, "triệu tấn", "million ton"));
+    const year = $derived(display_text($language_perference, "năm", "year"));
+    const billion = $derived(display_text($language_perference, "tỷ", "billion"));
+
+    const pic1_description = $derived(
+        display_text(
+            $language_perference,
+            "Hai em bé lem luốc nhìn ra ngoài cửa sổ ở một khu khai thác mỏ than đá và sản xuất thép ở vùng Siberia trong thời kỳ kinh tế khó khăn trên diện rộng ở Liên Xô.",
+            "Two dirty-faced children look out of a window in a coal mining and steel production area in Siberia during a period of widespread economic hardship in the Soviet Union.",
+        ),
+    );
+
+    const pic2_description = $derived(
+        display_text(
+            $language_perference,
+            "Công dân Nga xếp hàng để mua thực phẩm khan hiếm, vào tháng 11/1991, chỉ một tháng trước khi siêu cường Liên Xô sụp đổ.",
+            "Russian citizens queue to buy scarce food, in November 1991, just a month before the Soviet superpower collapsed.",
+        ),
+    );
 
     const { local_progress }: Props = $props();
     const nonzero_progress = $derived(local_progress > 0 ? 1 : 0);
@@ -100,10 +117,21 @@
     {#snippet paper()}
         <div class="double-line-break"></div>
         <h2 class="header">
-            BIỂU ĐỒ SO SÁNH ĐỊNH LƯỢNG <br />
-            VIỆN TRỢ CỦA LIÊN XÔ DÀNH CHO VIỆT NAM
+            {display_text(
+                $language_perference,
+                "BIỂU ĐỒ SO SÁNH ĐỊNH LƯỢNG",
+                "QUANTITATIVE COMPARISON CHART",
+            )}
             <br />
-            (1985 VÀ 1989)
+            {display_text(
+                $language_perference,
+                "VIỆN TRỢ CỦA LIÊN XÔ DÀNH CHO VIỆT NAM",
+                "SOVIET AID TO VIETNAM  (1985 AND 1989)",
+            )}
+
+            <br />
+            (1985 {display_text($language_perference, "VÀ", "AND")}
+            1989)
         </h2>
 
         <div class="chart-wrapper">
@@ -165,25 +193,44 @@
 
             <div class="right-info">
                 <h3>{OIL}:</h3>
-                <p>1985: 2.0 triệu tấn/năm</p>
-                <p>1989: 1.0 triệu tấn/năm (giảm 50%)</p>
+                <p>1985: 2.0 {million_ton}/{year}</p>
+                <p>
+                    1989: 1.0 {million_ton}/{year} ({display_text(
+                        $language_perference,
+                        "giảm 50%",
+                        "50% decrease",
+                    )})
+                </p>
                 <br />
                 <h3>{FOOD}:</h3>
-                <p>1985: 1.2 triệu tấn</p>
-                <p>1989: 0.5 triệu tấn (giảm 58%)</p>
+                <p>1985: 1.2 {million_ton}</p>
+                <p>
+                    1989: 0.5 {million_ton} ({display_text(
+                        $language_perference,
+                        "giảm 58%",
+                        "58% decrease",
+                    )})
+                </p>
                 <br />
                 <h3>{AID}:</h3>
-                <p>1985: 1,5 tỷ USD</p>
-                <p>1989: 0,6 tỷ USD (giảm 60%)</p>
+                <p>1985: 1,5 {billion} USD</p>
+                <p>
+                    1989: 0,6 {billion} USD ({display_text(
+                        $language_perference,
+                        "giảm 60%",
+                        "60% decrease",
+                    )})
+                </p>
             </div>
         </div>
 
         <div class="paragraph-with-images">
             <p class="paper-para1 paragraph-base">
-                Bên cạnh đó, sự suy yếu của Liên Xô khiến Việt Nam mất đi một chỗ dựa chiến lược
-                quan trọng, buộc Hà Nội phải tìm kiếm các giải pháp tự chủ hơn trong quốc phòng và
-                ngoại giao. Đây chính là lý do khiến Việt Nam gặp nhiều khó khăn khi đối mặt với các
-                hành động gây hấn của Trung Quốc trên Biển Đông (Timo Kivimaki et al., 2002).
+                {display_text(
+                    $language_perference,
+                    "Bên cạnh đó, sự suy yếu của Liên Xô khiến Việt Nam mất đi một chỗ dựa chiến lược quan trọng, buộc Hà Nội phải tìm kiếm các giải pháp tự chủ hơn trong quốc phòng và ngoại giao. Đây chính là lý do khiến Việt Nam gặp nhiều khó khăn khi đối mặt với các hành động gây hấn của Trung Quốc trên Biển Đông (Timo Kivimaki et al., 2002).",
+                    "Furthermore, the weakening of the Soviet Union caused Vietnam to lose a critical strategic ally, forcing Hanoi to seek more autonomous solutions in defense and diplomacy. This situation posed significant challenges for Vietnam when facing Chinese aggressions in the East Vietnam Sea (Timo Kivimaki et al., 2002).",
+                )}
             </p>
             <div class="images">
                 <img src={Pic1} alt="Ảnh 1: {pic1_description}" title={pic1_description} />
@@ -196,9 +243,15 @@
         <div class="sub-padding"></div>
     {/snippet}
 
-    <h3 class="small-title">Bối cảnh quốc tế: Cơ hội từ sự chuyển dịch quyền lực toàn cầu</h3>
+    <h3 class="small-title">
+        {display_text(
+            $language_perference,
+            "Bối cảnh quốc tế: Cơ hội từ sự chuyển dịch quyền lực toàn cầu",
+            "International context: opportunities from the global power shift",
+        )}
+    </h3>
 
-    <div class="wrapper">
+    <div class="news-wrapper">
         <ProgressScroll progress={limited_range(local_progress, 0.25, 0.75)} content={paper}
         ></ProgressScroll>
     </div>
@@ -207,25 +260,6 @@
 </div>
 
 <style>
-    .small-title {
-        font-family: var(--huxley-max);
-        font-size: 12px;
-        margin: 16px;
-        margin-bottom: 0;
-        color: var(--red);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .wrapper {
-        position: relative;
-        margin: 16px;
-        height: calc(100% - 60px);
-        width: calc(100% - 32px);
-        contain: strict;
-    }
-
     .chart-wrapper {
         width: 100%;
         aspect-ratio: 3/2;

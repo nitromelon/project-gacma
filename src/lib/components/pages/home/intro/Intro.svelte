@@ -9,6 +9,7 @@
     } from "$lib/normalized_limited_range/limited";
     import { normalized_range } from "$lib/normalized_limited_range/normalized";
     import { fast_cubic_bezier } from "$lib/cubic_bezier/presets";
+    import language_perference, { display_text } from "$lib/components/language/config";
 
     const { progress }: { progress: number } = $props();
     const END_FULLFILLED_TAN_BACKGROUND = 0.1;
@@ -16,11 +17,13 @@
 
     const number_array = [8, 7, 6, 5, 4, 3, 2, 1, 0];
 
-    // Todo: preprocess this
-    const quote =
-        '"Sự suy yếu của Liên Xô đã tạo điều kiện cho Mỹ tăng cường quan hệ với Trung Quốc, đồng thời làm gia tăng căng thẳng Việt-Trung sau chiến tranh biên giới năm 1979, dẫn đến trận hải chiến Gạc Ma 1988"'.split(
-            " ",
-        );
+    const quote = $derived(
+        display_text(
+            $language_perference,
+            '"Sự suy yếu của Liên Xô đã tạo điều kiện cho Mỹ tăng cường quan hệ với Trung Quốc, đồng thời làm gia tăng căng thẳng Việt-Trung sau chiến tranh biên giới năm 1979, dẫn đến trận hải chiến Gạc Ma 1988"',
+            '"The weakening of the Soviet Union created conditions for the United States to strengthen relations with China, while also increasing Vietnam-China tensions following the 1979 border war, leading to the 1988 Gac Ma ( Johnson South) Reef Incident."',
+        ).split(" "),
+    );
 
     const fullfilled_tan_background_progress = $derived(
         limited_range_max(progress, END_FULLFILLED_TAN_BACKGROUND),
@@ -111,7 +114,7 @@
                 style:transform="translateY({year_transition_progress > 0 ? -32 : 0}px)"
                 id="songngam"
             >
-                I. Sóng ngầm
+                I. {display_text($language_perference, "Sóng ngầm", "Background")}
             </p>
         </div>
         <div
@@ -127,12 +130,14 @@
                 <h1 class="main-quote quote1" style:background-image="url('{Date1}')">14.03</h1>
                 <h1 class="main-quote quote2" style:background-image="url('{Date2}')">1988</h1>
                 <p class="sub-quote quote1 sub-quote1">
-                    "Khắc tên <br />
-                    &nbsp;&nbsp;vào biển
+                    "{display_text($language_perference, "Khắc tên", "Engraving names")}
+                    <br />
+                    {@html display_text($language_perference, "vào biển", "into the sea")}
                 </p>
                 <p class="sub-quote quote2 sub-quote2">
-                    Giữ trọn&nbsp; <br />
-                    chủ quyền"
+                    {display_text($language_perference, "Giữ trọn", "Retaining full")}&nbsp;
+                    <br />
+                    {display_text($language_perference, "chủ quyền", "sovereighty")}"
                 </p>
             </div>
         </div>
@@ -213,6 +218,7 @@
                         transform: translate(-32px, -48px);
                         color: var(--blue);
                         -webkit-text-stroke-color: var(--blue);
+                        text-align: right;
                     }
 
                     > .sub-quote2 {

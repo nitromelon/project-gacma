@@ -17,3 +17,11 @@
         flex: 1;
     }
 }
+
+.news-wrapper {
+    position: relative;
+    margin: 16px;
+    height: calc(100% - 60px);
+    width: calc(100% - 32px);
+    contain: strict;
+}

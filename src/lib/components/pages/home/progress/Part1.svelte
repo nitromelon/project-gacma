@@ -1,11 +1,11 @@
 <script lang="ts">
-    import Vid1 from "$lib/assets/videos/home/progress/1.mov";
     import Pic1 from "$lib/assets/images/home/progress/1.png";
     import Pic2 from "$lib/assets/images/home/progress/2.png";
     import Pic3 from "$lib/assets/images/home/progress/3.png";
     import { limited_range } from "$lib/normalized_limited_range/limited";
     import { onMount } from "svelte";
     import { minmax } from "$lib/minmax";
+    import language_perference, { display_text } from "$lib/components/language/config";
 
     const SVG_ORIGINAL_WIDTH = 4218;
     const CIRCLE_X_VALUES = [452.9, 1010.4, 1889, 2345.3, 3355.6];
@@ -73,7 +73,9 @@
                 style:width="{section_width}px"
                 style:transform="translate({100 * svg_progress}%)"
             >
-                <h2 id="dienbien">IV. DIỄN BIẾN</h2>
+                <h2 id="dienbien">
+                    IV. {display_text($language_perference, `DIỄN BIẾN`, `PROCESS`)}
+                </h2>
             </div>
 
             <svg viewBox="0 0 4218 791" bind:clientWidth={svg_width}>
@@ -170,49 +172,57 @@
                 <div class="line" style={line_styles[0]}>
                     <h4>1986</h4>
                     <p>
-                        Năm 1986, Trung Quốc đã gửi các tàu quân sự ngụy trang thành tàu đánh cá để
-                        trinh sát các rạn san hô và bí mật đặt một số cột bê tông để "đánh dấu chủ
-                        quyền". Hải quân Trung Quốc liên tục gửi các tàu chiến giả dạng tàu dân sự
-                        để tiến hành khảo sát và trinh sát nhằm thăm dò quần đảo Trường Sa với mục
-                        đích âm mưu xâm chiếm các đảo chìm.
+                        {display_text(
+                            $language_perference,
+                            `Năm 1986, Trung Quốc đã gửi các tàu quân sự ngụy trang thành tàu đánh cá để trinh sát các rạn san hô và bí mật đặt một số cột bê tông để "đánh dấu chủ quyền". Hải quân Trung Quốc liên tục gửi các tàu chiến giả dạng tàu dân sự để tiến hành khảo sát và trinh sát nhằm thăm dò quần đảo Trường Sa với mục đích âm mưu xâm chiếm các đảo chìm.`,
+                            `China sent military ships disguised as fishing boats to scout reefs and secretly placed a number of concrete pillars to "mark sovereignty". The Chinese Navy continuously sends warships masquerading as civilian ships to conduct surveys and reconnaissance to explore the Spratly Islands archipelago in order to plot to invade the sunken islands.`,
+                        )}
                     </p>
                 </div>
 
                 <div class="line" style={line_styles[1]}>
                     <h4>06/11/1987</h4>
                     <p>
-                        Bộ Quốc phòng Việt Nam giao nhiệm vụ cho Bộ Tư lệnh Hải quân điều động lực
-                        lượng ra bảo vệ các bãi cạn, ban đầu là bảo vệ các đảo Đá Tây, Chữ Thập, Đá
-                        Lớn và Tiên Nữ.
+                        {display_text(
+                            $language_perference,
+                            `Bộ Quốc phòng Việt Nam giao nhiệm vụ cho Bộ Tư lệnh Hải quân điều động lực lượng ra bảo vệ các bãi cạn, ban đầu là bảo vệ các đảo Đá Tây, Chữ Thập, Đá Lớn và Tiên Nữ.`,
+                            `The Ministry of National Defense of Vietnam assigned the Navy Command to send forces to guard the shoals, initially guarding the islands of Da Tay, Fiery Cross, Da Lon, and Tien Nu.`,
+                        )}
                     </p>
                 </div>
 
                 <div class="line" style={line_styles[2]}>
                     <h4>02/01/1988</h4>
                     <p>
-                        Trung Quốc đã gửi 1 tàu hộ vệ tên lửa, 1 tàu khu trục, 1 tàu đổ bộ, 1 tàu
-                        chở dầu và một số tàu hậu cần xuống phía Nam.
+                        {display_text(
+                            $language_perference,
+                            `Trung Quốc đã gửi 1 tàu hộ vệ tên lửa, 1 tàu khu trục, 1 tàu đổ bộ, 1 tàu chở dầu và một số tàu hậu cần xuống phía Nam.`,
+                            `China sent 1 missile corvette, 1 destroyer, 1 landing ship, 1 oil tanker and several logistics ships to the South.`,
+                        )}
                     </p>
                 </div>
 
                 <div class="line" style={line_styles[3]}>
-                    <h4>Đầu tháng 3, 1988</h4>
+                    <h4>
+                        {display_text($language_perference, `Đầu tháng 3`, `Early March`)}, 1988
+                    </h4>
                     <p>
-                        Hải quân Việt Nam thành lập một đơn vị đồn trú để bảo vệ Gạc Ma, Cô Lin và
-                        Len Đao, bao gồm: 3 tàu vận tải quân sự thuộc Lữ đoàn 125 (HQ-604, HQ-605,
-                        HQ-505); 2 đơn vị xây đảo thuộc Lữ đoàn 83 Công binh Hải quân và các đơn vị
-                        bảo vệ thuộc Lữ đoàn 146. Toàn bộ lực lượng do Trung tá Trần Đức Thông, Phó
-                        Tư lệnh Lữ đoàn 146 chỉ huy.
+                        {display_text(
+                            $language_perference,
+                            `Hải quân Việt Nam thành lập một đơn vị đồn trú để bảo vệ Gạc Ma, Cô Lin và Len Đao, bao gồm: 3 tàu vận tải quân sự thuộc Lữ đoàn 125 (HQ-604, HQ-605, HQ-505); 2 đơn vị xây đảo thuộc Lữ đoàn 83 Công binh Hải quân và các đơn vị bảo vệ thuộc Lữ đoàn 146. Toàn bộ lực lượng do Trung tá Trần Đức Thông, Phó Tư lệnh Lữ đoàn 146 chỉ huy.`,
+                            `The Vietnam Navy established a garrison to protect Gac Ma, Co Lin, and Len Dao, consisting of: 3 military transport ships from Brigade 125 (HQ-604, HQ-605, HQ-505); 2 island-building units from Brigade 83 of the Naval Engineering Corps and protection units from Brigade 146. The entire force was commanded by Lieutenant Colonel Tran Duc Thong, Deputy Commander of Brigade 146.`,
+                        )}
                     </p>
                 </div>
 
                 <div class="line" style={line_styles[4]}>
                     <h4>12/03/1988</h4>
                     <p>
-                        Tàu vận tải HQ-605 của Hải quân Việt Nam rời Đá Đông để thiết lập sự hiện
-                        diện quân sự tại bãi Len Đao. Tàu đến nơi vào 5 giờ sáng ngày 14 tháng 3 và
-                        đã đổ bộ quân thành công, cắm cờ Việt Nam để khẳng định chủ quyền đối với
-                        bãi cạn..
+                        {display_text(
+                            $language_perference,
+                            `Tàu vận tải HQ-605 của Hải quân Việt Nam rời Đá Đông để thiết lập sự hiện diện quân sự tại bãi Len Đao. Tàu đến nơi vào 5 giờ sáng ngày 14 tháng 3 và đã đổ bộ quân thành công, cắm cờ Việt Nam để khẳng định chủ quyền đối với bãi cạn.`,
+                            `The Vietnamese Navy transport ship HQ-605 departed from Đá Đông to establish a military presence at Len Đao Reef. The ship arrived at 5 AM on March 14 and successfully landed troops, planting the Vietnamese flag to assert sovereignty over the reef.`,
+                        )}
                     </p>
                 </div>
             </div>
