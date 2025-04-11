@@ -73,7 +73,7 @@
                 style:width="{section_width}px"
                 style:transform="translate({100 * svg_progress}%)"
             >
-                <h2 id="dienbien">
+                <h2>
                     IV. {display_text($language_perference, `DIỄN BIẾN`, `PROCESS`)}
                 </h2>
             </div>

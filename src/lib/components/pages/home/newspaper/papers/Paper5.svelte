@@ -117,6 +117,11 @@
         text-decoration: underline var(--red);
     }
 
+    .side > img {
+        display: block;
+        margin: auto;
+    }
+
     .side2 > p {
         font-family: var(--vl-regular);
         font-size: 11px;

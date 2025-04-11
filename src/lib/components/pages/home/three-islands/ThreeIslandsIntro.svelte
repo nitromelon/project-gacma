@@ -13,7 +13,7 @@
     const video_url = $derived(display_text($language_perference, "zmeXYMxpd-8", "Vl8wWqx703M"));
 </script>
 
-<h2 class="intro-header" id="noidausong">
+<h2 class="intro-header">
     II. {display_text($language_perference, "Nơi đầu sóng", "The forefront")}
 </h2>
 

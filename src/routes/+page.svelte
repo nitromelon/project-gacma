@@ -37,6 +37,38 @@
     fixed_slots?.add(inside_root_section);
     fixed_outside_slots?.add(outside_root_section);
 
+    const MENU_STRUCTURE = $derived([
+        {
+            heading: "I. Sóng ngầm",
+            target: "songngam",
+        },
+        {
+            heading: "II. Nơi đầu sóng",
+            target: "noidausong",
+        },
+        {
+            heading: "III. Thế trận không cân sức",
+            target: "ttkcs",
+        },
+        {
+            heading: "IV. Diễn biến",
+            target: "dienbien",
+        },
+        {
+            heading: "V. Sau cơn bão",
+            target: "sauconbao",
+        },
+        {
+            heading: "VI. Khắc tên vào biển",
+            heading2: "Giữ trọn chủ quyền",
+            target: "ktvb",
+        },
+        {
+            heading: "VII. Thực hiện bởi",
+            target: "thuchienboi",
+        },
+    ]);
+
     const three_islands_video1_title = $derived(
         display_text(
             $language_perference,
@@ -81,6 +113,10 @@
         ),
     );
 
+    let menu_button_pressed = $state(!false);
+
+    const menu_backdrop_blur = $derived(menu_button_pressed ? 10 : 0);
+
     onMount(() => {
         if (fixed_slots === undefined || fixed_outside_slots === undefined) {
             return;
@@ -97,21 +133,33 @@
     <title>Gạc Ma: Vòng tròn bất tử</title>
 </svelte:head>
 
-{#snippet outside_root_section()}{/snippet}
+{#snippet outside_root_section()}
+    <nav
+        class="menu-nav"
+        style:pointer-events={menu_button_pressed ? "auto" : "none"}
+        style:backdrop-filter="blur(min({menu_backdrop_blur}vh, {menu_backdrop_blur}vw))"
+        style:opacity={menu_button_pressed ? 1 : 0}
+        style:transform="translateX({menu_button_pressed ? 0 : 15}%) scale({menu_button_pressed
+            ? 1
+            : 0.95})"
+    >
+        <button class="close-button" onclick={() => (menu_button_pressed = false)}>Đóng</button>
+        <div class="menu-section-wrapper">
+            {#each MENU_STRUCTURE as item}
+                <a class="link" href="#{item.target}">
+                    {item.heading}
+                    {#if item.heading2 !== undefined}
+                        <br />
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.heading2}</span>
+                    {/if}
+                </a>
+            {/each}
+        </div>
+    </nav>
+{/snippet}
 
 {#snippet inside_root_section()}
-    <nav class="menu">
-        <!-- <div class="menu-wrapper">
-            <p class="menu-header">Danh sách</p>
-            <a href="#songngam">I. Sóng ngầm</a>
-            <a href="#noidausong">II. Nơi đầu sóng</a>
-            <a href="#ttkcs">III. Thế trận không cân sức</a>
-            <a href="#dienbien">IV. Diễn biến</a>
-            <a href="#sauconbao">V. Sau cơn bão</a>
-            <a href="#ktvb">VI. Khắc tên vào biển giữ trọn chủ quyền</a>
-            <a href="#thuchienboi">VII. Thực hiện bởi</a>
-        </div> -->
-    </nav>
+    <button class="menu-button" onclick={() => (menu_button_pressed = true)}>Mục lục</button>
 {/snippet}
 
 <div class="translate-wrapper">
@@ -154,6 +202,7 @@
         {#snippet intro(progress: number)}
             <Intro {progress}></Intro>
         {/snippet}
+        <div class="dummy" id="songngam"></div>
 
         <LengthScroll slot={intro} slowdown={4} bottom_limit={false}></LengthScroll>
     </div>
@@ -167,6 +216,7 @@
 </div>
 
 <div class="three-islands-wrapper">
+    <div class="dummy" id="noidausong"></div>
     <ThreeIslandsIntro></ThreeIslandsIntro>
     <div class="padding-height"></div>
 
@@ -200,8 +250,9 @@
 </div>
 
 <div class="comparison-wrapper">
+    <div class="dummy" id="ttkcs"></div>
     <div class="padding-left-right">
-        <h3 class="heading-title" id="ttkcs">
+        <h3 class="heading-title">
             III. {display_text($language_perference, `Thế trận không cân sức`, `An unequal battle`)}
         </h3>
 
@@ -238,6 +289,8 @@
     {#snippet progress_page(progress: number)}
         <ProgressPart1 {progress}></ProgressPart1>
     {/snippet}
+
+    <div class="dummy" id="dienbien"></div>
 
     <LengthScroll slot={progress_page} slowdown={5} bottom_limit={false}></LengthScroll>
 
@@ -603,64 +656,71 @@
         }
     }
 
-    nav.menu {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        contain: strict;
-        pointer-events: none;
-        color: white;
-        mix-blend-mode: difference;
-
-        > * {
-            pointer-events: all;
-        }
-
-        .menu-wrapper {
-            justify-self: flex-end;
-            height: fit-content;
-            width: fit-content;
-            max-width: 264px;
-            font-family: var(--vl-regular);
-            padding: 32px;
-
-            .menu-header {
-                font-size: 24px;
-                cursor: pointer;
-                font-weight: 600;
-            }
-
-            a {
-                margin-bottom: 8px;
-                opacity: 0;
-                display: block;
-            }
-
-            p {
-                opacity: 1;
-                margin-bottom: 16px;
-                text-align: end;
-            }
-        }
-
-        .menu-wrapper:hover {
-            p {
-                text-align: left;
-            }
-            a {
-                opacity: 1;
-            }
-
-            a:hover {
-                text-decoration: underline;
-            }
-        }
-    }
-
     .link-wrapper {
         margin-bottom: 16px;
         > a {
             text-decoration: underline;
+        }
+    }
+
+    .menu-button {
+        position: absolute;
+        right: 32px;
+        top: 32px;
+        color: white;
+        mix-blend-mode: difference;
+    }
+
+    .close-button,
+    .menu-button {
+        font-family: var(--vl-regular);
+        font-size: 24px;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .menu-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: fit-content;
+        background-color: rgba(20, 20, 20, 0.5);
+        will-change: backdrop-filter, pointer-events, opacity, transform;
+        transition:
+            backdrop-filter 1s cubic-bezier(0, 1, 0, 1),
+            opacity 1s cubic-bezier(0, 1, 0, 1),
+            transform 1s cubic-bezier(0, 1, 0, 1);
+
+        padding: 32px;
+        color: #efe4d1;
+
+        > .close-button {
+            align-self: flex-start;
+            justify-self: flex-start;
+            font-family: "VlRegular", sans-serif;
+            z-index: 1;
+        }
+
+        > .menu-section-wrapper {
+            height: calc(100% - 32px);
+            overflow: hidden;
+
+            align-content: center;
+            > .link {
+                display: block;
+                font-family: "HuxleyMax", sans-serif;
+                font-size: 36px;
+                -webkit-text-stroke: 0.25px;
+                padding: 16px 0;
+
+                &:hover {
+                    -webkit-text-fill-color: transparent;
+                }
+            }
         }
     }
 </style>

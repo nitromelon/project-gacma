@@ -112,7 +112,6 @@
                 class="quote quote-title"
                 style:opacity={year_transition_progress > 0 ? 0 : 1}
                 style:transform="translateY({year_transition_progress > 0 ? -32 : 0}px)"
-                id="songngam"
             >
                 I. {display_text($language_perference, "Sóng ngầm", "Background")}
             </p>

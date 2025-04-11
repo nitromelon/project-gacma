@@ -33,7 +33,7 @@
     const quote_display_progress = $derived(limited_range_max(progress, END_QUOTE_DISPLAY));
     const current_index = $derived(Math.round(quote_display_progress * INTRO_TEXT_QUOTE.length));
 
-    const header_text_reveal_progress = $derived(limited_range_max(quote_display_progress, 0.75));
+    const header_text_reveal_progress = $derived(limited_range_max(quote_display_progress, END_MOVING_FROM_QUOTE));
     const current_first_intro_header_index = $derived(
         header_text_reveal_progress * FIRST_INTRO_HEADER_TEXT.length,
     );
@@ -103,8 +103,7 @@
     <div class="left">
         <img src={display_text($language_perference, Pic1, Pic1_EN)} alt="" />
         <p>
-            {display_text($language_perference, "Nguồn", "Source")}: (Trần et al., 2015), (TTXVN,
-            2017)
+            {display_text($language_perference, "Nguồn", "Source")}: (Trần et al., 2015), (TTXVN, 2017)
         </p>
     </div>
     <div class="right">
@@ -167,7 +166,7 @@
                 flex-direction: column;
                 justify-content: center;
                 font-family: var(--vl-regular);
-                color: hsl(223, 20%, 52%);
+                color: hsl(223, 20%, 50%);
                 gap: 32px;
 
                 > .second {
