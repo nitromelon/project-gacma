@@ -106,7 +106,9 @@
     </video>
     <div class="mask"></div>
 
-    <h3 class="header-title" style:opacity={header_title_opacity}>2. Bão biển</h3>
+    <h3 class="header-title" style:opacity={header_title_opacity}>
+        2. {display_text($language_perference, `Bão biển`, `Sea storm`)}
+    </h3>
 
     {#snippet part1()}
         <h4 class="heading">

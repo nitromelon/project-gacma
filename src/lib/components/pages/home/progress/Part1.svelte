@@ -167,7 +167,9 @@
             </svg>
 
             <div class="overlay-wrapper stack-children">
-                <h3 class="header-title" style:opacity={svg_progress > 0 ? 0 : 1}>1. Biển động</h3>
+                <h3 class="header-title" style:opacity={svg_progress > 0 ? 0 : 1}>
+                    1. {display_text($language_perference, `Biển động`, `Rough sea`)}
+                </h3>
 
                 <div class="line" style={line_styles[0]}>
                     <h4>1986</h4>

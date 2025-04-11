@@ -39,32 +39,40 @@
 
     const MENU_STRUCTURE = $derived([
         {
-            heading: "I. Sóng ngầm",
+            heading: `I. ${display_text($language_perference, "Sóng ngầm", "Background")}`,
             target: "songngam",
         },
         {
-            heading: "II. Nơi đầu sóng",
+            heading: `II. ${display_text($language_perference, "Nơi đầu sóng", "The forefront")}`,
             target: "noidausong",
         },
         {
-            heading: "III. Thế trận không cân sức",
+            heading: `III. ${display_text($language_perference, `Thế trận không cân sức`, `An unequal battle`)}`,
             target: "ttkcs",
         },
         {
-            heading: "IV. Diễn biến",
+            heading: `IV. ${display_text($language_perference, `Diễn biến`, `Process`)}`,
             target: "dienbien",
         },
         {
-            heading: "V. Sau cơn bão",
+            heading: `V. ${display_text($language_perference, `Sau cơn bão`, `After the storm`)}`,
             target: "sauconbao",
         },
         {
-            heading: "VI. Khắc tên vào biển",
-            heading2: "Giữ trọn chủ quyền",
+            heading: `VI. ${display_text(
+                $language_perference,
+                "Khắc tên vào biển",
+                "Engraving names into the sea",
+            )}`,
+            heading2: `${display_text(
+                $language_perference,
+                "Giữ trọn chủ quyền",
+                "Retaining full sovereighty",
+            )}`,
             target: "ktvb",
         },
         {
-            heading: "VII. Thực hiện bởi",
+            heading: `VII. ${display_text($language_perference, `Thực hiện bởi`, `Credits`)}`,
             target: "thuchienboi",
         },
     ]);
@@ -113,7 +121,7 @@
         ),
     );
 
-    let menu_button_pressed = $state(!false);
+    let menu_button_pressed = $state(false);
 
     const menu_backdrop_blur = $derived(menu_button_pressed ? 10 : 0);
 
@@ -143,14 +151,17 @@
             ? 1
             : 0.95})"
     >
-        <button class="close-button" onclick={() => (menu_button_pressed = false)}>Đóng</button>
+        <button class="close-button" onclick={() => (menu_button_pressed = false)}>
+            {display_text($language_perference, `Đóng`, `Close`)}
+        </button>
         <div class="menu-section-wrapper">
             {#each MENU_STRUCTURE as item}
                 <a class="link" href="#{item.target}" onclick={() => (menu_button_pressed = false)}>
                     {item.heading}
                     {#if item.heading2 !== undefined}
                         <br />
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.heading2}</span>
+                        <span style:visibility="hidden">VI.</span>
+                        <span>{item.heading2}</span>
                     {/if}
                 </a>
             {/each}
@@ -159,7 +170,9 @@
 {/snippet}
 
 {#snippet inside_root_section()}
-    <button class="menu-button" onclick={() => (menu_button_pressed = true)}>Mục lục</button>
+    <button class="menu-button" onclick={() => (menu_button_pressed = true)}>
+        {display_text($language_perference, `Mục lục`, `Menu`)}
+    </button>
 {/snippet}
 
 <div class="translate-wrapper">
@@ -355,8 +368,13 @@
 <div class="static-wrapper meaning-wrapper">
     <div class="padding-left-right">
         <h1 class="override-heading extra-padding-under-header" id="ktvb">
-            VI. Khắc tên vào biển <br />
-            giữ trọn chủ quyền
+            VI. {display_text(
+                $language_perference,
+                "Khắc tên vào biển",
+                "Engraving names into the sea",
+            )}
+            <br />
+            {display_text($language_perference, "Giữ trọn chủ quyền", "Retaining full sovereighty")}
         </h1>
         <div class="tiny-paragraph-wrapper">
             <p>
@@ -406,60 +424,121 @@
     </h1>
     <div class="tiny-paragraph-wrapper">
         <p>
-            Thực hiện (Production team): Đào Bảo Trâm, Nguyễn Đình Duy Anh, Lê Hà Tú Anh, Lê Trần
-            Phương Trà
-        </p>
-        <p>Thiết kế website (Website layout designer): Đào Bảo Trâm, Nguyễn Đình Duy Anh</p>
-        <p>Phụ trách truyền thông (Social media): Lê Hà Tú Anh, Lê Trần Phương Trà</p>
-        <br />
-        <p class="credit-header">Âm nhạc (Music)</p>
-        <p>
-            Bay qua biển Đông (Bản đánh đàn organ) <br />
-            Sáng tác: Lê Việt Khánh
+            {display_text(
+                $language_perference,
+                "Thực hiện (Production team): Đào Bảo Trâm, Nguyễn Đình Duy Anh, Lê Hà Tú Anh, Lê Trần Phương Trà",
+                "Production team: Đào Bảo Trâm, Nguyễn Đình Duy Anh, Lê Hà Tú Anh, Lê Trần Phương Trà",
+            )}
         </p>
         <p>
-            Tự nguyện <br />
-            Sáng tác: Trương Quốc Khánh
-            <br />
-            Thể hiện: Hồ Quỳnh Hương
+            {display_text(
+                $language_perference,
+                "Thiết kế website (Website layout designer): Đào Bảo Trâm, Nguyễn Đình Duy Anh",
+                "Website layout designer: Đào Bảo Trâm, Nguyễn Đình Duy Anh",
+            )}
         </p>
         <p>
-            Những trái tim Việt Nam <br />
-            Sáng tác: Phương Uyên
-            <br />
-            Thể hiện: 100 văn nghệ sĩ
-        </p>
-        <p>
-            Nơi đảo xa (bản instrumental)
-            <br />
-            Sáng tác: Thế Song
+            {display_text(
+                $language_perference,
+                "Phụ trách truyền thông (Social media): Lê Hà Tú Anh, Lê Trần Phương Trà",
+                "Social media: Lê Hà Tú Anh, Lê Trần Phương Trà",
+            )}
         </p>
         <br />
-
-        <p class="credit-header">Xin chân thành cảm ơn (Special thanks)</p>
-
-        <p>
-            - Bà Mai Thị Đào - Em gái liệt sĩ Mai Văn Tuyến (Ms. Mai Thi Dao - Fallen soldier Mai
-            Van Tuyen’s sister)
+        <p class="credit-header">
+            {display_text($language_perference, "Âm nhạc (Music)", "Music")}
         </p>
-
         <p>
-            - Ông Phạm Hữu Xuyết - Em trai liệt sĩ Phạm Hữu Doan (Mr. Pham Huu Xuyet - Fallen
-            soldier Pham Huu Doan’s brother)
+            {display_text(
+                $language_perference,
+                "Bay qua biển Đông (Bản đánh đàn organ)",
+                "Flying across the East Sea (Organ version)",
+            )}
+            <br />
+            {display_text(
+                $language_perference,
+                "Sáng tác: Lê Việt Khánh",
+                "Composer: Lê Việt Khánh",
+            )}
         </p>
-
-        <p>- Anh Phùng Văn Khải - Người kết nối (Mr. Phung Van Khai - intermediary)</p>
-
         <p>
-            - Chị Lại Thị Huệ - Hướng dẫn viên Bảo tàng Hải quân, Hải Phòng (Ms. Lai Thi Hue - Naval
-            Museum's tour guide, Hai Phong)
+            {display_text($language_perference, "Tự nguyện", "Voluntary")}
+            <br />
+            {display_text(
+                $language_perference,
+                "Sáng tác: Trương Quốc Khánh",
+                "Composer: Trương Quốc Khánh",
+            )}
+            <br />
+            {display_text(
+                $language_perference,
+                "Thể hiện: Hồ Quỳnh Hương",
+                "Performed by: Hồ Quỳnh Hương",
+            )}
         </p>
-
         <p>
-            - Các nhân vật phỏng vấn tại Bảo tàng Lịch sử quân sự, Hà Nội (Interview characters at
-            the Military History Museum, Hanoi)
+            {display_text($language_perference, "Những trái tim Việt Nam", "Vietnamese Hearts")}
+            <br />
+            {display_text($language_perference, "Sáng tác: Phương Uyên", "Composer: Phương Uyên")}
+            <br />
+            {display_text(
+                $language_perference,
+                "Thể hiện: 100 văn nghệ sĩ",
+                "Performed by: 100 artists",
+            )}
         </p>
-
+        <p>
+            {display_text(
+                $language_perference,
+                "Nơi đảo xa (bản instrumental)",
+                "Faraway Island (instrumental version)",
+            )}
+            <br />
+            {display_text($language_perference, "Sáng tác: Thế Song", "Composer: Thế Song")}
+        </p>
+        <br />
+        <p class="credit-header">
+            {display_text(
+                $language_perference,
+                "Xin chân thành cảm ơn (Special thanks)",
+                "Special thanks",
+            )}
+        </p>
+        <p>
+            {display_text(
+                $language_perference,
+                "- Bà Mai Thị Đào - Em gái liệt sĩ Mai Văn Tuyến (Ms. Mai Thi Dao - Fallen soldier Mai Van Tuyen’s sister)",
+                "- Ms. Mai Thi Dao - Fallen soldier Mai Van Tuyen’s sister",
+            )}
+        </p>
+        <p>
+            {display_text(
+                $language_perference,
+                "- Ông Phạm Hữu Xuyết - Em trai liệt sĩ Phạm Hữu Doan (Mr. Pham Huu Xuyet - Fallen soldier Pham Huu Doan’s brother)",
+                "- Mr. Pham Huu Xuyet - Fallen soldier Pham Huu Doan’s brother",
+            )}
+        </p>
+        <p>
+            {display_text(
+                $language_perference,
+                "- Anh Phùng Văn Khải - Người kết nối (Mr. Phung Van Khai - intermediary)",
+                "- Mr. Phung Van Khai - intermediary",
+            )}
+        </p>
+        <p>
+            {display_text(
+                $language_perference,
+                "- Chị Lại Thị Huệ - Hướng dẫn viên Bảo tàng Hải quân, Hải Phòng (Ms. Lai Thi Hue - Naval Museum's tour guide, Hai Phong)",
+                "- Ms. Lai Thi Hue - Naval Museum's tour guide, Hai Phong",
+            )}
+        </p>
+        <p>
+            {display_text(
+                $language_perference,
+                "- Các nhân vật phỏng vấn tại Bảo tàng Lịch sử quân sự, Hà Nội (Interview characters at the Military History Museum, Hanoi)",
+                "- Interview characters at the Military History Museum, Hanoi",
+            )}
+        </p>
         <div class="link-wrapper">
             <a href="https://www.instagram.com/gacma_14.03.1988">
                 <span>
@@ -483,8 +562,13 @@
                 <span>Threads</span>
             </a>
         </div>
-
-        <p>@nitromelon - Hỗ trợ thiết kế website</p>
+        <p>
+            {display_text(
+                $language_perference,
+                "@nitromelon - Hỗ trợ thiết kế website",
+                "@nitromelon - Website design support",
+            )}
+        </p>
     </div>
 </div>
 
