@@ -16,8 +16,8 @@ body {
 /* Rewrite to variable */
 .smooth-scroll-configuration {
     /* --scroll-transform-transition: transform 0.5s cubic-bezier(0, 0, 0.58, 1); */
-    --scroll-transition-timing-function: cubic-bezier(0.5, 1, 0.5, 1);
-    --scroll-transition-bezier: 1s var(--scroll-transition-timing-function);
+    --scroll-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    --scroll-transition-bezier: 2s var(--scroll-transition-timing-function);
     --scroll-transform-transition: transform var(--scroll-transition-bezier);
 }
 

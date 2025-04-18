@@ -224,7 +224,7 @@
         <Newspaper {progress}></Newspaper>
     {/snippet}
 
-    <LengthScroll slot={newspaper} slowdown={16} top_limit={false} bottom_limit={false}
+    <LengthScroll slot={newspaper} slowdown={10} top_limit={false} bottom_limit={false}
     ></LengthScroll>
 </div>
 
